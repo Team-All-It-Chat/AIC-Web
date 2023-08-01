@@ -17,6 +17,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "homepage": "https://all-it-chat.netlify.app/",
   "eslintConfig": {
     "extends": [
       "react-app",
