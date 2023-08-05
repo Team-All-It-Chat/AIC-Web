@@ -67,6 +67,7 @@ const LoginBtn = styled.button`
   justify-content: center;
   align-items: center;
   font-size: 1.5rem;
+  cursor: pointer;
 `;
 
 const SignupBtn = styled.button`
@@ -85,4 +86,5 @@ const SignupBtn = styled.button`
   justify-content: center;
   align-items: center;
   font-size: 1.5rem;
+  cursor: pointer;
 `;
