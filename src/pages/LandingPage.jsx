@@ -14,7 +14,7 @@ const LandingPage = () => {
         <MainSection />
         <IntroduceSection />
         <ReviewSection />
-        <CTABtn onClick={() => alert("페이지 이동합니다!")} />
+        <CTABtn />
       </SectionWrapper>
     </>
   );
