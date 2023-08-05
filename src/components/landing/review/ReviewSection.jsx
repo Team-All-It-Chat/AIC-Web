@@ -51,7 +51,6 @@ const Title = styled.div`
   margin-top: 5%;
   width: 95%;
   color: #454545;
-  font-family: SUITE;
   font-size: 4rem;
   font-style: normal;
   font-weight: 700;

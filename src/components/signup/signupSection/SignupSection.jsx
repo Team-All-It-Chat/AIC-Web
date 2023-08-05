@@ -83,7 +83,6 @@ const Title = styled.div`
   margin-top: 15px;
   margin-bottom: 30px;
   color: black;
-  font-family: SUITE;
   font-style: normal;
   font-weight: 800;
   line-height: normal;

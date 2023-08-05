@@ -30,4 +30,5 @@ const CTA = styled.div`
   color: white;
   font-size: 2.3rem;
   font-weight: 700;
+  cursor: pointer;
 `;

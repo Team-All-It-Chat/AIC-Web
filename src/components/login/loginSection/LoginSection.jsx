@@ -102,7 +102,6 @@ const LoginBtn = styled.button`
 
 const CustomLink = styled(Link)`
   color: var(--m-skyblue, #89cdf6);
-  font-family: SUITE;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -151,7 +150,6 @@ const Title = styled.div`
   margin-top: 15px;
   margin-bottom: 30px;
   color: #585858;
-  font-family: SUITE;
   font-style: normal;
   font-weight: 800;
   line-height: normal;
@@ -169,7 +167,6 @@ const Input = styled.input`
     color: darkgray;
     font-size: 13px;
     font-weight: 300;
-    font-family: "OTWelcomeRA";
     opacity: 1;
   }
 `;
