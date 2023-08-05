@@ -119,5 +119,5 @@ const Floor = styled.div`
   bottom: 0;
   width: 100%;
   height: 110px;
-  background: linear-gradient(180deg, #8FC48A 0%, #67B162 100%);
+  background: linear-gradient(180deg, #8fc48a 0%, #67b162 100%);
 `;
