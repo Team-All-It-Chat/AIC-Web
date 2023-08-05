@@ -5,8 +5,12 @@ import { useNavigate } from "react-router-dom";
 const LandingNavBar = () => {
   const router = useNavigate();
 
-  const onClick = () => {
+  const clickLogin = () => {
     router("/login");
+  };
+
+  const clickSignup = () => {
+    router("/signup");
   };
   return (
     <Wrapper>
@@ -14,8 +18,8 @@ const LandingNavBar = () => {
         <LogoImage src="/img/navlogo.png" />
       </LogoWrapper>
       <ButtonWrapper>
-        <LoginBtn onClick={onClick}>로그인</LoginBtn>
-        <SignupBtn>회원가입</SignupBtn>
+        <LoginBtn onClick={clickLogin}>로그인</LoginBtn>
+        <SignupBtn onClick={clickSignup}>회원가입</SignupBtn>
       </ButtonWrapper>
     </Wrapper>
   );

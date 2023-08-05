@@ -1,7 +1,13 @@
 import React from "react";
 import { styled } from "styled-components";
+import { useNavigate } from "react-router-dom";
 
-const CTABtn = ({ onClick }) => {
+const CTABtn = () => {
+  const router = useNavigate();
+
+  const onClick = () => {
+    router("/continentSelect");
+  };
   return <CTA onClick={onClick}>오리챗 시작하기</CTA>;
 };
 

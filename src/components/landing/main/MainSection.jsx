@@ -9,8 +9,8 @@ const MainSection = () => {
           <Image1 src="img/cloudback.png" />
           <Image2 src="img/airplane.png" />
           <Image3 src="img/mainduck.png" />
-          <Image4 src="img/cloud.png"/>
-          <Image5 src="img/mainlogo.png"/>
+          <Image4 src="img/cloud.png" />
+          <Image5 src="img/mainlogo.png" />
         </ImageWrapper>
       </MainWrapper>
     </Wrapper>
@@ -49,7 +49,8 @@ const ImageWrapper = styled.div`
   overflow: hidden;
 `;
 
-const Image1 = styled.img`  // 뒷구름
+const Image1 = styled.img`
+  // 뒷구름
   position: absolute;
   width: 100%;
   min-width: 40rem;
@@ -58,7 +59,8 @@ const Image1 = styled.img`  // 뒷구름
   bottom: 0;
 `;
 
-const Image2 = styled.img`  // 비행기
+const Image2 = styled.img`
+  // 비행기
   position: absolute;
   width: 50vw;
   min-width: 50rem;
@@ -68,7 +70,8 @@ const Image2 = styled.img`  // 비행기
   margin-left: 48%;
 `;
 
-const Image3 = styled.img`  // 오리
+const Image3 = styled.img`
+  // 오리
   position: absolute;
   right: 15rem;
   width: 31vw;
@@ -77,14 +80,16 @@ const Image3 = styled.img`  // 오리
   bottom: 0;
 `;
 
-const Image4 = styled.img`  // 앞구름
+const Image4 = styled.img`
+  // 앞구름
   position: absolute;
   width: 100%;
   min-width: 40rem;
   bottom: 0;
 `;
 
-const Image5 = styled.img`  // 로고
+const Image5 = styled.img`
+  // 로고
   position: absolute;
   width: 28%;
   left: 12vw;
