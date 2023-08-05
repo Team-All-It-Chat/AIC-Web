@@ -112,7 +112,6 @@ const Text2 = styled.div`
 
 const Text = styled.div`
   color: #000;
-  font-family: SUITE;
   font-size: 24px;
   font-style: normal;
   font-weight: 700;

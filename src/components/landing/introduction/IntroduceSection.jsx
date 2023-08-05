@@ -49,7 +49,6 @@ const Title = styled.div`
   width: 95%;
   margin-top: 5%;
   color: #454545;
-  font-family: SUITE;
   font-size: 4rem;
   font-style: normal;
   font-weight: 700;
@@ -59,7 +58,6 @@ const Title = styled.div`
 const Text = styled.div`
   width: 95%;
   color: #454545;
-  font-family: SUITE;
   font-size: 3rem;
   font-style: normal;
   font-weight: 500;
