@@ -1,14 +1,20 @@
 import React from "react";
 import { styled } from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 const LandingNavBar = () => {
+  const router = useNavigate();
+
+  const onClick = () => {
+    router("/login");
+  };
   return (
     <Wrapper>
       <LogoWrapper>
         <LogoImage src="/img/navlogo.png" />
       </LogoWrapper>
       <ButtonWrapper>
-        <LoginBtn>로그인</LoginBtn>
+        <LoginBtn onClick={onClick}>로그인</LoginBtn>
         <SignupBtn>회원가입</SignupBtn>
       </ButtonWrapper>
     </Wrapper>
