@@ -1,11 +1,18 @@
 import React from "react";
 import { styled } from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 const LoginNavBar = () => {
+  const router = useNavigate();
+
+  const onClick = () => {
+    router("/");
+  };
+
   return (
     <Wrapper>
       <LogoWrapper>
-        <LogoImage src="/img/navlogo.png" />
+        <LogoImage src="/img/navlogo.png" onClick={onClick} />
       </LogoWrapper>
     </Wrapper>
   );
