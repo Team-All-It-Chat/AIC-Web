@@ -12,7 +12,6 @@ const LoginNavBar = () => {
   return (
     <Wrapper>
       <LogoWrapper>
-        <LogoImage src="/img/navlogo.png" />
         <LogoImage src="/img/navlogo.png" onClick={onClick} />
       </LogoWrapper>
     </Wrapper>
