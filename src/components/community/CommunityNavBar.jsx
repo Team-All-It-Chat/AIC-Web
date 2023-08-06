@@ -59,7 +59,6 @@ const HamburgerBtn = styled.button`
   all: unset;
   color: black;
   width: fit-content;
-  padding: 6px 0px 0px 0px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -77,6 +76,7 @@ const ProfileCircle = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 `;
 
 const ProfileImg = styled.img`
