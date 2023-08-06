@@ -2,7 +2,7 @@ import React from "react";
 import SignupNavBar from "../components/signup/header/SignupNavBar";
 import SignupSection from "../components/signup/signupSection/SignupSection";
 // 회원가입 페이지
-const Signup = () => {
+const SignupPage = () => {
   return (
     <>
       <SignupNavBar />
@@ -11,4 +11,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default SignupPage;

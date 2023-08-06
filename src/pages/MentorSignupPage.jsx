@@ -2,7 +2,7 @@ import React from "react";
 import SignupNavBar from "../components/signup/header/SignupNavBar";
 import MentorSection from "../components/signup/mentorSignup/MentorSection 2";
 
-const MentorSignup = () => {
+const MentorSignupPage = () => {
   return (
     <>
       <SignupNavBar />
@@ -11,4 +11,4 @@ const MentorSignup = () => {
   );
 };
 
-export default MentorSignup;
+export default MentorSignupPage;

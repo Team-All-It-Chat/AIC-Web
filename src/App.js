@@ -2,9 +2,9 @@ import LandingPage from "./pages/LandingPage";
 import { Route, Routes } from "react-router-dom";
 import LoginPage from "./pages/LoginPage";
 import ContinentSelectPage from "./pages/ContinentSelectPage";
-import Signup from "./pages/Signup";
-import MentorSignup from "./pages/MentorSignup";
-import MenteeSignup from "./pages/MenteeSignup";
+import SignupPage from "./pages/SignupPage";
+import MentorSignupPage from "./pages/MentorSignupPage";
+import MenteeSignupPage from "./pages/MenteeSignupPage";
 import ContinentCommunityPage from "./pages/ContinentCommunityPage";
 import MentorInfoModal from "./components/community/mentor/MentorInfoModal";
 import TipsModal from "./components/community/tips/TipsModal";
@@ -15,9 +15,9 @@ function App() {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/mentorsignup" element={<MentorSignup />} />
-        <Route path="/menteesignup" element={<MenteeSignup />} />
+        <Route path="/signup" element={<SignupPage />} />
+        <Route path="/mentorsignup" element={<MentorSignupPage />} />
+        <Route path="/menteesignup" element={<MenteeSignupPage />} />
         <Route path="/continentSelect" element={<ContinentSelectPage />} />
         <Route
           path="/community/:continent"
