@@ -20,10 +20,10 @@ const PasswordInput = () => {
     if (!pattern.test(password)) {
       setPassword("");
       setColor("red");
-      setText("⚠️ 영어, 숫자, 특수문자를 포함하여 6~12자로 다시 입력해주세요!");
+      setText("⚠️ 영어, 숫자, 특수문자를 포함하여 6~12자로 다시 입력해덕!");
     } else {
       setColor("green");
-      setText("✅완료되었습니다.");
+      setText("✅완료됐덕!");
     }
   };
 
@@ -33,10 +33,10 @@ const PasswordInput = () => {
 
   const checkPassword = () => {
     if (password !== checkPw) {
-      setText2("⚠️입력하신 비밀번호와 일치하지 않습니다!");
+      setText2("⚠️입력한 비밀번호와 일치하지 않덕!");
       setColor2("red");
     } else {
-      setText2("✅완료되었습니다.");
+      setText2("✅완료됐덕!");
       setColor2("green");
     }
   };
@@ -60,7 +60,7 @@ const PasswordInput = () => {
         <PwWrapper>
           <Input
             type="password"
-            placeholder="위에 작성한 패스워드를 입력해주세요."
+            placeholder="위에 작성한 패스워드를 입력해덕!"
             onChange={handleCheck}
           />
           <Alert2 style={{ color: color2 }}>{text2}</Alert2>

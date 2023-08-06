@@ -2,14 +2,14 @@ import React from "react";
 import { styled } from "styled-components";
 import { useNavigate } from "react-router-dom";
 
-const SignupBtn = () => {
+const SignupBtn = ({ name }) => {
   const router = useNavigate();
 
   const onClick = () => {
     router("/continentSelect");
   };
 
-  return <FinishBtn onClick={onClick}>멘티로 오리챗 시작하기</FinishBtn>;
+  return <FinishBtn onClick={onClick}>{name}로 오리챗 시작하기</FinishBtn>;
 };
 
 export default SignupBtn;

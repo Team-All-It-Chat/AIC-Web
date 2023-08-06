@@ -1,9 +1,9 @@
 import React from "react";
 import { styled } from "styled-components";
 import SignupBtn from "../signupBtn/SignupBtn";
-import PasswordInput from "./PasswordInput";
-import UnivDropdown from "./UnivDropdown";
-import MajorDropdown from "./MajorDropdown";
+import PasswordInput from "../common/PasswordInput";
+import UnivDropdown from "../common/UnivDropdown";
+import MajorDropdown from "../common/MajorDropdown";
 
 const MenteeSection = () => {
   return (
@@ -15,7 +15,7 @@ const MenteeSection = () => {
           <Line />
           <InputWrapper>
             <Text>닉네임</Text>
-            <Input placeholder="한글로 닉네임을 입력하세요."></Input>
+            <Input placeholder="한글로 닉네임을 입력해덕!"></Input>
             <Btn>중복확인</Btn>
           </InputWrapper>
           <InputWrapper>
@@ -45,7 +45,7 @@ const MenteeSection = () => {
             <Btn>확인</Btn>
           </InputWrapper>
         </SignupWrapper>
-        <SignupBtn />
+        <SignupBtn name="멘티" />
       </Wrapper>
     </>
   );
