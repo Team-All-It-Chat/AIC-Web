@@ -1,5 +1,5 @@
 import LandingPage from "./pages/LandingPage";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import LoginPage from "./pages/LoginPage";
 import ContinentSelectPage from "./pages/ContinentSelectPage";
 import Signup from "./pages/Signup";
@@ -19,7 +19,10 @@ function App() {
         <Route path="/mentorsignup" element={<MentorSignup />} />
         <Route path="/menteesignup" element={<MenteeSignup />} />
         <Route path="/continentSelect" element={<ContinentSelectPage />} />
-        <Route path="/community/:continent" element={<ContinentCommunityPage />}>
+        <Route
+          path="/community/:continent"
+          element={<ContinentCommunityPage />}
+        >
           <Route path="mentor" element={<MentorInfoModal />} />
           <Route path="tips" element={<TipsModal />} />
         </Route>
