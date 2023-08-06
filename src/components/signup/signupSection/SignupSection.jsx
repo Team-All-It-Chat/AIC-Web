@@ -1,7 +1,21 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { styled } from "styled-components";
 
 const SignupSection = () => {
+  // const [isMentor, setIsMentor] = useState(true);
+  const router = useNavigate();
+
+  const clickMentor = () => {
+    // setIsMentor(true);
+    router("/mentorSignup");
+  };
+
+  const clickMentee = () => {
+    // setIsMentor(false);
+    router("/menteeSignup");
+  };
+
   return (
     <Wrapper>
       <ImageWrapper>
@@ -9,8 +23,12 @@ const SignupSection = () => {
       </ImageWrapper>
       <SignupWrapper>
         <Title>교환학생 다녀왔덕?</Title>
-        <ExchangeBtn>아니. 지금 교환학생 준비 중이야!</ExchangeBtn>
-        <ExchangeBtn>웅. 지금 파견 중 / 파견 후야!</ExchangeBtn>
+        <ExchangeBtn onClick={clickMentee}>
+          아니. 지금 교환학생 준비 중이야!
+        </ExchangeBtn>
+        <ExchangeBtn onClick={clickMentor}>
+          웅. 지금 파견 중 / 파견 후야!
+        </ExchangeBtn>
       </SignupWrapper>
     </Wrapper>
   );
@@ -83,6 +101,7 @@ const Title = styled.div`
   margin-top: 15px;
   margin-bottom: 30px;
   color: black;
+  font-family: SUITE;
   font-style: normal;
   font-weight: 800;
   line-height: normal;
