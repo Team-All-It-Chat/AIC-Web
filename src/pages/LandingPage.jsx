@@ -1,6 +1,6 @@
 import React from "react";
 import { styled } from "styled-components";
-import LandingNavBar from "../components/common/header/LandingNavBar";
+import LandingNavBar from "../components/landing/header/LandingNavBar";
 import MainSection from "../components/landing/main/MainSection";
 import IntroduceSection from "../components/landing/introduction/IntroduceSection";
 import ReviewSection from "../components/landing/review/ReviewSection";

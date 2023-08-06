@@ -1,7 +1,10 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { styled } from "styled-components";
 
 const ContinentSection = () => {
+  const navigate = useNavigate();
+
   return (
     <>
       <SectionWrapper>
@@ -10,28 +13,28 @@ const ContinentSection = () => {
           <Text>보고싶은 대륙을 골라덕!</Text>
         </LogoWrap>
         <BtnWrap>
-          <CircleWrapper>
+          <CircleWrapper onClick={() => navigate(`/community/아시아/mentor`)}>
             <Image2 src="img/asia.png" />
             <TextWrapper>
               <Text2>아시아</Text2>
               <Text3>중국, 일본 등</Text3>
             </TextWrapper>
           </CircleWrapper>
-          <CircleWrapper>
+          <CircleWrapper onClick={() => navigate(`/community/유럽/mentor`)}>
             <Image2 src="img/europe.png" />
             <TextWrapper>
               <Text2>유럽</Text2>
               <Text3>영국, 프랑스 등</Text3>
             </TextWrapper>
           </CircleWrapper>
-          <CircleWrapper>
+          <CircleWrapper onClick={() => navigate(`/community/아프리카/mentor`)}>
             <Image2 src="img/afreeca.png" />
             <TextWrapper>
               <Text2>아프리카</Text2>
               <Text3>이집트, 모로코 등</Text3>
             </TextWrapper>
           </CircleWrapper>
-          <CircleWrapper>
+          <CircleWrapper onClick={() => navigate(`/community/북아메리카/mentor`)}>
             <Image2 src="img/northAm.png" />
             <TextWrapper>
               <Text2>북아메리카</Text2>
@@ -40,12 +43,12 @@ const ContinentSection = () => {
           </CircleWrapper>
           <CircleWrapper>
             <Image2 src="img/southAm.png" />
-            <TextWrapper>
+            <TextWrapper onClick={() => navigate(`/community/남아메리카/mentor`)}>
               <Text2>남아메리카</Text2>
               <Text3>브라질, 아르헨티나 등</Text3>
             </TextWrapper>
           </CircleWrapper>
-          <CircleWrapper>
+          <CircleWrapper onClick={() => navigate(`/community/오세아니아/mentor`)}>
             <Image2 src="img/oseania.png" />
             <TextWrapper>
               <Text2>오세아니아</Text2>
