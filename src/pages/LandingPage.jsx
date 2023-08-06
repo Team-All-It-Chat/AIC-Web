@@ -5,7 +5,7 @@ import MainSection from "../components/landing/main/MainSection";
 import IntroduceSection from "../components/landing/introduction/IntroduceSection";
 import ReviewSection from "../components/landing/review/ReviewSection";
 import CTABtn from "../components/landing/CTABtn";
-
+// 랜딩 페이지
 const LandingPage = () => {
   return (
     <>

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { styled } from "styled-components";
 import CommunityNavBar from "../components/community/CommunityNavBar";
 import { Outlet, useLocation, useNavigate, useParams } from "react-router-dom";
-
+// 커뮤니티 페이지
 const ContinentCommunityPage = () => {
   const { pathname } = useLocation();
   const navigate = useNavigate();

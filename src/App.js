@@ -11,7 +11,7 @@ import TipsModal from "./components/community/tips/TipsModal";
 
 function App() {
   return (
-    <BrowserRouter>
+    <>
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<LoginPage />} />
@@ -24,7 +24,7 @@ function App() {
           <Route path="tips" element={<TipsModal />} />
         </Route>
       </Routes>
-    </BrowserRouter>
+    </>
   );
 }
 
