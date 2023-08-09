@@ -1,14 +1,16 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { styled } from "styled-components";
 
-const TipCard = () => {
+const TipCard = ({num}) => {
+  const router = useNavigate();
   return (
-    <Card>
+    <Card onClick={() => router(`/viewPost/${num}`)}>
       <TopWrapper>{/* <ThumbnailImg src="/img/halfduck.png" /> */}</TopWrapper>
       <BottomWrapper>
         <Row>
-          <Text1>(제목) 중국 퀸카카카카~</Text1>
-          <Text2>by 닉네임</Text2>
+          <Text1>(제목) 중국 퀸카카카카~{num}</Text1>
+          <Text2>by 닉네임{num}</Text2>
         </Row>
         <Row>
           <Text3>

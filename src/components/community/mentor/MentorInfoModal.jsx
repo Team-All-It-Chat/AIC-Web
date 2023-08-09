@@ -3,19 +3,15 @@ import MentorCard from "./MentorCard";
 import { styled } from "styled-components";
 
 const MentorInfoModal = () => {
+  const dataLength = 9;
+
   return (
     <Wrapper>
       <Title>오리챗 멘토를 찾아보덕!</Title>
       <CardWrapper>
-        <MentorCard />
-        <MentorCard />
-        <MentorCard />
-        <MentorCard />
-        <MentorCard />
-        <MentorCard />
-        <MentorCard />
-        <MentorCard />
-        <MentorCard />
+      {Array.from({ length: dataLength }, (_, index) => (
+          <MentorCard key={index} num={index + 1} />
+        ))}
       </CardWrapper>
     </Wrapper>
   );
