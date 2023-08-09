@@ -8,6 +8,9 @@ import MenteeSignupPage from "./pages/MenteeSignupPage";
 import ContinentCommunityPage from "./pages/ContinentCommunityPage";
 import MentorInfoModal from "./components/community/mentor/MentorInfoModal";
 import TipsModal from "./components/community/tips/TipsModal";
+import ApplyPage from "./pages/ApplyPage";
+import ViewPostPage from "./pages/ViewPostPage";
+import MentorInfoPage from "./pages/MentorInfoPage";
 
 function App() {
   return (
@@ -26,6 +29,9 @@ function App() {
           <Route path="mentor" element={<MentorInfoModal />} />
           <Route path="tips" element={<TipsModal />} />
         </Route>
+        <Route path="/viewMentor/:num" element={<MentorInfoPage />} />
+        <Route path="/viewPost/:num" element={<ViewPostPage />} />
+        <Route path="/apply" element={<ApplyPage />} />
       </Routes>
     </>
   );

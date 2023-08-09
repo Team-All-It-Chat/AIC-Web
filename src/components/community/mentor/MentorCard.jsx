@@ -1,16 +1,18 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { styled } from "styled-components";
 
-const MentorCard = () => {
+const MentorCard = ({num}) => {
+  const navigate = useNavigate();
   return (
-    <Card>
+    <Card onClick={() => navigate(`/viewMentor/${num}`)}>
       <TopWrapper>
         <ProfileCircle>
           <ProfileImg src="/img/mainduck.png" />
         </ProfileCircle>
         <ProfileText>
           <Text1>
-            <strong>곰인집</strong> 멘토님
+            <strong>오동동{num}</strong> 멘토님
           </Text1>
           <Country>중국</Country>
           <Text2>중앙대학교</Text2>
