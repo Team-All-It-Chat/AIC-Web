@@ -1,9 +1,10 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { styled } from "styled-components";
 import MiniCard from "./MiniCard";
 
 const MentorInfoSection = () => {
+  const navigate = useNavigate();
   const { num } = useParams();
   return (
     <Wrapper>
@@ -54,7 +55,7 @@ const MentorInfoSection = () => {
               &gt;
             </Row2>
           </Column>
-          <Btn>오리챗 신청하기</Btn>
+          <Btn onClick={()=> navigate(`/apply`)}>오리챗 신청하기</Btn>
         </RightWrapper>
       </Box>
     </Wrapper>
