@@ -2,14 +2,17 @@ import React, { useState } from "react";
 import CommunityNavBar from "../community/CommunityNavBar";
 import { styled } from "styled-components";
 import ChatModal from "../common/ChatModal";
+import StarRating from "./StarRate";
 
 const Review = () => {
+  const [rate, setRate] = useState(0);
   const [modal, setModal] = useState(false);
 
   const onClick = () => {
     const confirmed = window.confirm("전송하시겠습니까?");
     if (confirmed) {
       setModal(true);
+      console.log(rate);
     }
   };
 
@@ -21,7 +24,7 @@ const Review = () => {
         <ReviewSection>
           <StarWrapper>
             <Text>별점</Text>
-            <Star>별 별 별 별 별</Star>
+            <StarRating onChange={setRate} />
           </StarWrapper>
           <Text2>후기 작성하기</Text2>
           <Review2 />
@@ -34,12 +37,6 @@ const Review = () => {
 };
 
 export default Review;
-
-const Star = styled.div`
-  font-size: 15px;
-  font-weight: bold;
-  margin-left: 1rem;
-`;
 
 const Text2 = styled.div`
   font-size: 15px;
@@ -87,10 +84,11 @@ const Review2 = styled.textarea`
 const StarWrapper = styled.div`
   display: flex;
   justify-content: start;
+  align-items: center;
   width: 90%;
-  /* background-color: grey */
   padding: 10px;
   padding-bottom: 0;
+  gap: 15px;
 `;
 
 const Text = styled.div`
