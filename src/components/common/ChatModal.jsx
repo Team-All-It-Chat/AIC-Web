@@ -2,8 +2,8 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { styled } from "styled-components";
 
-const ChatModal = ({ name, isMentor }) => {
-  const router = useNavigate();
+const ChatModal = ({ name }) => {
+  const navigate = useNavigate();
 
   const SelectImage = (isMentor) => {
     return (
@@ -22,7 +22,7 @@ const ChatModal = ({ name, isMentor }) => {
         <Title>{name} 완료</Title>
         <Text>정성스런 {name} 고맙덕</Text>
         <SelectImage />
-        <Btn onClick={() => router("/community/아시아/mentor")}>
+        <Btn onClick={() => navigate("/community/아시아/mentor")}>
           메인 페이지로 이동
         </Btn>
       </ModalSection>

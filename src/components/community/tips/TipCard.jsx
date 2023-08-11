@@ -3,10 +3,10 @@ import { useNavigate } from "react-router-dom";
 import { styled } from "styled-components";
 
 const TipCard = ({ num }) => {
-  const router = useNavigate();
+  const navigate = useNavigate();
 
   return (
-    <Card onClick={() => router(`/viewPost/${num}`)}>
+    <Card onClick={() => navigate(`/viewPost/${num}`)}>
       <TopWrapper>{/* <ThumbnailImg src="/img/halfduck.png" /> */}</TopWrapper>
       <BottomWrapper>
         <Row>
