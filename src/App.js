@@ -11,6 +11,8 @@ import TipsModal from "./components/community/tips/TipsModal";
 import ApplyPage from "./pages/ApplyPage";
 import ViewPostPage from "./pages/ViewPostPage";
 import MentorInfoPage from "./pages/MentorInfoPage";
+import ApplyAlertPage from "./pages/ApplyAlertPage";
+import ReviewPage from "./pages/ReviewPage";
 
 function App() {
   return (
