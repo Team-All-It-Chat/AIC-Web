@@ -1,10 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import { styled } from "styled-components";
 import CommunityNavBar from "../community/CommunityNavBar";
 import ApplyBack from "./ApplyBack";
+import ChatModal from "../common/ChatModal";
 
 // 오리챗 신청 페이지
 const Apply = () => {
+  const [modal, setModal] = useState(false);
+
+  const onClick = () => {
+    const confirmed = window.confirm("신청하시겠습니까❓");
+    if (confirmed) {
+      setModal(true);
+    }
+  };
   return (
     <>
       <CommunityNavBar />
@@ -16,9 +25,10 @@ const Apply = () => {
           <Text1>최재영</Text1>
           <Text2>멘토님에게 질문 보내기</Text2>
           <QuestionSection>안녕하세요!</QuestionSection>
-          <Btn>오리챗 신청하기</Btn>
+          <Btn onClick={onClick}>오리챗 신청하기</Btn>
         </ApplyWrapper>
         <ApplyBack />
+        {modal && <ChatModal isMentor={false} name={"오리챗 신청"} />}
       </Wrapper>
     </>
   );
@@ -38,7 +48,7 @@ const Btn = styled.div`
   margin-bottom: 1.5%;
   background-color: #ffd5d5;
   color: black;
-  z-index: 2;
+  z-index: 3;
   border-radius: 30px;
   background: linear-gradient(180deg, #c5e9ff 0%, #89cdf6 100%);
   font-size: 2.3rem;
@@ -88,7 +98,7 @@ const ApplyWrapper = styled.div`
   align-items: center;
   border-radius: 20px;
   padding: 10px;
-  z-index: 1;
+  z-index: 2;
   position: absolute;
   background-color: white;
   box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);

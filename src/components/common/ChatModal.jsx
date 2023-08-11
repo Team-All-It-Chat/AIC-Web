@@ -75,6 +75,7 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 4;
 `;
 
 const ModalSection = styled.div`
