@@ -62,6 +62,7 @@ const SectionWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   width: 100%;
   height: 100vh;
 `;
@@ -70,15 +71,14 @@ const MenuDom = styled.div`
   display: flex;
   flex-direction: column;
   width: 80%;
-  height: 17vh;
-  margin-top: 3%;
+  height: fit-content;
 `;
 
 const ModalDom = styled.div`
   margin-top: 2%;
   display: flex;
   width: 80%;
-  height: 40vh;
+  height: fit-content;
   justify-content: center;
 `;
 
@@ -117,8 +117,8 @@ const MenuButton = styled.div`
   flex-shrink: 0;
   border-radius: 30px;
   background-color: ${(props) =>
-    props.clicked ? "var(--l-skyblue, #C5E5F6);" : "white"};
-  opacity: ${(props) => (props.clicked ? "100%" : "55%")};
+    props.clicked ? "var(--l-skyblue, #C5E5F6);" : ""};
+  color: ${(props) => (props.clicked ? "black" : "rgba(0,0,0,0.5);")};
 `;
 
 const Search = styled.div`
