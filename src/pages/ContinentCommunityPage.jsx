@@ -120,6 +120,7 @@ const MenuButton = styled.div`
   background-color: ${(props) =>
     props.clicked ? "var(--l-skyblue, #C5E5F6);" : ""};
   color: ${(props) => (props.clicked ? "black" : "rgba(0,0,0,0.5);")};
+  cursor: pointer;
 `;
 
 const Search = styled.div`
