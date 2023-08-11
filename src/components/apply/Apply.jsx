@@ -33,6 +33,30 @@ const Apply = () => {
 };
 
 export default Apply;
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: fit-content;
+  min-height: 90vh;
+`;
+
+const ApplyWrapper = styled.div`
+  width: 33%;
+  min-width: 450px;
+  height: 490px;
+  border: 3px solid #89cdf6;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  border-radius: 20px;
+  padding: 10px;
+  background-color: white;
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
+`;
 
 const Btn = styled.div`
   width: fit-content;
@@ -46,7 +70,6 @@ const Btn = styled.div`
   margin-bottom: 1.5%;
   background-color: #ffd5d5;
   color: black;
-  z-index: 3;
   border-radius: 30px;
   background: linear-gradient(180deg, #c5e9ff 0%, #89cdf6 100%);
   font-size: 2.3rem;
@@ -74,32 +97,6 @@ const ProfileCircle = styled.div`
   aspect-ratio: 1 / 1;
   border-radius: 50%;
   border: 3px solid #89cdf6;
-`;
-
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: fit-content;
-  min-height: 90vh;
-`;
-
-const ApplyWrapper = styled.div`
-  width: 33%;
-  min-width: 450px;
-  height: 490px;
-  border: 3px solid #89cdf6;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-  border-radius: 20px;
-  padding: 10px;
-  z-index: 2;
-  background-color: white;
-  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
 `;
 
 const QuestionSection = styled.textarea`
