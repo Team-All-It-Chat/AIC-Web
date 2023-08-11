@@ -98,6 +98,7 @@ const Btn = styled.div`
   height: 45px;
   border-radius: 25.748px;
   background: var(--m-skyblue, #89cdf6);
+  cursor: pointer;
   @media (max-width: 900px) {
     font-size: 1.2rem;
     width: 75px;

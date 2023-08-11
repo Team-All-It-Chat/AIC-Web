@@ -1,7 +1,9 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
 import { styled } from 'styled-components';
 
 const MenteeChatHistory = () => {
+  const navigate = useNavigate();
   return (
     <>
     <List>
@@ -14,7 +16,7 @@ const MenteeChatHistory = () => {
       <ChatTitle>00대학교에서 적응할 때 제일 힘들었던 점은 무엇인가요? </ChatTitle>
       <BtnWrapper>
         <Date>23/08/11 답변 완료</Date>
-        <Btn>답변 보기</Btn>
+        <Btn onClick={() => navigate(`/answerAlert`)}>답변 보기</Btn>
       </BtnWrapper>
     </List>
   </>
@@ -98,6 +100,7 @@ const Btn = styled.div`
   height: 45px;
   border-radius: 25.748px;
   background: var(--m-skyblue, #89cdf6);
+  cursor: pointer;
   @media (max-width: 900px) {
     font-size: 1.2rem;
     width: 75px;
