@@ -64,7 +64,7 @@ const SectionWrapper = styled.div`
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 100vh;
+  height: fit-content;
 `;
 
 const MenuDom = styled.div`
