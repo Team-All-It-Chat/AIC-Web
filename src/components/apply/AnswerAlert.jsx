@@ -5,10 +5,10 @@ import { useNavigate } from "react-router-dom";
 
 // 오리챗 답변이이 도착했어요! 페이지
 const AnswerAlert = () => {
-  const router = useNavigate();
+  const navigate = useNavigate();
 
   const onClick = () => {
-    router("/writeReview");
+    navigate("/writeReview");
   };
 
   return (

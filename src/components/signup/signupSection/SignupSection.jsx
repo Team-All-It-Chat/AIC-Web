@@ -4,16 +4,16 @@ import { styled } from "styled-components";
 
 const SignupSection = () => {
   // const [isMentor, setIsMentor] = useState(true);
-  const router = useNavigate();
+  const navigate = useNavigate();
 
   const clickMentor = () => {
     // setIsMentor(true);
-    router("/mentorSignup");
+    navigate("/mentorSignup");
   };
 
   const clickMentee = () => {
     // setIsMentor(false);
-    router("/menteeSignup");
+    navigate("/menteeSignup");
   };
 
   return (

@@ -3,10 +3,10 @@ import { styled } from "styled-components";
 import { useNavigate } from "react-router-dom";
 
 const SignupNavBar = () => {
-  const router = useNavigate();
+  const navigate = useNavigate();
 
   const onClick = () => {
-    router("/");
+    navigate("/");
   };
 
   return (

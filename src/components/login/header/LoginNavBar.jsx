@@ -3,10 +3,10 @@ import { styled } from "styled-components";
 import { useNavigate } from "react-router-dom";
 
 const LoginNavBar = () => {
-  const router = useNavigate();
+  const navigate = useNavigate();
 
   const onClick = () => {
-    router("/");
+    navigate("/");
   };
 
   return (

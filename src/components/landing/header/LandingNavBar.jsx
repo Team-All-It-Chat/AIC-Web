@@ -3,14 +3,14 @@ import { styled } from "styled-components";
 import { useNavigate } from "react-router-dom";
 
 const LandingNavBar = () => {
-  const router = useNavigate();
+  const navigate = useNavigate();
 
   const clickLogin = () => {
-    router("/login");
+    navigate("/login");
   };
 
   const clickSignup = () => {
-    router("/signup");
+    navigate("/signup");
   };
   return (
     <Wrapper>
