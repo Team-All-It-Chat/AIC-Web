@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { styled } from "styled-components";
-import CommunityNavBar from "../community/CommunityNavBar";
 import ApplyBack from "./ApplyBack";
 import ChatModal from "../common/ChatModal";
 
