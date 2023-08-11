@@ -23,7 +23,7 @@ const ContinentCommunityPage = () => {
       <SectionWrapper>
         <MenuDom>
           <Title>{continent}</Title>
-          <Line src="/img/line.png" />
+          <Line />
           <SearchWrapper>
             <MenuBtnWrapper>
               <MenuButton
@@ -92,6 +92,7 @@ const Line = styled.img`
   width: 100%;
   height: 1px;
   margin-bottom: 1.8rem;
+  background-color: black;
   bottom: 0;
 `;
 
