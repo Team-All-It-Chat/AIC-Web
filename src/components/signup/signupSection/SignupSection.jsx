@@ -1,19 +1,23 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+// import { useNavigate } from "react-router-dom";
 import { styled } from "styled-components";
+import CompleteModal from "../common/CompleteModal";
 
 const SignupSection = () => {
-  // const [isMentor, setIsMentor] = useState(true);
-  const navigate = useNavigate();
+  const [isMentor, setIsMentor] = useState(true);
+  const [modal, setModal] = useState(false);
+  // const navigate = useNavigate();
 
   const clickMentor = () => {
-    // setIsMentor(true);
-    navigate("/mentorSignup");
+    setModal(true);
+    setIsMentor(true);
+    // navigate("/mentorSignup");
   };
 
   const clickMentee = () => {
-    // setIsMentor(false);
-    navigate("/menteeSignup");
+    setModal(true);
+    setIsMentor(false);
+    // navigate("/menteeSignup");
   };
 
   return (
@@ -30,6 +34,9 @@ const SignupSection = () => {
           웅. 지금 파견 중 / 파견 후야!
         </ExchangeBtn>
       </SignupWrapper>
+      {modal && (
+        <CompleteModal isMentor={true} name={isMentor ? "멘토" : "멘티"} />
+      )}
     </Wrapper>
   );
 };
