@@ -1,21 +1,21 @@
-import React from 'react'
-import TipCard from './TipCard';
-import { styled } from 'styled-components';
+import React from "react";
+import TipCard from "./TipCard";
+import { styled } from "styled-components";
 
 const TipsModal = () => {
-  const dataLength = 9;
+  const length = 7;
 
   return (
     <Wrapper>
-    <Title>오리챗 멘토의 생생한 이야기를 들어보덕!</Title>
-    <CardWrapper>
-    {Array.from({ length: dataLength }, (_, index) => (
+      <Title>오리챗 멘토의 생생한 이야기를 들어보덕!</Title>
+      <CardWrapper>
+        {Array.from({ length: length }, (_, index) => (
           <TipCard key={index} num={index + 1} />
         ))}
       </CardWrapper>
-  </Wrapper>
-  )
-}
+    </Wrapper>
+  );
+};
 
 export default TipsModal;
 
@@ -24,7 +24,7 @@ const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   height: fit-content;
-`
+`;
 
 const Title = styled.div`
   font-size: 2.7rem;
