@@ -2,17 +2,15 @@ import React from "react";
 import CommunityNavBar from "../community/CommunityNavBar";
 import { styled } from "styled-components";
 
-// 오리챗 신청이 들어왔어요! 페이지
-const ApplyAlert = () => {
+// 오리챗 답변이이 도착했어요! 페이지
+const AnswerAlert = () => {
   return (
     <>
       <CommunityNavBar />
       <Wrapper>
         <Title>오리챗 신청이 들어왔어요!</Title>
         <ApplyWrapper>
-          <ProfileCircle>
-            <ProfileImg src="/img/navprofile.png" />
-          </ProfileCircle>
+          <ProfileCircle src="/img/navprofile.png" />
           <QuestionWrapper>
             <Name>오동동</Name>
             <Question>
@@ -56,7 +54,7 @@ const ApplyAlert = () => {
   );
 };
 
-export default ApplyAlert;
+export default AnswerAlert;
 
 const ProfileImg = styled.img`
   width: 100%;

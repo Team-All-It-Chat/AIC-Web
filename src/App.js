@@ -11,6 +11,8 @@ import TipsModal from "./components/community/tips/TipsModal";
 import ApplyPage from "./pages/ApplyPage";
 import ViewPostPage from "./pages/ViewPostPage";
 import MentorInfoPage from "./pages/MentorInfoPage";
+import ApplyAlertPage from "./pages/ApplyAlertPage";
+import ReviewPage from "./pages/ReviewPage";
 
 function App() {
   return (
@@ -32,6 +34,8 @@ function App() {
         <Route path="/viewMentor/:num" element={<MentorInfoPage />} />
         <Route path="/viewPost/:num" element={<ViewPostPage />} />
         <Route path="/apply" element={<ApplyPage />} />
+        <Route path="/applyAlert" element={<ApplyAlertPage />} />
+        <Route path="/writeReview" element={<ReviewPage />} />
       </Routes>
     </>
   );
