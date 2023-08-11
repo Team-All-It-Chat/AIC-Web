@@ -1,14 +1,21 @@
 import React from "react";
 import CommunityNavBar from "../community/CommunityNavBar";
 import { styled } from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 // 오리챗 답변이이 도착했어요! 페이지
 const AnswerAlert = () => {
+  const router = useNavigate();
+
+  const onClick = () => {
+    router("/writeReview");
+  };
+
   return (
     <>
       <CommunityNavBar />
       <Wrapper>
-        <Title>오리챗 신청이 들어왔어요!</Title>
+        <Title>오리챗 답변이 도착했어요!</Title>
         <ApplyWrapper>
           <ProfileCircle src="/img/navprofile.png" />
           <QuestionWrapper>
@@ -29,7 +36,7 @@ const AnswerAlert = () => {
             </ProfileCircle>
             <MentorWrapper>
               <Name>최재영</Name>
-              <Text>친절한 답변 부탁드린덕!</Text>
+              <Text>멘토님의 친절한 답변이덕!</Text>
             </MentorWrapper>
           </Wrapper2>
           <AnswerSection>
@@ -47,7 +54,7 @@ const AnswerAlert = () => {
             흔들린다면 당신은 승리하게 되는 거죠. 저는 그 프로그램을 통해 손쉽게
             퀸카가 될 수 있었습니다. 감사합니다. 또 오리챗 부탁드려요.
           </AnswerSection>
-          <Btn>멘티에게 답변 보내기</Btn>
+          <Btn onClick={onClick}>답변 후기 남기러 가기</Btn>
         </AnswerWrapper>
       </Wrapper>
     </>

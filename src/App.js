@@ -14,11 +14,12 @@ import MentorInfoPage from "./pages/MentorInfoPage";
 import ApplyAlertPage from "./pages/ApplyAlertPage";
 import ReviewPage from "./pages/ReviewPage";
 import MentorMyPage from "./pages/MentorMyPage";
-import MentorChatingModal from './components/mypage/mentor/MentorChatingModal';
-import PostsModal from './components/mypage/mentor/PostsModal';
+import MentorChatingModal from "./components/mypage/mentor/MentorChatingModal";
+import PostsModal from "./components/mypage/mentor/PostsModal";
 import MenteeMyPage from "./pages/MenteeMyPage";
-import MenteeChatingModal from './components/mypage/mentee/MenteeChatingModal';
-import ReviewsModal from './components/mypage/mentee/ReviewsModal';
+import MenteeChatingModal from "./components/mypage/mentee/MenteeChatingModal";
+import ReviewsModal from "./components/mypage/mentee/ReviewsModal";
+import AnswerPage from "./pages/AnswerPage";
 
 function App() {
   return (
@@ -44,14 +45,15 @@ function App() {
         {/* 오리챗 신청 */}
         <Route path="/apply" element={<ApplyPage />} />
         <Route path="/applyAlert" element={<ApplyAlertPage />} />
+        <Route path="/answerAlert" element={<AnswerPage />} />
         <Route path="/writeReview" element={<ReviewPage />} />
         {/* 마이페이지 */}
         <Route path="/mypageMentor" element={<MentorMyPage />}>
-          <Route path="chats" element={<MentorChatingModal/>} />
+          <Route path="chats" element={<MentorChatingModal />} />
           <Route path="posts" element={<PostsModal />} />
         </Route>
         <Route path="/mypageMentee" element={<MenteeMyPage />}>
-          <Route path="chats" element={<MenteeChatingModal/>} />
+          <Route path="chats" element={<MenteeChatingModal />} />
           <Route path="reviews" element={<ReviewsModal />} />
         </Route>
       </Routes>
