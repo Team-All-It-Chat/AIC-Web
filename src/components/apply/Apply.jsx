@@ -16,7 +16,6 @@ const Apply = () => {
   };
   return (
     <>
-      <CommunityNavBar />
       <Wrapper>
         <ApplyWrapper>
           <ProfileCircle>
@@ -84,7 +83,8 @@ const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 90.3vh;
+  height: fit-content;
+  min-height: 90vh;
 `;
 
 const ApplyWrapper = styled.div`
@@ -99,7 +99,6 @@ const ApplyWrapper = styled.div`
   border-radius: 20px;
   padding: 10px;
   z-index: 2;
-  position: absolute;
   background-color: white;
   box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
 `;

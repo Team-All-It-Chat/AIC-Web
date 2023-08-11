@@ -15,16 +15,17 @@ export default ApplyBack;
 
 const Image1 = styled.img`
   width: 100%;
-  bottom: 0;
-  position: fixed;
   height: 30%;
 `;
 
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
   width: 100%;
-  height: 90.3vh;
+  height: 100%;
+  position: absolute;
+  bottom: 0;
+  z-index: -1;
 `;

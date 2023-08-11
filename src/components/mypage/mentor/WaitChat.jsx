@@ -1,7 +1,9 @@
 import React from "react";
 import { styled } from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 const WaitChat = () => {
+  const navigate = useNavigate();
   return (
     <>
       <List>
@@ -11,11 +13,11 @@ const WaitChat = () => {
           </ProfileCircle>
           오동잎
         </ProfileSection>
-        <ChatTitle>
+        <ChatTitle onClick={() => navigate(`/applyAlert`)}>
           00대학교로 교환학생을 가신 구체적인 이유가 궁금합니다!{" "}
         </ChatTitle>
         <BtnWrapper>
-          <AcceptBtn>수락 후 답변</AcceptBtn>
+          <AcceptBtn onClick={() => navigate(`/applyAlert`)}>수락 후 답변</AcceptBtn>
           <RejectBtn>거절</RejectBtn>
         </BtnWrapper>
       </List>
@@ -69,6 +71,7 @@ const ChatTitle = styled.div`
   width: 55%;
   font-size: 1.8rem;
   font-weight: 300;
+  cursor: pointer;
   @media (max-width: 900px) {
     font-size: 1.3rem;
   }
@@ -94,6 +97,7 @@ const AcceptBtn = styled.div`
   height: 45px;
   border-radius: 25.748px;
   background: var(--m-skyblue, #89cdf6);
+  cursor: pointer;
   @media (max-width: 900px) {
     width: 75px;
     height: 30px;
@@ -108,6 +112,7 @@ const RejectBtn = styled.div`
   height: 45px;
   border-radius: 25.748px;
   background: var(--light-gray, #dadada);
+  cursor: pointer;
   @media (max-width: 900px) {
     width: 40px;
     height: 30px;
