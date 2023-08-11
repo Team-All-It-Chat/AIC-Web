@@ -1,9 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import CommunityNavBar from "../community/CommunityNavBar";
 import { styled } from "styled-components";
+// import { useNavigate } from "react-router-dom";
+import ChatModal from "../common/ChatModal";
 
 // 오리챗 신청이 들어왔어요! 페이지
 const ApplyAlert = () => {
+  const [modal, setModal] = useState(false);
+
+  // const router = useNavigate();
+
+  const onClick = () => {
+    const confirmed = window.confirm("전송하시겠습니까?");
+    if (confirmed) {
+      setModal(true);
+    }
+  };
+
   return (
     <>
       <CommunityNavBar />
@@ -49,8 +62,9 @@ const ApplyAlert = () => {
             흔들린다면 당신은 승리하게 되는 거죠. 저는 그 프로그램을 통해 손쉽게
             퀸카가 될 수 있었습니다. 감사합니다. 또 오리챗 부탁드려요.
           </AnswerSection>
-          <Btn>멘티에게 답변 보내기</Btn>
+          <Btn onClick={onClick}>멘티에게 답변 보내기</Btn>
         </AnswerWrapper>
+        {modal && <ChatModal isMentor={false} name={"답변 전송"} />}
       </Wrapper>
     </>
   );
@@ -97,7 +111,7 @@ const Wrapper2 = styled.div`
   margin-left: 5px;
 `;
 
-const AnswerSection = styled.div`
+const AnswerSection = styled.textarea`
   width: 85%;
   height: 30%;
   overflow-y: scroll;
@@ -109,6 +123,11 @@ const AnswerSection = styled.div`
   box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
   margin-bottom: 3%;
   margin: 10px 0px;
+  resize: vertical; /* 세로 크기 조절을 허용 */
+  line-height: 1.5; /* 줄 간격 설정 */
+  overflow: auto; /* 내용이 넘칠 경우 스크롤 생성 */
+  outline: none;
+  font-family: "Times New Roman";
 `;
 
 const Text = styled.div`
