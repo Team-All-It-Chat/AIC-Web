@@ -1,9 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { styled } from "styled-components";
+import SideBar from "./SideBar";
 
 const CommunityNavBar = () => {
   const navigate = useNavigate();
+  const [clicked, setClicked] = useState(0);
+
+  const BtnHandle = () => {
+    if (clicked === 0) {
+      setClicked(1);
+    } else {
+      setClicked(0);
+    }
+  };
 
   return (
     <Wrapper>
@@ -11,11 +21,12 @@ const CommunityNavBar = () => {
         <LogoImage src="/img/navlogo.png" />
       </LogoWrapper>
       <ButtonWrapper>
-        <HamburgerBtn>≡</HamburgerBtn>
+        <HamburgerBtn onClick={BtnHandle} src="/img/menu.svg"></HamburgerBtn>
         <ProfileCircle>
           <ProfileImg src="/img/navprofile.png" />
         </ProfileCircle>
       </ButtonWrapper>
+      {clicked===1 ? <SideBar setClicked={setClicked}/> : ''}
     </Wrapper>
   );
 };
@@ -55,16 +66,13 @@ const ButtonWrapper = styled.div`
   align-items: center;
 `;
 
-const HamburgerBtn = styled.button`
+const HamburgerBtn = styled.img`
   all: unset;
-  color: black;
-  width: fit-content;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-size: 5.3rem;
-  font-weight: 250;
   cursor: pointer;
 `;
 
