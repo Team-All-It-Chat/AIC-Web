@@ -1,8 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import CommunityNavBar from "../community/CommunityNavBar";
 import { styled } from "styled-components";
+import ChatModal from "../common/ChatModal";
 
 const Review = () => {
+  const [modal, setModal] = useState(false);
+
+  const onClick = () => {
+    const confirmed = window.confirm("전송하시겠습니까?");
+    if (confirmed) {
+      setModal(true);
+    }
+  };
+
   return (
     <>
       <CommunityNavBar />
@@ -14,14 +24,10 @@ const Review = () => {
             <Star>별 별 별 별 별</Star>
           </StarWrapper>
           <Text2>후기 작성하기</Text2>
-          <Review2>
-            구체적으로 말해주셔서 너무 좋았어요. 후기도 너무 꿀잼이고
-            ㅓ림나어리;ㄴㅁ얼;ㅣㄴ엄ㄹ;ㅣㄴㅇ머ㅣㅏㄻㄴㅇㄹㄴㅇㅁㅁㄹ
-            ㅁㄴㅇㄻㄴㅇㄹㅁㄴㅇㄹㄴㅁㅇㄹㄴㅁㅇㄹㄴㅇㅁㄹㄴㅇㅁㄹㄴㅇㅁㄹㄴㅇㅁ
-            ㄹ벚ㄷㄱ;ㅓㅑㅐ품닐ㄴ이ㅂㅈㄱㅍㅊ타ㅣ;ㅋ
-          </Review2>
-          <Btn>후기 전송하기</Btn>
+          <Review2 />
+          <Btn onClick={onClick}>후기 전송하기</Btn>
         </ReviewSection>
+        {modal && <ChatModal isMentor={true} name={"후기 작성"} />}
       </Wrapper>
     </>
   );
@@ -50,7 +56,6 @@ const Btn = styled.div`
   min-width: 60%;
   min-height: 52px;
   bottom: 0;
-  background-color: #ffd5d5;
   color: black;
   border-radius: 30px;
   background: linear-gradient(180deg, #c5e9ff 0%, #89cdf6 100%);
@@ -60,17 +65,23 @@ const Btn = styled.div`
   cursor: pointer;
 `;
 
-const Review2 = styled.div`
+const Review2 = styled.textarea`
   width: 85%;
   height: 180px;
   border: 3px solid var(--m-skyblue, #89cdf6);
   border-radius: 30px;
   padding: 40px;
   background-color: white;
+  font-weight: bold;
   font-size: 16px;
   box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
   margin-bottom: 3%;
   margin: 10px 0px;
+  resize: vertical; /* 세로 크기 조절을 허용 */
+  line-height: 1.5; /* 줄 간격 설정 */
+  overflow: auto; /* 내용이 넘칠 경우 스크롤 생성 */
+  outline: none;
+  font-family: "Times New Roman";
 `;
 
 const StarWrapper = styled.div`
@@ -99,8 +110,8 @@ const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 120%;
-  margin-top: 3%;
+  height: 80vh;
+  margin-top: 5%;
 `;
 
 const ReviewSection = styled.div`

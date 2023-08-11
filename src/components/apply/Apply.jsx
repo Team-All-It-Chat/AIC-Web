@@ -3,6 +3,7 @@ import { styled } from "styled-components";
 import CommunityNavBar from "../community/CommunityNavBar";
 import ApplyBack from "./ApplyBack";
 
+// 오리챗 신청 페이지
 const Apply = () => {
   return (
     <>
@@ -78,6 +79,7 @@ const Wrapper = styled.div`
 
 const ApplyWrapper = styled.div`
   width: 33%;
+  min-width: 450px;
   height: 490px;
   border: 3px solid #89cdf6;
   display: flex;
@@ -92,7 +94,7 @@ const ApplyWrapper = styled.div`
   box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
 `;
 
-const QuestionSection = styled.div`
+const QuestionSection = styled.textarea`
   width: 80%;
   height: 30%;
   border: 3px solid var(--m-skyblue, #89cdf6);
@@ -102,4 +104,9 @@ const QuestionSection = styled.div`
   font-size: 16px;
   box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
   margin-bottom: 3%;
+  resize: vertical; /* 세로 크기 조절을 허용 */
+  line-height: 1.5; /* 줄 간격 설정 */
+  overflow: auto; /* 내용이 넘칠 경우 스크롤 생성 */
+  outline: none;
+  font-family: "Times New Roman";
 `;
