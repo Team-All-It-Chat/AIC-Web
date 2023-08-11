@@ -27,7 +27,7 @@ const Review = () => {
             <StarRating onChange={setRate} />
           </StarWrapper>
           <Text2>후기 작성하기</Text2>
-          <Review2 />
+          <Review2 placeholder="후기를 작성해덕!" />
           <Btn onClick={onClick}>후기 전송하기</Btn>
         </ReviewSection>
         {modal && <ChatModal isMentor={true} name={"후기 작성"} />}

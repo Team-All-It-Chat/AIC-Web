@@ -22,7 +22,7 @@ const Apply = () => {
           </ProfileCircle>
           <Text1>최재영</Text1>
           <Text2>멘토님에게 질문 보내기</Text2>
-          <QuestionSection>안녕하세요!</QuestionSection>
+          <QuestionSection placeholder="질문을 작성해덕!"></QuestionSection>
           <Btn onClick={onClick}>오리챗 신청하기</Btn>
         </ApplyWrapper>
         <ApplyBack />
