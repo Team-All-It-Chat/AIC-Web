@@ -11,6 +11,8 @@ const SideBar = ({ setClicked }) => {
       navigate(`/mypageMentor/chats`);
     } else if (continent === "멘티마이페이지") {
       navigate(`/mypageMentee/chats`);
+    } else if (continent === "대륙선택") {
+      navigate(`/continentSelect`);
     } else {
       navigate(`/community/${continent}/mentor`);
     }
@@ -25,7 +27,7 @@ const SideBar = ({ setClicked }) => {
         </BtnSection>
         <CategorySection>
           <Category>
-            <Title>대륙 선택</Title>
+            <Title onClick={() => BtnHandle("대륙선택")}>대륙 선택</Title>
             <Line />
             <Text onClick={() => BtnHandle("아시아")}>아시아</Text>
             <Text onClick={() => BtnHandle("유럽")}>유럽</Text>
