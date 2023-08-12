@@ -1,27 +1,27 @@
-import React from 'react'
-import { styled } from 'styled-components';
+import React from "react";
+import { styled } from "styled-components";
 
 const ApplyChat = () => {
   return (
     <>
-    <List>
-      <ProfileSection>
-        <ProfileCircle>
-          <ProfileImg src="/img/china_cut_ori.png" />
-        </ProfileCircle>
-        오동동
-      </ProfileSection>
-      <ChatTitle>
-        00대학교로 교환학생을 가신 구체적인 이유가 궁금합니다!{" "}
-      </ChatTitle>
-      <BtnWrapper>
-        <QuestionState>답변 대기</QuestionState>
-        <Btn>확인</Btn>
-      </BtnWrapper>
-    </List>
-  </>
-  )
-}
+      <List>
+        <ProfileSection>
+          <ProfileCircle>
+            <ProfileImg src="/img/china_cut_ori.png" />
+          </ProfileCircle>
+          오동동
+        </ProfileSection>
+        <ChatTitle>
+          00대학교로 교환학생을 가신 구체적인 이유가 궁금합니다!{" "}
+        </ChatTitle>
+        <BtnWrapper>
+          <QuestionState>답변 대기</QuestionState>
+          <Btn>확인</Btn>
+        </BtnWrapper>
+      </List>
+    </>
+  );
+};
 
 export default ApplyChat;
 
@@ -52,17 +52,21 @@ const ProfileCircle = styled.div`
   height: 50px;
   aspect-ratio: 1 / 1;
   border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
   @media (max-width: 900px) {
     height: 35px;
   }
 `;
 
 const ProfileImg = styled.img`
-  width: 100%;
-  height: 100%;
+  width: 90%;
+  height: 80%;
   object-fit: contain;
-  border-radius: 50%;
-  background-color: white;
+  border-bottom-left-radius: 50%;
+  border-bottom-right-radius: 50%;
 `;
 
 const ChatTitle = styled.div`
@@ -87,13 +91,13 @@ const BtnWrapper = styled.div`
   }
 `;
 
-const QuestionState= styled.div`
+const QuestionState = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
   width: 110px;
   height: 45px;
-  color: var(--orange, #FFA946);
+  color: var(--orange, #ffa946);
   @media (max-width: 900px) {
     width: 75px;
     height: 30px;

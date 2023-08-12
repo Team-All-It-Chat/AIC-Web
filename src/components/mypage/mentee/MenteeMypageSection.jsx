@@ -94,15 +94,20 @@ const ProfileCircle = styled.div`
   height: 150px;
   aspect-ratio: 1 / 1;
   border-radius: 50%;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border: solid 3px var(--m-skyblue, #89cdf6);
 `;
 
 const ProfileImg = styled.img`
-  width: 100%;
-  height: 100%;
+  width: 90%;
+  height: 80%;
+  margin-top: 21%;
   object-fit: contain;
-  border-radius: 50%;
-  background-color: white;
+  border-bottom-left-radius: 50%;
+  border-bottom-right-radius: 50%;
 `;
 
 const UserTitle = styled.div`

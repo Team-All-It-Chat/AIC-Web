@@ -61,12 +61,16 @@ const ProfileCircle = styled.div`
   aspect-ratio: 1 / 1;
   background-color: #d9d9d9;
   border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const ProfileImg = styled.img`
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  width: 90%;
+  height: 85%;
+  margin-top: 22%;
+  object-fit: contain;
   border-radius: 50%;
 `;
 
