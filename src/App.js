@@ -22,6 +22,7 @@ import ReviewsModal from "./components/mypage/mentee/ReviewsModal";
 import AnswerPage from "./pages/AnswerPage";
 import ReadAnswerPage from "./pages/ReadAnswerPage";
 import CheckAnswerPage from "./pages/CheckAnswerPage";
+import WritePostPage from "./pages/WritePostPage";
 
 function App() {
   return (
@@ -48,7 +49,9 @@ function App() {
         <Route path="/apply" element={<ApplyPage />} />
         <Route path="/applyAlert" element={<ApplyAlertPage />} />
         <Route path="/answerAlert" element={<AnswerPage />} />
+        {/* 작성 페이지 */}
         <Route path="/writeReview" element={<ReviewPage />} />
+        <Route path="/writePost" element={<WritePostPage />} />
         {/* 마이페이지 */}
         <Route path="/mypageMentor" element={<MentorMyPage />}>
           <Route path="chats" element={<MentorChatingModal />} />
@@ -58,6 +61,7 @@ function App() {
           <Route path="chats" element={<MenteeChatingModal />} />
           <Route path="reviews" element={<ReviewsModal />} />
         </Route>
+        {/* 답변확인 페이지 */}
         <Route path="/readAnswer" element={<ReadAnswerPage />} />
         <Route path="/checkAnswer" element={<CheckAnswerPage />} />
       </Routes>

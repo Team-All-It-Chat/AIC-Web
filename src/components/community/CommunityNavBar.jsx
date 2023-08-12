@@ -5,13 +5,13 @@ import SideBar from "./SideBar";
 
 const CommunityNavBar = () => {
   const navigate = useNavigate();
-  const [clicked, setClicked] = useState(0);
+  const [isOpen, setIsOpen] = useState(false);
 
   const BtnHandle = () => {
-    if (clicked === 0) {
-      setClicked(1);
+    if (isOpen) {
+      setIsOpen(false);
     } else {
-      setClicked(0);
+      setIsOpen(true);
     }
   };
 
@@ -26,7 +26,7 @@ const CommunityNavBar = () => {
           <ProfileImg src="/img/navprofile.png" />
         </ProfileCircle>
       </ButtonWrapper>
-      {clicked===1 ? <SideBar setClicked={setClicked}/> : ''}
+      {isOpen ? <SideBar isOpen={isOpen} setIsOpen={setIsOpen}/> : ''}
     </Wrapper>
   );
 };

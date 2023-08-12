@@ -1,11 +1,13 @@
 import React from "react";
 import { styled } from "styled-components";
 import PostCard from "./PostCard";
+import { useNavigate } from "react-router-dom";
 
 const PostsModal = () => {
+  const navigate =useNavigate();
   return (
     <Wrapper>
-      <Card>
+      <Card onClick={() => navigate(`/writePost`)}>
         <Text>
           <div>새 게시글</div>
           <div>작성하기</div>
@@ -44,6 +46,7 @@ const Card = styled.div`
   box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
   margin-bottom: 2%;
   overflow: hidden;
+  cursor: pointer;
 `;
 
 const Text = styled.div`

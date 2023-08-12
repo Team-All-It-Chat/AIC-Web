@@ -15,7 +15,7 @@ const ApplyChat = () => {
         00대학교로 교환학생을 가신 구체적인 이유가 궁금합니다!{" "}
       </ChatTitle>
       <BtnWrapper>
-        <QuestionState>답변 완료</QuestionState>
+        <QuestionState>답변 대기</QuestionState>
         <Btn>확인</Btn>
       </BtnWrapper>
     </List>
@@ -69,6 +69,7 @@ const ChatTitle = styled.div`
   width: 55%;
   font-size: 1.8rem;
   font-weight: 300;
+  cursor: pointer;
   @media (max-width: 900px) {
     font-size: 1.3rem;
   }
@@ -92,7 +93,7 @@ const QuestionState= styled.div`
   justify-content: center;
   width: 110px;
   height: 45px;
-  color: var(--green, #7FBC7A);;
+  color: var(--orange, #FFA946);
   @media (max-width: 900px) {
     width: 75px;
     height: 30px;

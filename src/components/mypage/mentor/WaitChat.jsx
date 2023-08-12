@@ -17,7 +17,7 @@ const WaitChat = () => {
           00대학교로 교환학생을 가신 구체적인 이유가 궁금합니다!{" "}
         </ChatTitle>
         <BtnWrapper>
-          <AcceptBtn onClick={() => navigate(`/applyAlert`)}>수락 후 답변</AcceptBtn>
+          <AcceptBtn onClick={() => navigate(`/applyAlert`)}>답변</AcceptBtn>
           <RejectBtn>거절</RejectBtn>
         </BtnWrapper>
       </List>
@@ -93,13 +93,13 @@ const AcceptBtn = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 110px;
+  width: 55px;
   height: 45px;
   border-radius: 25.748px;
   background: var(--m-skyblue, #89cdf6);
   cursor: pointer;
   @media (max-width: 900px) {
-    width: 75px;
+    width: 40px;
     height: 30px;
   }
 `;
