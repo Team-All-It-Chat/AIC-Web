@@ -1,17 +1,17 @@
 import React from "react";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { styled } from "styled-components";
 
 const MentorChatHistory = () => {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
-  // const onClick = () => {
-  //   navigate("/checkAnswer");
-  // };
+  const onClick = () => {
+    navigate("/checkAnswer");
+  };
 
   return (
     <>
-      <List>
+      <List onClick={onClick}>
         <ProfileSection>
           <ProfileCircle>
             <ProfileImg src="/img/minicloud_ori.png" />

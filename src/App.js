@@ -21,6 +21,7 @@ import MenteeChatingModal from "./components/mypage/mentee/MenteeChatingModal";
 import ReviewsModal from "./components/mypage/mentee/ReviewsModal";
 import AnswerPage from "./pages/AnswerPage";
 import ReadAnswerPage from "./pages/ReadAnswerPage";
+import CheckAnswerPage from "./pages/CheckAnswerPage";
 
 function App() {
   return (
@@ -58,6 +59,7 @@ function App() {
           <Route path="reviews" element={<ReviewsModal />} />
         </Route>
         <Route path="/readAnswer" element={<ReadAnswerPage />} />
+        <Route path="/checkAnswer" element={<CheckAnswerPage />} />
       </Routes>
     </>
   );

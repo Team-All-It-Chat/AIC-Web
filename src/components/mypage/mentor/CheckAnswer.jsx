@@ -1,18 +1,13 @@
 import React from "react";
 import CommunityNavBar from "../../community/CommunityNavBar";
 import { styled } from "styled-components";
-import { useNavigate } from "react-router-dom";
-import ReadReview from "./ReadReview";
+// import { useNavigate } from "react-router-dom";
+import CheckReview from "./CheckReview";
 
-// 멘티 오리챗 기록 확인 페이지
-const Answer = () => {
+// 멘토오리챗 기록 확인 페이지
+const CheckAnswer = () => {
   const review = true;
   //   const [review, setReview] = useState(true);
-  const navigate = useNavigate();
-
-  const onClick = () => {
-    navigate("/writeReview");
-  };
 
   //   useEffect(() => {
   //     if (review) {
@@ -45,22 +40,18 @@ const Answer = () => {
             </ProfileCircle>
             <MentorWrapper>
               <Name>멘토덕</Name>
-              <Text>멘토님의 친절한 답변이덕!</Text>
+              <Text>님이 하신 답변이덕!</Text>
             </MentorWrapper>
           </Wrapper2>
           <AnswerSection>이지합니다.</AnswerSection>
         </AnswerWrapper>
-        {review ? (
-          <ReadReview />
-        ) : (
-          <Btn onClick={onClick}>답변 후기 남기러 가기</Btn>
-        )}
+        {review ? <CheckReview /> : ""}
       </Wrapper>
     </>
   );
 };
 
-export default Answer;
+export default CheckAnswer;
 
 const Text = styled.div`
   font-size: 15px;
@@ -78,25 +69,6 @@ const Title = styled.div`
   font-weight: bold;
   color: var(--dark-gray, #585858);
   width: 55%;
-`;
-
-const Btn = styled.div`
-  width: fit-content;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 6.5%;
-  min-width: 60%;
-  min-height: 52px;
-  background-color: #ffd5d5;
-  color: black;
-  border-radius: 30px;
-  background: linear-gradient(180deg, #c5e9ff 0%, #89cdf6 100%);
-  font-size: 2.3rem;
-  font-weight: 580;
-  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
-  margin-bottom: 2rem;
-  cursor: pointer;
 `;
 
 const Wrapper2 = styled.div`

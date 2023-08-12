@@ -1,27 +1,29 @@
-import React from 'react'
-import { useNavigate } from 'react-router-dom';
-import { styled } from 'styled-components';
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import { styled } from "styled-components";
 
 const MenteeChatHistory = () => {
   const navigate = useNavigate();
   return (
     <>
-    <List>
-      <ProfileSection>
-        <ProfileCircle>
-          <ProfileImg src="/img/china_cut_ori.png" />
-        </ProfileCircle>
-        멘토덕
-      </ProfileSection>
-      <ChatTitle>00대학교에서 적응할 때 제일 힘들었던 점은 무엇인가요? </ChatTitle>
-      <BtnWrapper>
-        <Date>23/08/11 답변 완료</Date>
-        <Btn onClick={() => navigate(`/answerAlert`)}>답변 보기</Btn>
-      </BtnWrapper>
-    </List>
-  </>
-  )
-}
+      <List>
+        <ProfileSection>
+          <ProfileCircle>
+            <ProfileImg src="/img/china_cut_ori.png" />
+          </ProfileCircle>
+          멘토덕
+        </ProfileSection>
+        <ChatTitle>
+          00대학교에서 적응할 때 제일 힘들었던 점은 무엇인가요?{" "}
+        </ChatTitle>
+        <BtnWrapper>
+          <Date>23/08/11 답변 완료</Date>
+          <Btn onClick={() => navigate(`/readAnswer`)}>답변 보기</Btn>
+        </BtnWrapper>
+      </List>
+    </>
+  );
+};
 
 export default MenteeChatHistory;
 
