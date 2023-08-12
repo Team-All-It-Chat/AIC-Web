@@ -24,7 +24,9 @@ const MenteeModal = () => {
     <Wrapper>
       <ModalSection>
         <Title>멘티 등록 완료</Title>
-        <Image src="/img/adventureduck.png" />
+        <ImageCircle>
+          <Image src="/img/mentee_ori.png" />
+        </ImageCircle>
         <Text>앞으로의 교환학생 과정을 응원한덕!</Text>
         <Btn onClick={onClick}>오리챗 시작하기</Btn>
       </ModalSection>
@@ -33,6 +35,24 @@ const MenteeModal = () => {
 };
 
 export default MenteeModal;
+
+const ImageCircle = styled.div`
+  height: 50%;
+  aspect-ratio: 1 / 1;
+  background-color: var(--green, #7fbc7a);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const Image = styled.img`
+  width: 90%;
+  height: 80%;
+  margin-top: 22%;
+  object-fit: contain;
+  border-radius: 50%;
+`;
 
 const Btn = styled.div`
   width: 320px;
@@ -49,10 +69,6 @@ const Btn = styled.div`
   font-weight: 600;
   box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
   cursor: pointer;
-`;
-
-const Image = styled.img`
-  width: 100px;
 `;
 
 const Text = styled.div`
