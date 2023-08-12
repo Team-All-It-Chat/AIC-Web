@@ -51,17 +51,21 @@ const ProfileCircle = styled.div`
   height: 50px;
   aspect-ratio: 1 / 1;
   border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
   @media (max-width: 900px) {
     height: 35px;
   }
 `;
 
 const ProfileImg = styled.img`
-  width: 100%;
-  height: 100%;
+  width: 90%;
+  height: 80%;
   object-fit: contain;
-  border-radius: 50%;
-  background-color: white;
+  border-bottom-left-radius: 50%;
+  border-bottom-right-radius: 50%;
 `;
 
 const ChatTitle = styled.div`

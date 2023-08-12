@@ -64,7 +64,7 @@ const Wrapper = styled.div`
 const BackImg = styled.div`
   position: absolute;
   top: 0%;
-  background-color: #C5E5F6;
+  background-color: #c5e5f6;
   height: 500px;
   width: 100%;
   z-index: -1;
@@ -96,14 +96,19 @@ const ProfileCircle = styled.div`
   aspect-ratio: 1 / 1;
   border-radius: 50%;
   border: solid 3px var(--m-skyblue, #89cdf6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
 `;
 
 const ProfileImg = styled.img`
-  width: 100%;
-  height: 100%;
+  width: 90%;
+  height: 80%;
+  margin-top: 21%;
   object-fit: contain;
-  border-radius: 50%;
-  background-color: white;
+  border-bottom-left-radius: 50%;
+  border-bottom-right-radius: 50%;
 `;
 
 const UserTitle = styled.div`
@@ -125,7 +130,7 @@ const MypageBox = styled.div`
   margin-top: 2%;
   margin-bottom: 2%;
   padding: 3% 5% 3% 5%;
-  @media (max-width: 1100px){
+  @media (max-width: 1100px) {
     width: 95%;
   }
 `;
