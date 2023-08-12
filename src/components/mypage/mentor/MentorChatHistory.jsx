@@ -1,7 +1,14 @@
 import React from "react";
+// import { useNavigate } from "react-router-dom";
 import { styled } from "styled-components";
 
 const MentorChatHistory = () => {
+  // const navigate = useNavigate();
+
+  // const onClick = () => {
+  //   navigate("/checkAnswer");
+  // };
+
   return (
     <>
       <List>

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import CommunityNavBar from "../community/CommunityNavBar";
 import { styled } from "styled-components";
 import ChatModal from "../common/ChatModal";
-import StarRating from "./StarRate";
+import StarRate from "./StarRate";
 
 const Review = () => {
   const [rate, setRate] = useState(0);
@@ -24,7 +24,7 @@ const Review = () => {
         <ReviewSection>
           <StarWrapper>
             <Text>별점</Text>
-            <StarRating onChange={setRate} />
+            <StarRate onChange={setRate} />
           </StarWrapper>
           <Text2>후기 작성하기</Text2>
           <Review2 placeholder="후기를 작성해덕!" />

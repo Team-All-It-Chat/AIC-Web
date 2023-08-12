@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
-const StarRating = ({ onChange }) => {
+const StarRate = ({ onChange }) => {
   const [rate, setRate] = useState(0);
 
   const handleStarClick = (select) => {
@@ -24,7 +24,7 @@ const StarRating = ({ onChange }) => {
   );
 };
 
-export default StarRating;
+export default StarRate;
 
 const StarContainer = styled.div`
   display: inline-block;
