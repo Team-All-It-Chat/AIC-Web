@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 // import { useNavigate } from "react-router-dom";
 import { styled } from "styled-components";
-import CompleteModal from "../common/CompleteModal";
+import MentorModal from "../common/MentorModal";
+import MenteeModal from "../common/MenteeModal";
 
 const SignupSection = () => {
   const [isMentor, setIsMentor] = useState(true);
@@ -34,9 +35,7 @@ const SignupSection = () => {
           웅. 지금 파견 중 / 파견 후야!
         </ExchangeBtn>
       </SignupWrapper>
-      {modal && (
-        <CompleteModal isMentor={true} name={isMentor ? "멘토" : "멘티"} />
-      )}
+      {modal && (isMentor ? <MentorModal /> : <MenteeModal />)}
     </Wrapper>
   );
 };

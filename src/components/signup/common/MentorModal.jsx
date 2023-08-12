@@ -1,36 +1,66 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { styled } from "styled-components";
 
-const CompleteModal = ({ name }) => {
+const MentorModal = () => {
+  const images = [
+    "/img/afreeca.png",
+    "/img/asia.png",
+    "/img/oseania.png",
+    "/img/northAm.png",
+    "/img/southAm.png",
+    "/img/europe.png",
+  ];
   const navigate = useNavigate();
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-  const SelectImage = (isMentor) => {
-    return (
-      <>
-        {isMentor ? (
-          <Image src="/img/cloud_ori.png" />
-        ) : (
-          <Image src="/img/cloud_ori.png" />
-        )}
-      </>
+  const onClick = () => {
+    navigate("/continentSelect");
+  };
+
+  const nextImage = () => {
+    setCurrentImageIndex((prevIndex) =>
+      prevIndex === images.length - 1 ? 0 : prevIndex + 1
     );
   };
+
+  const prevImage = () => {
+    setCurrentImageIndex((prevIndex) =>
+      prevIndex === 0 ? images.length - 1 : prevIndex - 1
+    );
+  };
+
   return (
     <Wrapper>
-      <SelectImage />
       <ModalSection>
-        <Title>{name} 등록 완료</Title>
-        <Text>오리챗을 이용해줘서 고맙덕!</Text>
-        <Btn onClick={() => navigate("/community/아시아/mentor")}>
-          메인 페이지 둘러보기
-        </Btn>
+        <Title>멘토 등록 완료</Title>
+        <ImageNav>
+          <NavButton onClick={prevImage}>&#8592;</NavButton>
+          <Image src={images[currentImageIndex]} />
+          <NavButton onClick={nextImage}>&#8594;</NavButton>
+        </ImageNav>
+        <Text>앞으로의 교환학생 과정을 응원한덕!</Text>
+        <Btn onClick={onClick}>오리챗 시작하기</Btn>
       </ModalSection>
     </Wrapper>
   );
 };
 
-export default CompleteModal;
+export default MentorModal;
+
+const ImageNav = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 50%;
+  z-index: 4;
+`;
+
+const NavButton = styled.div`
+  font-size: 3rem;
+  color: #333;
+  cursor: pointer;
+`;
 
 const Btn = styled.div`
   width: 320px;
@@ -50,9 +80,7 @@ const Btn = styled.div`
 `;
 
 const Image = styled.img`
-  width: 400px;
-  position: absolute;
-  margin-bottom: 350px;
+  width: 150px;
 `;
 
 const Text = styled.div`
@@ -87,7 +115,7 @@ const ModalSection = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 480px;
-  height: 200px;
+  height: 330px;
   border: 3px solid var(--m-skyblue, #89cdf6);
   border-radius: 30px;
   padding: 40px 20px;

@@ -2,54 +2,57 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { styled } from "styled-components";
 
-const ChatModal = ({ name }) => {
+const MenteeModal = () => {
   const navigate = useNavigate();
 
-  const SelectImage = (isMentor) => {
-    return (
-      <>
-        {isMentor ? (
-          <Image src="/img/adventureduck.png" />
-        ) : (
-          <Image src="/img/cloud_ori.png" />
-        )}
-      </>
-    );
+  const onClick = () => {
+    navigate("/continentSelect");
   };
+
+  // const SelectImage = (isMentor) => {
+  //   return (
+  //     <>
+  //       {isMentor ? (
+  //         <Image src="/img/cloud_ori.png" />
+  //       ) : (
+  //         <Image src="/img/cloud_ori.png" />
+  //       )}
+  //     </>
+  //   );
+  // };
   return (
     <Wrapper>
       <ModalSection>
-        <Title>{name} 완료</Title>
-        <Text>정성스런 {name} 고맙덕</Text>
-        <SelectImage />
-        <Btn onClick={() => navigate("/community/아시아/mentor")}>
-          메인 페이지로 이동
-        </Btn>
+        <Title>멘티 등록 완료</Title>
+        <Image src="/img/adventureduck.png" />
+        <Text>앞으로의 교환학생 과정을 응원한덕!</Text>
+        <Btn onClick={onClick}>오리챗 시작하기</Btn>
       </ModalSection>
     </Wrapper>
   );
 };
 
-export default ChatModal;
+export default MenteeModal;
 
 const Btn = styled.div`
-  width: 380px;
+  width: 320px;
   display: flex;
   align-items: center;
   justify-content: center;
   height: 6.5%;
   height: 52px;
+  background-color: #ffd5d5;
   color: black;
   border-radius: 30px;
   background: linear-gradient(180deg, #c5e9ff 0%, #89cdf6 100%);
   font-size: 2.3rem;
-  font-weight: 580;
+  font-weight: 600;
   box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
   cursor: pointer;
 `;
 
 const Image = styled.img`
-  width: 200px;
+  width: 100px;
 `;
 
 const Text = styled.div`
@@ -70,11 +73,12 @@ const Wrapper = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.8);
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  z-index: 4;
+  z-index: 3;
 `;
 
 const ModalSection = styled.div`
@@ -83,12 +87,13 @@ const ModalSection = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 480px;
-  height: 350px;
+  height: 330px;
   border: 3px solid var(--m-skyblue, #89cdf6);
   border-radius: 30px;
   padding: 40px 20px;
   background-color: white;
   font-size: 16px;
   box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
-  margin-bottom: 3%;
+  margin-top: 3rem;
+  position: absolute;
 `;
