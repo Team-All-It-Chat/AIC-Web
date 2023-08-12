@@ -1,47 +1,65 @@
-import React from "react";
+import React, { useCallback, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { styled } from "styled-components";
 
-const SideBar = ({ setClicked }) => {
+const SideBar = ({ isOpen, setIsOpen }) => {
   const navigate = useNavigate();
+  const sidebar = useRef(); //외부 클릭시 사이드바 닫기를 위한 변수
+
+  const sidebarCloseHandler = useCallback(({ target }) => {
+    if (isOpen && !sidebar.current.contains(target)) {
+      setIsOpen(false);
+    }
+  }, [isOpen, setIsOpen]);
+
+  useEffect(() => {
+    window.addEventListener("mousedown", sidebarCloseHandler);
+    return () => {
+      window.removeEventListener("mousedown", sidebarCloseHandler);
+    };
+  }, [sidebarCloseHandler]);
 
   const BtnHandle = (continent) => {
-    setClicked(0);
+    setIsOpen(false);
     if (continent === "멘토마이페이지") {
       navigate(`/mypageMentor/chats`);
     } else if (continent === "멘티마이페이지") {
       navigate(`/mypageMentee/chats`);
     } else if (continent === "대륙선택") {
       navigate(`/continentSelect`);
+    } else if (continent === "꿀팁") {
+      navigate(`/community/아시아/tips`);
     } else {
-      navigate(`/community/${continent}/mentor`);
+      navigate(`/community/아시아/mentor`);
     }
   };
 
   return (
     <Wrapper>
       <DarkSection />
-      <SideBarWrapper>
+      <SideBarWrapper ref={sidebar}>
         <BtnSection>
-          <Btn src="/img/x.svg" onClick={() => setClicked(0)} />
+          <Btn src="/img/x.svg" onClick={() => setIsOpen(false)} />
         </BtnSection>
         <CategorySection>
           <Category>
             <Title onClick={() => BtnHandle("대륙선택")}>대륙 선택</Title>
             <Line />
-            <Text onClick={() => BtnHandle("아시아")}>아시아</Text>
-            <Text onClick={() => BtnHandle("유럽")}>유럽</Text>
-            <Text onClick={() => BtnHandle("북아메리카")}>북아메리카</Text>
-            <Text onClick={() => BtnHandle("남아메리카")}>남아메리카</Text>
-            <Text onClick={() => BtnHandle("아프리카")}>아프리카</Text>
-            <Text onClick={() => BtnHandle("오세아니아")}>오세아니아</Text>
           </Category>
           <Category>
-            <Title>멘토 탐색</Title>
+            <Title onClick={() => BtnHandle("멘토")}>멘토 탐색</Title>
             <Line />
           </Category>
           <Category>
-            <Title>꿀팁 보기</Title>
+            <Title onClick={() => BtnHandle("꿀팁")}>꿀팁 보기</Title>
+            <Line />
+          </Category>
+          <Category>
+            <Title>설정</Title>
+            <Line />
+          </Category>
+          <Category>
+            <Title>로그아웃</Title>
             <Line />
           </Category>
           <Category>
@@ -136,8 +154,3 @@ const Line = styled.div`
   background-color: black;
 `;
 
-const Text = styled.div`
-  font-size: 1.8rem;
-  font-weight: 200;
-  cursor: pointer;
-`;
