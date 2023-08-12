@@ -112,7 +112,6 @@ const Btn = styled.div`
   bottom: 0;
   margin-bottom: 1.5%;
   background-color: #ffd5d5;
-  z-index: 2;
   border-radius: 30px;
   background: linear-gradient(180deg, #ffb65b 0%, #ff992d 100%);
   color: white;
