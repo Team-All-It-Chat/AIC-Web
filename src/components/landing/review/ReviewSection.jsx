@@ -113,8 +113,8 @@ const Image2 = styled.img`
   margin-bottom: 92px;
   z-index: 1;
   @media (max-width: 900px) {
-    height: 13%;
-    width: 93%;
+    height: 180px;
+    width: 700px;
   }
 `;
 
