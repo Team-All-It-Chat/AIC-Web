@@ -68,8 +68,8 @@ const ProfileCircle = styled.div`
 
 const ProfileImg = styled.img`
   width: 90%;
-  height: 85%;
-  margin-top: 22%;
+  height: 80%;
+  margin-top: 21%;
   object-fit: contain;
   border-radius: 50%;
 `;
