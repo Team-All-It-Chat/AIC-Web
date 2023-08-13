@@ -1,34 +1,99 @@
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { styled } from "styled-components";
 
 const WritePostSection = () => {
+  const navigate = useNavigate();
+  const [selectedKeywords, setSelectedKeywords] = useState([]);
+  const [previewImg, setPreviewImg] = useState("/img/previewDefalut.svg");
+
+  const keywords = [
+    "진로",
+    "여행",
+    "수업",
+    "축제",
+    "동아리",
+    "어학",
+    "꿀팁",
+    "기숙사",
+    "교환준비",
+    "교환후기",
+    "짐싸기",
+    "현지문화",
+  ];
+
+  // 선택 키워드 개수 검사
+  const handleKeywordClick = (keyword) => {
+    if (selectedKeywords.includes(keyword)) {
+      // 이미 선택되어 있는 키워드면
+      setSelectedKeywords(selectedKeywords.filter((kw) => kw !== keyword)); // 해당 키워드 제외해서 새로운 배열 세팅
+    } else if (selectedKeywords.length < 2) {
+      // 그 외의 경우
+      setSelectedKeywords([...selectedKeywords, keyword]); // 새로 세팅
+    }
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const userConfirmed = window.confirm("게시글을 업로드 하시겠습니까?");
+    if (userConfirmed) {
+      // 폼 제출 로직 추가 (API 호출 등)
+      alert("업로드 완료!");
+      navigate("/mypageMentor/posts");
+    }
+  };
+
+  const insertImg = (e) => {
+    let reader = new FileReader();
+
+    if (e.target.files[0]) {
+      reader.readAsDataURL(e.target.files[0]);
+    } else {
+      setPreviewImg("/img/previewDefalut.svg"); // 파일 선택 취소 시 프리뷰 이미지 삭제
+    }
+
+    reader.onloadend = () => {
+      const previewImgUrl = reader.result;
+
+      if (previewImgUrl) {
+        setPreviewImg(previewImgUrl);
+      }
+    };
+  };
+
   return (
     <Wrapper>
       <Form>
         <TitleInput type="title" placeholder="제목"></TitleInput>
         <ImgSection>
-          <ImgInput type="file" />
+          <PreviewImg src={previewImg} />
+          <ImgLabel htmlFor="imageInput">이미지 업로드</ImgLabel>
+          <ImgInput
+            type="file"
+            accept="image/jpg, image/jpeg, image/png"
+            id="imageInput"
+            onChange={(e) => insertImg(e)}
+          />
         </ImgSection>
-        <Text>키워드를 2개 골라주세요.</Text>
+        <Text>키워드를 최대 2개 골라주세요.</Text>
         <KeywordWrapper>
-          <Keyword>진로</Keyword>
-          <Keyword>여행</Keyword>
-          <Keyword>수업</Keyword>
-          <Keyword>축제</Keyword>
-          <Keyword>동아리</Keyword>
-          <Keyword>어학</Keyword>
-          <Keyword>꿀팁</Keyword>
-          <Keyword>기숙사</Keyword>
-          <Keyword>교환준비</Keyword>
-          <Keyword>교환후기</Keyword>
-          <Keyword>짐싸기</Keyword>
-          <Keyword>현지문화</Keyword>
+          {keywords.map((keyword) => (
+            <Keyword
+              key={keyword}
+              selected={selectedKeywords.includes(keyword)}
+              onClick={() => handleKeywordClick(keyword)}
+            >
+              {keyword}
+            </Keyword>
+          ))}
         </KeywordWrapper>
         <ContentInput
           type="content"
           placeholder="교환학생 꿀팁을 자유롭게 적어주세요."
         ></ContentInput>
-        <SubmitBtn type='submit'>게시글 업로드</SubmitBtn>
+        <SubmitBtn onClick={handleSubmit} type="submit">
+          게시글 업로드
+        </SubmitBtn>
       </Form>
     </Wrapper>
   );
@@ -77,14 +142,34 @@ const TitleInput = styled.input`
 `;
 
 const ImgSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   width: 90%;
-  min-height: 400px;
-  background-color: var(--light-gray, #dadada);
+  min-height: 30px;
+  border-radius: 30px;
+  border: solid 1px var(--light-gray, #dadada);
+`;
+
+const ImgLabel = styled.label`
+  padding-bottom: 4%;
+  font-weight: bold;
+  font-size: 16px;
+  color: #0095f6;
+  display: inline-block;
+  cursor: pointer;
 `;
 
 const ImgInput = styled.input`
-  width: 300px;
-  height: 100px;
+  display: none;
+`;
+
+const PreviewImg = styled.img`
+  object-fit: contain;
+  max-width: 90%;
+  height: auto;
+  padding: 4% 1% 1% 1%;
 `;
 
 const Text = styled.div`
@@ -113,7 +198,8 @@ const Keyword = styled.div`
   font-size: 16px;
   border-radius: 30px;
   border: 1px solid var(--dark-gray, #585858);
-  background: #fff;
+  background-color: ${(props) =>
+    props.selected ? "var(--l-skyblue, #C5E5F6);" : ""};
 `;
 
 const ContentInput = styled.textarea`
