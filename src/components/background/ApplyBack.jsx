@@ -5,7 +5,7 @@ const ApplyBack = () => {
   return (
     <>
       <Wrapper>
-        <Image1 src="/img/earth.png" />
+        <Image1 src="/img/background.png" />
       </Wrapper>
     </>
   );
@@ -14,8 +14,12 @@ const ApplyBack = () => {
 export default ApplyBack;
 
 const Image1 = styled.img`
-  width: 100%;
-  height: 30%;
+  height: 520px;
+  object-fit: contain;
+  @media (max-width: 900px) {
+    height: 200px;
+    margin-right: 2.7rem;
+  }
 `;
 
 const Wrapper = styled.div`
@@ -23,8 +27,8 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
-  width: 100%;
-  height: 100%;
+  width: 100px;
+  height: 150%;
   position: absolute;
   bottom: 0;
   z-index: -1;

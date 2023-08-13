@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { styled } from "styled-components";
-import ApplyBack from "./ApplyBack";
+import ApplyBack from "../background/ApplyBack";
 import ChatModal from "../common/ChatModal";
 
 // 오리챗 신청 페이지
@@ -18,7 +18,7 @@ const Apply = () => {
       <Wrapper>
         <ApplyWrapper>
           <ProfileCircle>
-            <ProfileImg src="/img/navprofile.png" />
+            <ProfileImg src="/img/mentee_ori.png" />
           </ProfileCircle>
           <Text1>최재영</Text1>
           <Text2>멘토님에게 질문 보내기</Text2>
@@ -45,7 +45,7 @@ const Wrapper = styled.div`
 
 const ApplyWrapper = styled.div`
   width: 33%;
-  min-width: 450px;
+  min-width: 400px;
   height: 490px;
   border: 3px solid #89cdf6;
   display: flex;
@@ -78,9 +78,12 @@ const Btn = styled.div`
 `;
 
 const ProfileImg = styled.img`
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  width: 85%;
+  height: 85%;
+  margin-top: 20%;
+  object-fit: contain;
+  border-bottom-left-radius: 50%;
+  border-bottom-right-radius: 50%;
 `;
 
 const Text2 = styled.div`
@@ -97,6 +100,10 @@ const ProfileCircle = styled.div`
   aspect-ratio: 1 / 1;
   border-radius: 50%;
   border: 3px solid #89cdf6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--green, #7fbc7a);
 `;
 
 const QuestionSection = styled.textarea`
