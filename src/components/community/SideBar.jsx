@@ -1,26 +1,30 @@
-import React, { useCallback, useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { styled } from "styled-components";
+import styled from "styled-components";
 
-const SideBar = ({ isOpen, setIsOpen }) => {
+const SideMenu = () => {
   const navigate = useNavigate();
-  const sidebar = useRef(); //외부 클릭시 사이드바 닫기를 위한 변수
-
-  const sidebarCloseHandler = useCallback(({ target }) => {
-    if (isOpen && !sidebar.current.contains(target)) {
-      setIsOpen(false);
-    }
-  }, [isOpen, setIsOpen]);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const sideMenuContainerRef = useRef(null);
+  const sideMenuBGRef = useRef(null);
+  const menuListRef = useRef(null);
 
   useEffect(() => {
-    window.addEventListener("mousedown", sidebarCloseHandler);
-    return () => {
-      window.removeEventListener("mousedown", sidebarCloseHandler);
-    };
-  }, [sidebarCloseHandler]);
+    if (!sideMenuContainerRef || !sideMenuContainerRef.current) return;
+    if (!menuListRef || !menuListRef.current) return;
+    if (!sideMenuBGRef || !sideMenuBGRef.current) return;
+
+    sideMenuContainerRef.current.style.visibility = isMenuOpen
+      ? "visible"
+      : "hidden";
+    sideMenuBGRef.current.style.opacity = isMenuOpen ? "1" : "0";
+    menuListRef.current.style.opacity = isMenuOpen ? "1" : "0";
+    menuListRef.current.style.transform = `translateX(${
+      isMenuOpen ? 0 : 1
+    }00%)`;
+  }, [isMenuOpen]);
 
   const BtnHandle = (continent) => {
-    setIsOpen(false);
     if (continent === "멘토마이페이지") {
       navigate(`/mypageMentor/chats`);
     } else if (continent === "멘티마이페이지") {
@@ -35,13 +39,21 @@ const SideBar = ({ isOpen, setIsOpen }) => {
   };
 
   return (
-    <Wrapper>
-      <DarkSection />
-      <SideBarWrapper ref={sidebar}>
-        <BtnSection>
-          <Btn src="/img/x.svg" onClick={() => setIsOpen(false)} />
-        </BtnSection>
-        <CategorySection>
+    <>
+      <HamburgerBtn
+        onClick={() => setIsMenuOpen(!isMenuOpen)}
+        src="/img/menu.svg"
+      />
+      <SideMenuContainer ref={sideMenuContainerRef}>
+        <SideMenuBG
+          isMenuOpen={isMenuOpen}
+          ref={sideMenuBGRef}
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+        ></SideMenuBG>
+        <CategorySection ref={menuListRef}>
+          <BtnSeciton>
+            <Btn src="/img/x.svg" onClick={() => setIsMenuOpen(!isMenuOpen)} />
+          </BtnSeciton>
           <Category>
             <Title onClick={() => BtnHandle("대륙선택")}>대륙 선택</Title>
             <Line />
@@ -75,46 +87,64 @@ const SideBar = ({ isOpen, setIsOpen }) => {
             <Line />
           </Category>
         </CategorySection>
-      </SideBarWrapper>
-    </Wrapper>
+      </SideMenuContainer>
+    </>
   );
 };
 
-export default SideBar;
+export default SideMenu;
 
-const Wrapper = styled.div`
-  position: fixed;
+const HamburgerBtn = styled.img`
+  all: unset;
   width: 100%;
-  height: 100%;
-  top: 0;
-`;
-
-const DarkSection = styled.div`
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  z-index: 4;
-  background-color: #000000;
-  opacity: 45%;
-`;
-
-const SideBarWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  background-color: white;
-  position: fixed;
-  right: 0;
-  top: 0;
-  width: 300px;
-  height: 100%;
-  z-index: 999;
-  box-shadow: -4px 0px 4px 0px rgba(0, 0, 0, 0.25);
-  border-radius: 20px 0px 0px 20px;
+  cursor: pointer;
 `;
 
-const BtnSection = styled.div`
+const SideMenuContainer = styled.div`
+  z-index: 1;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: transparent;
+`;
+
+const SideMenuBG = styled.div`
+  z-index: 2;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(196, 196, 196, 0.5);
+  transition: all 0.5s ease-out;
+`;
+
+const CategorySection = styled.div`
+  z-index: 3;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  background: white;
+  box-shadow: 0px 4px 50px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  font-weight: 500;
+  height: 100%;
+  width: 20%;
+  min-width: 22rem;
+  padding: 1rem 3rem;
+  gap: 30px;
+  transition: all 0.8s ease-out;
+`;
+
+const BtnSeciton = styled.div`
   width: 100%;
   height: 9%;
   min-height: 64px;
@@ -123,17 +153,7 @@ const BtnSection = styled.div`
 `;
 
 const Btn = styled.img`
-  padding-left: 5%;
   cursor: pointer;
-`;
-
-const CategorySection = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 80%;
-  height: 80%;
-  margin-top: 7%;
-  gap: 30px;
 `;
 
 const Category = styled.div`
@@ -153,4 +173,3 @@ const Line = styled.div`
   height: 2px;
   background-color: black;
 `;
-

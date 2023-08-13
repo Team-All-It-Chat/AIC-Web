@@ -1,19 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import { styled } from "styled-components";
 import SideBar from "./SideBar";
 
 const CommunityNavBar = () => {
   const navigate = useNavigate();
-  const [isOpen, setIsOpen] = useState(false);
-
-  const BtnHandle = () => {
-    if (isOpen) {
-      setIsOpen(false);
-    } else {
-      setIsOpen(true);
-    }
-  };
 
   return (
     <Wrapper>
@@ -21,12 +12,11 @@ const CommunityNavBar = () => {
         <LogoImage src="/img/navlogo.png" />
       </LogoWrapper>
       <ButtonWrapper>
-        <HamburgerBtn onClick={BtnHandle} src="/img/menu.svg"></HamburgerBtn>
+         <SideBar/>
         <ProfileCircle>
           <ProfileImg src="/img/navprofile.png" />
         </ProfileCircle>
       </ButtonWrapper>
-      {isOpen ? <SideBar isOpen={isOpen} setIsOpen={setIsOpen}/> : ''}
     </Wrapper>
   );
 };
@@ -64,16 +54,6 @@ const ButtonWrapper = styled.div`
   margin-right: 5%;
   justify-content: space-between;
   align-items: center;
-`;
-
-const HamburgerBtn = styled.img`
-  all: unset;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
 `;
 
 const ProfileCircle = styled.div`
