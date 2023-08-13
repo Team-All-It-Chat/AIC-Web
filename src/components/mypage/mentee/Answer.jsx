@@ -3,6 +3,8 @@ import CommunityNavBar from "../../community/CommunityNavBar";
 import { styled } from "styled-components";
 import { useNavigate } from "react-router-dom";
 import ReadReview from "./ReadReview";
+import AlertBack from "../../background/AlertBack";
+import Goback from "../Goback";
 
 // 멘티 오리챗 기록 확인 페이지
 const Answer = () => {
@@ -26,7 +28,10 @@ const Answer = () => {
     <>
       <CommunityNavBar />
       <Wrapper>
-        <Title>오리챗 기록</Title>
+        <TitleWrapper>
+          <Goback />
+          <Title>오리챗 기록</Title>
+        </TitleWrapper>
         <ApplyWrapper>
           <ProfileCircle>
             <ProfileImg src="/img/navprofile.png" />
@@ -55,12 +60,18 @@ const Answer = () => {
         ) : (
           <Btn onClick={onClick}>답변 후기 남기러 가기</Btn>
         )}
+        <AlertBack />
       </Wrapper>
     </>
   );
 };
 
 export default Answer;
+
+const TitleWrapper = styled.div`
+  display: flex;
+  width: 67%;
+`;
 
 const Text = styled.div`
   font-size: 15px;

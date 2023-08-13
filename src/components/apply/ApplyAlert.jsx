@@ -3,6 +3,7 @@ import CommunityNavBar from "../community/CommunityNavBar";
 import { styled } from "styled-components";
 // import { useNavigate } from "react-router-dom";
 import ChatModal from "../common/ChatModal";
+import AlertBack from "../background/AlertBack";
 
 // 오리챗 신청이 들어왔어요! 페이지
 const ApplyAlert = () => {
@@ -50,6 +51,7 @@ const ApplyAlert = () => {
           <AnswerSection placeholder="답변을 작성해덕!"></AnswerSection>
           <Btn onClick={onClick}>멘티에게 답변 보내기</Btn>
         </AnswerWrapper>
+        <AlertBack />
         {modal && <ChatModal isMentor={false} name={"답변 전송"} />}
       </Wrapper>
     </>
@@ -65,6 +67,7 @@ const ProfileImg = styled.img`
 `;
 
 const Title = styled.div`
+  width: 65%;
   font-size: 28px;
   font-weight: bold;
   color: var(--dark-gray, #585858);

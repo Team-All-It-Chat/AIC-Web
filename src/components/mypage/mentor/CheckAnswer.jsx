@@ -3,6 +3,8 @@ import CommunityNavBar from "../../community/CommunityNavBar";
 import { styled } from "styled-components";
 // import { useNavigate } from "react-router-dom";
 import CheckReview from "./CheckReview";
+import AlertBack2 from "../../background/AlertBack2";
+import Goback from "../Goback";
 
 // 멘토오리챗 기록 확인 페이지
 const CheckAnswer = () => {
@@ -21,7 +23,10 @@ const CheckAnswer = () => {
     <>
       <CommunityNavBar />
       <Wrapper>
-        <Title>오리챗 기록</Title>
+        <TitleWrapper>
+          <Goback />
+          <Title>오리챗 기록</Title>
+        </TitleWrapper>
         <ApplyWrapper>
           <ProfileCircle>
             <ProfileImg src="/img/navprofile.png" />
@@ -46,12 +51,18 @@ const CheckAnswer = () => {
           <AnswerSection>이지합니다.</AnswerSection>
         </AnswerWrapper>
         {review ? <CheckReview /> : ""}
+        <AlertBack2 />
       </Wrapper>
     </>
   );
 };
 
 export default CheckAnswer;
+
+const TitleWrapper = styled.div`
+  display: flex;
+  width: 67%;
+`;
 
 const Text = styled.div`
   font-size: 15px;

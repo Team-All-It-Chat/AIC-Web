@@ -3,6 +3,7 @@ import CommunityNavBar from "../community/CommunityNavBar";
 import { styled } from "styled-components";
 import ChatModal from "../common/ChatModal";
 import StarRate from "./StarRate";
+import AlertBack2 from "../background/AlertBack2";
 
 const Review = () => {
   const [rate, setRate] = useState(0);
@@ -31,6 +32,7 @@ const Review = () => {
           <Btn onClick={onClick}>후기 전송하기</Btn>
         </ReviewSection>
         {modal && <ChatModal isMentor={true} name={"후기 작성"} />}
+        <AlertBack2 />
       </Wrapper>
     </>
   );
@@ -97,6 +99,7 @@ const Text = styled.div`
 `;
 
 const Title = styled.div`
+  width: 55%;
   font-size: 24px;
   font-weight: bold;
   color: var(--dark-gray, #585858);
