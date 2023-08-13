@@ -23,6 +23,7 @@ const LandingPage = () => {
 export default LandingPage;
 
 const SectionWrapper = styled.div`
+  scroll-snap-type: y mandatory;
   display: flex;
   flex-direction: column;
   align-items: center;

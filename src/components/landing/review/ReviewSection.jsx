@@ -31,7 +31,6 @@ const Wrapper = styled.div`
   align-items: center;
   width: 100%;
   height: fit-content;
-
   background-color: #c5e5f6;
   position: relative;
 `;
@@ -45,6 +44,7 @@ const ReviewWrapper = styled.div`
   justify-content: center;
   align-items: center;
   position: relative;
+  scroll-snap-align: start;
 `;
 
 const Title = styled.div`
@@ -100,6 +100,7 @@ const FloorWrapper = styled.div`
   justify-content: center;
   align-items: center;
   margin-top: 30px;
+  scroll-snap-align: end;
   @media (max-width: 1680px) {
     height: 40rem;
   }
@@ -111,6 +112,10 @@ const Image2 = styled.img`
   bottom: 0;
   margin-bottom: 92px;
   z-index: 1;
+  @media (max-width: 900px) {
+    height: 13%;
+    width: 93%;
+  }
 `;
 
 const Floor = styled.div`

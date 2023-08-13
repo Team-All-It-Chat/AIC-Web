@@ -29,9 +29,10 @@ const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   background-color: white;
   z-index: 1;
+  scroll-snap-align: start;
 `;
 
 const IntroduceWrapper = styled.div`
@@ -42,7 +43,7 @@ const IntroduceWrapper = styled.div`
   align-items: center;
   position: relative;
   background-color: #ffffff;
-  margin-bottom: 10%;
+  margin-bottom: 4%;
 `;
 
 const Title = styled.div`
