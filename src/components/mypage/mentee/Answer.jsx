@@ -70,7 +70,9 @@ export default Answer;
 
 const TitleWrapper = styled.div`
   display: flex;
-  width: 67%;
+  justify-content: center;
+  width: 90%;
+  margin-right: 3rem;
 `;
 
 const Text = styled.div`
