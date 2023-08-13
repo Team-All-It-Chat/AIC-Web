@@ -136,6 +136,7 @@ const CategorySection = styled.div`
   display: flex;
   flex-direction: column;
   font-weight: 500;
+  border-radius: 20px 0px 20px 20px;
   height: 100%;
   width: 20%;
   min-width: 22rem;
