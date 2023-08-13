@@ -17,7 +17,7 @@ const Image1 = styled.img`
   height: 520px;
   object-fit: contain;
   @media (max-width: 900px) {
-    height: 200px;
+    height: 380px;
     margin-right: 2.7rem;
   }
 `;
@@ -27,7 +27,7 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
-  width: 100px;
+  width: 100%;
   height: 150%;
   position: absolute;
   bottom: 0;
