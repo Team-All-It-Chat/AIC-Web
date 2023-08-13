@@ -17,7 +17,9 @@ const MenteeMypageSection = () => {
   return (
     <Wrapper>
       <SubWrapper>
-        <BackImg />
+        <BannerWrapper>
+          {/* <Banner src="/img/mypageBanner.png" /> */}
+        </BannerWrapper>
         <ProfileSection>
           <ProfileCircle>
             <ProfileImg src="/img/mainduck.png" />
@@ -60,14 +62,23 @@ const Wrapper = styled.div`
   min-height: 95vh;
 `;
 
-const BackImg = styled.div`
+const BannerWrapper = styled.div`
   position: absolute;
-  top: 0%;
+  top: 64px;
   background-color: #c5e5f6;
-  height: 500px;
   width: 100%;
   z-index: -1;
+  height: 500px;
+  /* background-image: url("/img/mypageBanner.png");
+  background-repeat: repeat; */
 `;
+
+// const Banner = styled.img`
+//   position: absolute;
+//   top: 0;
+//   z-index: -1;
+//   object-fit: contain;
+// `;
 
 const SubWrapper = styled.div`
   display: flex;

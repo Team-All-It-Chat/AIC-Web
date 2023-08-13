@@ -106,12 +106,16 @@ const ProfileCircle = styled.div`
   background-color: white;
   border-radius: 50%;
   border: solid 3px var(--m-skyblue, #89cdf6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const ProfileImg = styled.img`
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  width: 90%;
+  height: 80%;
+  margin-top: 21%;
+  object-fit: contain;
   border-radius: 50%;
 `;
 
