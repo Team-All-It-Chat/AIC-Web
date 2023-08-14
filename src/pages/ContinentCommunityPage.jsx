@@ -19,7 +19,7 @@ const ContinentCommunityPage = () => {
       setModal(1);
     }
     setContinentAtom(continent);
-    console.log(continent);
+    // console.log(continent);
   }, [pathname, continent, setContinentAtom]);
 
   return (
