@@ -4,12 +4,12 @@ const baseUrl = `https://all-it-chat.o-r.kr/accounts`;
 
 // 로그인
 export const mentorLogin = async () => {
-  const result = await axios.post(`${baseUrl}/login/mentor`);
+  const result = await axios.post(`${baseUrl}/login/mentor/`);
   return result.data.token;
 };
 
 export const menteeLogin = async () => {
-  const result = await axios.post(`${baseUrl}/login/mentee`);
+  const result = await axios.post(`${baseUrl}/login/mentee/`);
   return result.data.token;
 };
 
