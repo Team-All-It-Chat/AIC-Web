@@ -1,24 +1,41 @@
 import React, { useState } from "react";
-// import { useNavigate } from "react-router-dom";
 import { styled } from "styled-components";
 import MentorModal from "../common/MentorModal";
 import MenteeModal from "../common/MenteeModal";
+import { menteeLogin, mentorLogin } from "../../../apis/accounts";
+import { useRecoilState } from "recoil";
+import { isMentorAtom } from "../../../recoil/atoms";
 
 const SignupSection = () => {
-  const [isMentor, setIsMentor] = useState(true);
+  const [isMentor, setIsMentor] = useRecoilState(isMentorAtom);
   const [modal, setModal] = useState(false);
-  // const navigate = useNavigate();
 
-  const clickMentor = () => {
+  const clickMentor = async () => {
+    try {
+      const result = await mentorLogin();
+      console.log(result);
+      const { access_token: accessToken, refresh_token: refreshToken } = result; // 구조분해할당
+      localStorage.setItem("access", accessToken);
+      localStorage.setItem("refresh", refreshToken);
+    } catch (error) {
+      console.log("멘토 로그인 에러");
+    }
     setModal(true);
     setIsMentor(true);
-    // navigate("/mentorSignup");
   };
 
-  const clickMentee = () => {
+  const clickMentee = async () => {
+    try {
+      const result = await menteeLogin();
+      console.log(result);
+      const { access_token: accessToken, refresh_token: refreshToken } = result; // 구조분해할당
+      localStorage.setItem("access", accessToken);
+      localStorage.setItem("refresh", refreshToken);
+    } catch (error) {
+      console.log("멘티 로그인 에러");
+    }
     setModal(true);
     setIsMentor(false);
-    // navigate("/menteeSignup");
   };
 
   return (

@@ -1,10 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useRecoilValue } from "recoil";
 import styled from "styled-components";
+import { continentAtom } from "../../recoil/atoms";
 
-const SideMenu = () => {
+const SideMenu = ({mypageBtnHandle}) => {
   const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const continent = useRecoilValue(continentAtom);
   const sideMenuContainerRef = useRef(null);
   const sideMenuBGRef = useRef(null);
   const menuListRef = useRef(null);
@@ -24,17 +27,13 @@ const SideMenu = () => {
     }00%)`;
   }, [isMenuOpen]);
 
-  const BtnHandle = (continent) => {
-    if (continent === "멘토마이페이지") {
-      navigate(`/mypageMentor/chats`);
-    } else if (continent === "멘티마이페이지") {
-      navigate(`/mypageMentee/chats`);
-    } else if (continent === "대륙선택") {
+  const BtnHandle = (type) => {
+    if (type === "대륙선택") {
       navigate(`/continentSelect`);
-    } else if (continent === "꿀팁") {
-      navigate(`/community/아시아/tips`);
+    } else if (type === "꿀팁") {
+      navigate(`/community/${continent}/tips`);
     } else {
-      navigate(`/community/아시아/mentor`);
+      navigate(`/community/${continent}/mentor`);
     }
   };
 
@@ -67,23 +66,17 @@ const SideMenu = () => {
             <Line />
           </Category>
           <Category>
+            <Title onClick={mypageBtnHandle}>
+              마이페이지
+            </Title>
+            <Line />
+          </Category>
+          <Category>
             <Title>설정</Title>
             <Line />
           </Category>
           <Category>
             <Title>로그아웃</Title>
-            <Line />
-          </Category>
-          <Category>
-            <Title onClick={() => BtnHandle("멘토마이페이지")}>
-              멘토 마이페이지(테스트)
-            </Title>
-            <Line />
-          </Category>
-          <Category>
-            <Title onClick={() => BtnHandle("멘티마이페이지")}>
-              멘티 마이페이지(테스트)
-            </Title>
             <Line />
           </Category>
         </CategorySection>
