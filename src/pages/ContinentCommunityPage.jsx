@@ -20,7 +20,7 @@ const ContinentCommunityPage = () => {
     }
     setContinentAtom(continent);
     console.log(continent);
-  }, [pathname]);
+  }, [pathname, continent, setContinentAtom]);
 
   return (
     <>
