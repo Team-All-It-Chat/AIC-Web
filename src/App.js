@@ -43,7 +43,7 @@ function App() {
           <Route path="tips" element={<TipsModal />} />
         </Route>
         {/* 멘토정보 & 꿀팁게시물 */}
-        <Route path="/viewMentor/:num" element={<MentorInfoPage />} />
+        <Route path="/viewMentor/:continent/:num" element={<MentorInfoPage />} />
         <Route path="/viewPost/:num" element={<ViewPostPage />} />
         {/* 오리챗 신청 */}
         <Route path="/apply" element={<ApplyPage />} />

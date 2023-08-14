@@ -1,39 +1,86 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { styled } from "styled-components";
 import MiniCard from "./MiniCard";
+import { getMentorProfiles } from "../../../apis/accounts";
 
 const MentorInfoSection = () => {
   const navigate = useNavigate();
+  const { continent } = useParams();
   const { num } = useParams();
+  const [mentor, setMentor] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await getMentorProfiles(continent);
+      const filteredMentor = response.data.result.find(mentor => mentor.id === Number(num));
+      setMentor(filteredMentor);
+    };
+    fetchData();
+  }, [continent, num]);
+
+  // 데이터가 세팅 되기 전까지 컴포넌트 렌더링 x
+  if (mentor === null) {
+    return null;
+  }
+
+  const name = mentor.name;
+  const country = mentor.contry;
+  const foreignUniv = mentor.foreign_univ;
+  const korUniv = mentor.kor_univ;
+  const major = mentor.kor_major;
+  const chatCount = mentor.chat_count === null ? 0 : mentor.chat_count;
+  const totalScore = mentor.total_score  === null ? 0 : mentor.total_score;
+
+  const getContinentNumber = (continent) => {
+    switch (continent) {
+      case "유럽":
+        return 1;
+      case "아시아":
+        return 2;
+      case "북아메리카":
+        return 3;
+      case "남아메리카":
+        return 4;
+      case "오세아니아":
+        return 5;
+      case "아프리카":
+        return 6;
+      default:
+        return 0; // 기본값 설정
+    }
+  };
+
+  const continentNum = getContinentNumber(continent);
+
   return (
     <Wrapper>
       <Box>
         <LeftWrapper>
           <ProfileCircle>
-            <ProfileImg src="/img/mainduck.png" />
+            <ProfileImg src={`/img/duck${continentNum}.png`} />
           </ProfileCircle>
-          <Text>오동동{num}</Text>
+          <Text>{name}</Text>
           <InfoWrapper>
             <Info>
               <Text2>한국 학교</Text2>
-              <Text3>중앙대학교</Text3>
+              <Text3>{korUniv}</Text3>
             </Info>
             <Info>
               <Text2>파견 학교</Text2>
-              <Text3>aaa university</Text3>
+              <Text3>{foreignUniv}</Text3>
             </Info>
             <Info>
               <Text2>파견 국가/언어권</Text2>
-              <Text3>중국 / 중어권</Text3>
+              <Text3>{country}</Text3>
             </Info>
             <Info>
               <Text2>전공</Text2>
-              <Text3>경영경제</Text3>
+              <Text3>{major}</Text3>
             </Info>
             <Info>
               <Text2>오리챗 횟수/평점</Text2>
-              <Text3>3번 / 4.0</Text3>
+              <Text3>{chatCount}번 / {totalScore}점</Text3>
             </Info>
           </InfoWrapper>
         </LeftWrapper>
@@ -112,11 +159,8 @@ const ProfileCircle = styled.div`
 `;
 
 const ProfileImg = styled.img`
-  width: 90%;
-  height: 80%;
-  margin-top: 21%;
-  object-fit: contain;
-  border-radius: 50%;
+  width: 100%;
+  object-fit: cover;
 `;
 
 const Text = styled.div`
@@ -155,7 +199,8 @@ const Text3 = styled.div`
   border: 2px solid var(--m-skyblue, #89cdf6);
   background-color: white;
   width: 60%;
-  height: 30px;
+  height: fit-content;
+  min-height: 30px;
   display: flex;
   align-items: center;
   padding-left: 5%;
