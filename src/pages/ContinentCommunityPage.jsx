@@ -2,12 +2,15 @@ import React, { useEffect, useState } from "react";
 import { styled } from "styled-components";
 import CommunityNavBar from "../components/community/CommunityNavBar";
 import { Outlet, useLocation, useNavigate, useParams } from "react-router-dom";
+import { useSetRecoilState } from "recoil";
+import { continentAtom } from "../recoil/atoms";
 // 커뮤니티 페이지
 const ContinentCommunityPage = () => {
   const { pathname } = useLocation();
   const navigate = useNavigate();
   const [modal, setModal] = useState();
   const { continent } = useParams();
+  const setContinentAtom = useSetRecoilState(continentAtom);
 
   useEffect(() => {
     if (pathname.includes("mentor")) {
@@ -15,6 +18,8 @@ const ContinentCommunityPage = () => {
     } else if (pathname.includes("tips")) {
       setModal(1);
     }
+    setContinentAtom(continent);
+    console.log(continent);
   }, [pathname]);
 
   return (
