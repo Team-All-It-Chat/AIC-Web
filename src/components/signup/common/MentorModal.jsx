@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useSetRecoilState } from "recoil";
 import { styled } from "styled-components";
+import { mentorImgAtom } from "../../../recoil/atoms";
 
 const MentorModal = () => {
+  const setMentorImg = useSetRecoilState(mentorImgAtom);
   const images = [
     "/img/duck1.png",
     "/img/duck2.png",
@@ -16,6 +19,7 @@ const MentorModal = () => {
 
   const onClick = () => {
     navigate("/continentSelect");
+    setMentorImg(images[currentImageIndex]);
   };
 
   const nextImage = () => {
