@@ -16,6 +16,7 @@ const MentorInfoModal = () => {
       const response = await getMentorProfiles(continent);
       setMentorList(response.data.result);
       console.log(response.data.result);
+      console.log(mentorListData);
     };
     fetchData();
   }, []);
