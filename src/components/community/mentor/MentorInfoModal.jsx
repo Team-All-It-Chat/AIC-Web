@@ -1,33 +1,29 @@
-import React from "react";
-import MentorCard from "./MentorCard";
+import React, { useEffect, useState } from "react";
 import { styled } from "styled-components";
-// import { getMentorProfiles } from "../../../apis/accounts";
-// import { useParams } from "react-router-dom";
+import { getMentorProfiles } from "../../../apis/accounts";
+import { useParams } from "react-router-dom";
+import MentorDataSection from "./MentorDataSection";
 
 const MentorInfoModal = () => {
-  const dataLength = 9;
-  // const { continent } = useParams();
-  // const [mentorListData, setMentorList] = useState([]);
+  const { continent } = useParams();
+  const [mentorDataList, setMentorList] = useState([]);
 
-  // // 렌더 전 데이터 패칭을 위한 useEffect
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     // console.log(continent);
-  //     const response = await getMentorProfiles(continent);
-  //     setMentorList(response.data.result);
-  //     console.log(response.data.result);
-  //     console.log(mentorListData);
-  //   };
-  //   fetchData();
-  // }, []);
+  // 렌더 전 데이터 패칭을 위한 useEffect
+  useEffect(() => {
+    const fetchData = async () => {
+      // console.log(continent);
+      const response = await getMentorProfiles(continent);
+      setMentorList(response.data.result);
+      console.log(response.data.result);
+    };
+    fetchData();
+  }, [continent]);
 
   return (
     <Wrapper>
       <Title>오리챗 멘토를 찾아보덕!</Title>
       <CardWrapper>
-        {Array.from({ length: dataLength }, (_, index) => (
-          <MentorCard key={index} num={index + 1} />
-        ))}
+        <MentorDataSection mentorDataList={mentorDataList} />
       </CardWrapper>
     </Wrapper>
   );
