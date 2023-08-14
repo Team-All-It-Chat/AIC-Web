@@ -1,15 +1,30 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import MentorCard from "./MentorCard";
 import { styled } from "styled-components";
+import { getMentorProfiles } from "../../../apis/accounts";
+import { useParams } from "react-router-dom";
 
 const MentorInfoModal = () => {
   const dataLength = 9;
+  const { continent } = useParams();
+  const [mentorListData, setMentorList] = useState([]);
+
+  // 렌더 전 데이터 패칭을 위한 useEffect
+  useEffect(() => {
+    const fetchData = async () => {
+      // console.log(continent);
+      const response = await getMentorProfiles(continent);
+      setMentorList(response.data.result);
+      console.log(response.data.result);
+    };
+    fetchData();
+  }, []);
 
   return (
     <Wrapper>
       <Title>오리챗 멘토를 찾아보덕!</Title>
       <CardWrapper>
-      {Array.from({ length: dataLength }, (_, index) => (
+        {Array.from({ length: dataLength }, (_, index) => (
           <MentorCard key={index} num={index + 1} />
         ))}
       </CardWrapper>
@@ -24,7 +39,7 @@ const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   height: fit-content;
-`
+`;
 
 const Title = styled.div`
   font-size: 2.7rem;
