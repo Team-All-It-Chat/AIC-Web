@@ -4,27 +4,34 @@ import { styled } from "styled-components";
 import SideBar from "./SideBar";
 import { useRecoilValue } from "recoil";
 import { isMentorAtom } from "../../recoil/atoms";
+import { mentorImgAtom } from "../../recoil/atoms";
 
 const CommunityNavBar = () => {
   const isMentor = useRecoilValue(isMentorAtom);
+  const mentorImg = useRecoilValue(mentorImgAtom);
+
   const navigate = useNavigate();
   const mypageBtnHandle = () => {
-    if(isMentor){
-      navigate('/mypageMentor/chats');
+    if (isMentor) {
+      navigate("/mypageMentor/chats");
     } else {
-      navigate('/mypageMentee/chats');
+      navigate("/mypageMentee/chats");
     }
-  }
-  
+  };
+
   return (
     <Wrapper>
       <LogoWrapper onClick={() => navigate(`/`)}>
         <LogoImage src="/img/navlogo.png" />
       </LogoWrapper>
       <ButtonWrapper>
-         <SideBar mypageBtnHandle={mypageBtnHandle}/>
+        <SideBar mypageBtnHandle={mypageBtnHandle} />
         <ProfileCircle onClick={mypageBtnHandle}>
-          <ProfileImg src="/img/navprofile.png" />
+          {isMentor ? (
+            <ProfileImg src={mentorImg} />
+          ) : (
+            <ProfileImg src="/img/mentee_profile.png" />
+          )}
         </ProfileCircle>
       </ButtonWrapper>
     </Wrapper>

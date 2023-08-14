@@ -17,10 +17,10 @@ const MenteeMypageSection = () => {
   return (
     <Wrapper>
       <SubWrapper>
-      <BackImg />
+        <BackImg />
         <ProfileSection>
           <ProfileCircle>
-            <ProfileImg src="/img/mainduck.png" />
+            <ProfileImg src="/img/mentee_profile.png" />
           </ProfileCircle>
           <UserTitle>멘티둥 &gt;</UserTitle>
         </ProfileSection>
@@ -64,7 +64,7 @@ const BackImg = styled.div`
   position: absolute;
   top: 0%;
   background-color: #c5e5f6;
-  background-image: url('/img/mypageBanner.png');
+  background-image: url("/img/mypageBanner.png");
   background-repeat: repeat-x;
   height: 500px;
   width: 100%;
@@ -104,12 +104,9 @@ const ProfileCircle = styled.div`
 `;
 
 const ProfileImg = styled.img`
-  width: 90%;
-  height: 80%;
-  margin-top: 21%;
+  width: 100%;
+  height: 100%;
   object-fit: contain;
-  border-bottom-left-radius: 50%;
-  border-bottom-right-radius: 50%;
 `;
 
 const UserTitle = styled.div`

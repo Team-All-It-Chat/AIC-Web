@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { styled } from "styled-components";
+import { mentorImgAtom } from "../../../recoil/atoms";
+import { useRecoilValue } from "recoil";
 
 const MentorMypageSection = () => {
   const { pathname } = useLocation();
   const navigate = useNavigate();
   const [modal, setModal] = useState();
+  const mentorImg = useRecoilValue(mentorImgAtom);
 
   useEffect(() => {
     if (pathname.includes("chats")) {
@@ -21,7 +24,7 @@ const MentorMypageSection = () => {
         <BackImg />
         <ProfileSection>
           <ProfileCircle>
-            <ProfileImg src="/img/china_cut_ori.png" />
+            <ProfileImg src={mentorImg} />
           </ProfileCircle>
           <UserTitle>오동동 &gt;</UserTitle>
         </ProfileSection>
@@ -65,7 +68,7 @@ const BackImg = styled.div`
   position: absolute;
   top: 0%;
   background-color: #c5e5f6;
-  background-image: url('/img/mypageBanner.png');
+  background-image: url("/img/mypageBanner.png");
   background-repeat: repeat-x;
   height: 500px;
   width: 100%;
@@ -105,12 +108,9 @@ const ProfileCircle = styled.div`
 `;
 
 const ProfileImg = styled.img`
-  width: 90%;
-  height: 80%;
-  margin-top: 21%;
-  object-fit: contain;
-  border-bottom-left-radius: 50%;
-  border-bottom-right-radius: 50%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 `;
 
 const UserTitle = styled.div`
