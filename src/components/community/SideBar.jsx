@@ -66,17 +66,17 @@ const SideMenu = ({mypageBtnHandle}) => {
             <Line />
           </Category>
           <Category>
+            <Title onClick={mypageBtnHandle}>
+              마이페이지
+            </Title>
+            <Line />
+          </Category>
+          <Category>
             <Title>설정</Title>
             <Line />
           </Category>
           <Category>
             <Title>로그아웃</Title>
-            <Line />
-          </Category>
-          <Category>
-            <Title onClick={mypageBtnHandle}>
-              마이페이지
-            </Title>
             <Line />
           </Category>
         </CategorySection>
