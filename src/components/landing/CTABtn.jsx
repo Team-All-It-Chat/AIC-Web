@@ -6,7 +6,10 @@ const CTABtn = () => {
   const navigate = useNavigate();
 
   const onClick = () => {
-    navigate("/continentSelect");
+    const confirmed = window.confirm("로그인을 먼저 해주세요!");
+    if (confirmed) {
+      navigate("/signup");
+    }
   };
   return <CTA onClick={onClick}>오리챗 시작하기</CTA>;
 };
