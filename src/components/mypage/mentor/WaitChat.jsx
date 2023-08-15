@@ -2,22 +2,29 @@ import React from "react";
 import { styled } from "styled-components";
 import { useNavigate } from "react-router-dom";
 
-const WaitChat = () => {
+const WaitChat = ({ database }) => {
   const navigate = useNavigate();
+
+  const title =
+    database.question.length > 40
+      ? database.question.substring(0, 40) + "..."
+      : database.question;
+
+  const onClick = () => {
+    navigate(`/applyAlert`);
+  };
   return (
     <>
-      <List>
+      <List onClick={onClick}>
         <ProfileSection>
           <ProfileCircle>
-            <ProfileImg src="/img/minicloud_ori.png" />
+            <ProfileImg src="/img/mentee_profile.png" />
           </ProfileCircle>
-          오동잎
+          멘티동
         </ProfileSection>
-        <ChatTitle onClick={() => navigate(`/applyAlert`)}>
-          00대학교로 교환학생을 가신 구체적인 이유가 궁금합니다!{" "}
-        </ChatTitle>
+        <ChatTitle>{title}</ChatTitle>
         <BtnWrapper>
-          <AcceptBtn onClick={() => navigate(`/applyAlert`)}>답변</AcceptBtn>
+          <AcceptBtn>답변</AcceptBtn>
           <RejectBtn>거절</RejectBtn>
         </BtnWrapper>
       </List>

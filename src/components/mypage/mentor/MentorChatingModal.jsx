@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { styled } from "styled-components";
-import WaitChat from "./WaitChat";
 import { getAllChat } from "../../../apis/chat";
 import MentorChatDataSection from "./MentorChatDataSection";
+import WaitChatDataSection from "./WaitChatDataSection";
 
 const MentorChatingModal = () => {
-  const waitChatLength = 4;
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -21,11 +20,7 @@ const MentorChatingModal = () => {
       <SubWrapper>
         <Title>나의 답변을 기다리는 오리챗</Title>
         <WaitListSection>
-          {Array.from({ length: waitChatLength }, (_, index) => (
-            <>
-              <WaitChat key={index} />
-            </>
-          ))}
+          <WaitChatDataSection data={data} />
         </WaitListSection>
       </SubWrapper>
       <SubWrapper>
