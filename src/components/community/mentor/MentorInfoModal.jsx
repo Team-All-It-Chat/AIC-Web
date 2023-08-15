@@ -14,7 +14,7 @@ const MentorInfoModal = () => {
       // console.log(continent);
       const response = await getMentorProfiles(continent);
       setMentorList(response.data.result);
-      // console.log(response.data.result);
+      console.log(response.data.result);
     };
     fetchData();
   }, [continent]);
@@ -22,9 +22,7 @@ const MentorInfoModal = () => {
   return (
     <Wrapper>
       <Title>오리챗 멘토를 찾아보덕!</Title>
-      <CardWrapper>
         <MentorDataSection mentorDataList={mentorDataList} />
-      </CardWrapper>
     </Wrapper>
   );
 };
@@ -44,15 +42,4 @@ const Title = styled.div`
   text-align: start;
   width: 100%;
   margin-bottom: 3%;
-`;
-
-const CardWrapper = styled.div`
-  width: 95%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 2%;
-  height: fit-content;
-  margin-bottom: 50px;
 `;
