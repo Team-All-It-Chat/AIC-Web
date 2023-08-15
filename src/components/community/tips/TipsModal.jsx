@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { styled } from "styled-components";
-import TipDataSection from './TipDataSection';
+import TipDataSection from "./TipDataSection";
 import { useParams } from "react-router-dom";
 import { getPostsOfContinent } from "../../../apis/posts";
 
@@ -20,7 +20,7 @@ const TipsModal = () => {
   return (
     <Wrapper>
       <Title>오리챗 멘토의 생생한 이야기를 들어보덕!</Title>
-      <TipDataSection tipDataList={tipDataList}/>
+      <TipDataSection tipDataList={tipDataList} />
     </Wrapper>
   );
 };
@@ -28,6 +28,7 @@ const TipsModal = () => {
 export default TipsModal;
 
 const Wrapper = styled.div`
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
