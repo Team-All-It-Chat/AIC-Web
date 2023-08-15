@@ -25,7 +25,7 @@ const MenteeChatHistory = ({ history }) => {
           <ProfileCircle>
             <ProfileImg src="/img/duck1.png" />
           </ProfileCircle>
-          {history.answerer.name}
+          <Name>{history.answerer.name}</Name>
         </ProfileSection>
         <ChatTitle>{title}</ChatTitle>
         <Date>
@@ -46,6 +46,14 @@ const List = styled.div`
   border-bottom: solid 1px #dadada;
   padding-bottom: 0.5%;
   margin-top: 1%;
+`;
+
+const Name = styled.div`
+  width: fit-content;
+  min-width: 65px;
+  @media (max-width: 900px) {
+    font-size: 1.5rem;
+  }
 `;
 
 const ProfileSection = styled.div`
@@ -84,7 +92,7 @@ const ProfileImg = styled.img`
 `;
 
 const ChatTitle = styled.div`
-  width: 55%;
+  width: 60%;
   font-size: 1.8rem;
   font-weight: 300;
   cursor: pointer;
