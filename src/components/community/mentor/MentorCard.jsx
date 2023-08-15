@@ -1,20 +1,42 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { styled } from "styled-components";
+import { getRecentReview } from "../../../apis/chat";
+import ViewStarRate from "./ViewStarRate";
 
 const MentorCard = ({ mentor }) => {
+  const [recentReview, setRecentReview] = useState(null);
   const navigate = useNavigate();
+  const { continent } = useParams();
   const id = mentor.id;
   const name = mentor.name;
   const country = mentor.contry;
   const originalForeignUniv = mentor.foreign_univ;
   const foreignUniv =
-    originalForeignUniv.length > 20
-      ? originalForeignUniv.substring(0, 18) + "..."
+    originalForeignUniv.length > 19
+      ? originalForeignUniv.substring(0, 19) + "..."
       : originalForeignUniv;
   const chatCount = mentor.chat_count === null ? 0 : mentor.chat_count;
+  const reviewContent = recentReview === null ? '아직 리뷰가 없어요!' : recentReview.content;
+  const reviewRate = recentReview === null ? 0 : recentReview.rate;
 
-  const { continent } = useParams();
+  useEffect(() => {
+    const fetchData = async () => {
+      // console.log(continent);
+      try{
+        const response = await getRecentReview(id);
+        if(response.data.status === 200){
+          setRecentReview(response.data.review);
+        } else{
+          setRecentReview(null)
+        }
+      }catch(error){
+          console.log("리뷰 가져오기 에러 발생")
+      }
+      
+    };
+    fetchData();
+  }, [id]);
 
   const getContinentNumber = (continent) => {
     switch (continent) {
@@ -36,6 +58,7 @@ const MentorCard = ({ mentor }) => {
   };
 
   const continentNum = getContinentNumber(continent);
+
 
   return (
     <Card onClick={() => navigate(`/viewMentor/${continent}/${id}`)}>
@@ -59,12 +82,11 @@ const MentorCard = ({ mentor }) => {
       <BottomWrapper>
         <Text3>총 {chatCount} 번의 오리챗을 했어요</Text3>
         <Row>
-          <Text4>오동동 광팬</Text4>
-          <Star src="/img/stars.png"></Star>
+          <Text4>최신 리뷰</Text4>
+          <ViewStarRate rate={reviewRate}/>
         </Row>
         <Text5>
-          내생일파티에 너만 멋 온 그날 혜지니가 머시기 혼 난 날~지워니가
-          여친이랑 헤어진그날 걔는 너가 없이 아주 기냥 아주 멋..
+          {reviewContent}
         </Text5>
       </BottomWrapper>
     </Card>
@@ -106,7 +128,7 @@ const ProfileImg = styled.img`
 
 const TopWrapper = styled.div`
   width: 85%;
-  height: 40%;
+  height: 35%;
   display: flex;
   align-items: center;
   justify-content: start;
@@ -115,7 +137,7 @@ const TopWrapper = styled.div`
 
 const BottomWrapper = styled.div`
   width: 85%;
-  height: 30%;
+  height: 35%;
   display: flex;
   flex-direction: column;
   align-items: start;
@@ -186,16 +208,11 @@ const Text3 = styled.div`
 const Text4 = styled.div`
   font-size: 16px;
   font-weight: 400;
-  padding-left: 3%;
-`;
-
-const Star = styled.img`
-  width: 80px;
-  height: 14px;
+  padding-left: 2%;
 `;
 
 const Text5 = styled.div`
   font-size: 11px;
   font-weight: 300;
-  padding-left: 3%;
+  padding-left: 2%;
 `;
