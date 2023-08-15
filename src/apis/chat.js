@@ -39,3 +39,13 @@ export const applyQuestion = async (body) => {
     throw error;
   }
 };
+
+export const answerQuestion = async (body) => {
+  const token = localStorage.getItem("access");
+  const response = await axios.patch(`${baseUrl}/`, body, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  return response.data;
+};
