@@ -47,8 +47,8 @@ function App() {
         <Route path="/viewPost/:id" element={<ViewPostPage />} />
         {/* 오리챗 신청 */}
         <Route path="/apply" element={<ApplyPage />} />
-        <Route path="/applyAlert" element={<ApplyAlertPage />} />
-        <Route path="/answerAlert" element={<AnswerPage />} />
+        <Route path="/applyAlert/:id" element={<ApplyAlertPage />} />
+        <Route path="/answerAlert/:id" element={<AnswerPage />} />
         {/* 작성 페이지 */}
         <Route path="/writeReview" element={<ReviewPage />} />
         <Route path="/writePost" element={<WritePostPage />} />
