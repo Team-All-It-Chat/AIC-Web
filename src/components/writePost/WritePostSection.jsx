@@ -10,6 +10,7 @@ const WritePostSection = () => {
   const [previewImg, setPreviewImg] = useState("/img/previewDefalut.svg");
   const [title, onChangeTitle] = useForm();
   const [content, onChangeContent] = useForm();
+  const [uploadedImage, setUploadedImage] = useState(null);
 
   const keywords = [
     "진로",
@@ -48,7 +49,7 @@ const WritePostSection = () => {
         content: content,
         tag1 : selectedKeywords.length > 0 ? selectedKeywords[0] : null,
         tag2 : selectedKeywords.length > 1 ? selectedKeywords[1] : null,
-        image : previewImg === "/img/previewDefalut.svg" ? null : previewImg
+        image : previewImg === "/img/previewDefalut.svg" ? null : uploadedImage
       };
 
       console.log(body);
@@ -58,6 +59,7 @@ const WritePostSection = () => {
     }
   };
 
+  // 이미지 프리뷰 및 전송 이미지 세팅
   const insertImg = (e) => {
     let reader = new FileReader();
 
@@ -74,6 +76,11 @@ const WritePostSection = () => {
         setPreviewImg(previewImgUrl);
       }
     };
+
+    // 업로드 파일 세팅 부분
+    const file = e.target.files[0];
+    const imageUrl = URL.createObjectURL(file);
+    setUploadedImage(imageUrl);
   };
 
   return (

@@ -46,7 +46,7 @@ function App() {
         <Route path="/viewMentor/:continent/:id" element={<MentorInfoPage />} />
         <Route path="/viewPost/:id" element={<ViewPostPage />} />
         {/* 오리챗 신청 */}
-        <Route path="/apply" element={<ApplyPage />} />
+        <Route path="/apply/:id" element={<ApplyPage />} />
         <Route path="/applyAlert/:id" element={<ApplyAlertPage />} />
         <Route path="/answerAlert/:id" element={<AnswerPage />} />
         {/* 작성 페이지 */}

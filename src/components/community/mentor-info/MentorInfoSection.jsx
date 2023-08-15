@@ -3,12 +3,15 @@ import { useNavigate, useParams } from "react-router-dom";
 import { styled } from "styled-components";
 import MiniCard from "./MiniCard";
 import { getMentorProfiles } from "../../../apis/accounts";
+import { isMentorAtom } from "../../../recoil/atoms";
+import { useRecoilValue } from "recoil";
 
 const MentorInfoSection = () => {
   const navigate = useNavigate();
   const { continent } = useParams();
   const { id } = useParams();
   const [mentor, setMentor] = useState(null);
+  const isMentor = useRecoilValue(isMentorAtom);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -107,7 +110,7 @@ const MentorInfoSection = () => {
               &gt;
             </Row2>
           </Column>
-          <Btn onClick={() => navigate(`/apply`)}>오리챗 신청하기</Btn>
+          {isMentor ? null :<Btn onClick={() => navigate(`/apply`)}>오리챗 신청하기</Btn>}
         </RightWrapper>
       </Box>
     </Wrapper>
