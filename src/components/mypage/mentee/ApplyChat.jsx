@@ -1,21 +1,39 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { styled } from "styled-components";
 
-const ApplyChat = () => {
+const ApplyChat = ({ database }) => {
+  const navigate = useNavigate();
+  console.log(database);
+  const title =
+    database.question.length > 50
+      ? database.question.substring(0, 50) + "..."
+      : database.question;
+
+  const statusText = (status) => {
+    if (status === 0) {
+      return "답변 대기";
+    } else if (status === 2) {
+      return "거절";
+    }
+    // 다른 status 값에 대한 처리도 추가할 수 있음
+    return ""; // default 값
+  };
+
+  const state = database.status;
+
   return (
     <>
       <List>
         <ProfileSection>
           <ProfileCircle>
-            <ProfileImg src="/img/china_cut_ori.png" />
+            <ProfileImg src="/img/duck1.png" />
           </ProfileCircle>
-          오동동
+          {database.answerer.name}
         </ProfileSection>
-        <ChatTitle>
-          00대학교로 교환학생을 가신 구체적인 이유가 궁금합니다!{" "}
-        </ChatTitle>
+        <ChatTitle>{title}</ChatTitle>
         <BtnWrapper>
-          <QuestionState>답변 대기</QuestionState>
+          <QuestionState status={state}>{statusText(state)}</QuestionState>
           <Btn>확인</Btn>
         </BtnWrapper>
       </List>
@@ -97,7 +115,15 @@ const QuestionState = styled.div`
   justify-content: center;
   width: 110px;
   height: 45px;
-  color: var(--orange, #ffa946);
+  ${(props) =>
+    props.status === 0
+      ? `
+      color: var(--orange, #ffa946);    `
+      : props.status === 2
+      ? `
+      color: var(--red, #d01515);
+    `
+      : ""};
   @media (max-width: 900px) {
     width: 75px;
     height: 30px;

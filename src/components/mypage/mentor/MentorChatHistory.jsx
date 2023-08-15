@@ -8,6 +8,7 @@ const MentorChatHistory = ({ history }) => {
     navigate(`/checkAnswer/${history.id}`);
     console.log(history);
   };
+
   const title =
     history.question.length > 30
       ? history.question.substring(0, 30) + "..."
@@ -25,7 +26,7 @@ const MentorChatHistory = ({ history }) => {
           <ProfileCircle>
             <ProfileImg src="/img/mentee_profile.png" />
           </ProfileCircle>
-          멘티둥
+          {history.questioner.name}
         </ProfileSection>
         <ChatTitle>{title}</ChatTitle>
         <Date>
@@ -51,8 +52,9 @@ const List = styled.div`
 const ProfileSection = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: start;
   width: fit-content;
+  min-width: 90px;
   gap: 10px;
   font-size: 2rem;
   font-weight: 600;
