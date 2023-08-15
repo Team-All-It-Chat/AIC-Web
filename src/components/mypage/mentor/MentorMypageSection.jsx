@@ -26,7 +26,7 @@ const MentorMypageSection = () => {
           <ProfileCircle>
             <ProfileImg src={mentorImg} />
           </ProfileCircle>
-          <UserTitle>오동동 &gt;</UserTitle>
+          <UserTitle>멘토덕 &gt;</UserTitle>
         </ProfileSection>
         <MypageBox>
           <MenuBtnWrapper>

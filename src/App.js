@@ -63,7 +63,7 @@ function App() {
         </Route>
         {/* 답변확인 페이지 */}
         <Route path="/readAnswer" element={<ReadAnswerPage />} />
-        <Route path="/checkAnswer" element={<CheckAnswerPage />} />
+        <Route path="/checkAnswer/:id" element={<CheckAnswerPage />} />
       </Routes>
     </>
   );
