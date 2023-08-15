@@ -3,7 +3,6 @@ import ApplyChatDataSection from "./ApplyChatDataSection";
 import MenteeChatDataSection from "./MenteeChatDataSection";
 import { styled } from "styled-components";
 // import { useNavigate } from "react-router-dom";
-import useAllChat from "../../../hooks/useAllChat";
 import { getAllChat } from "../../../apis/chat";
 
 const MenteeChatingModal = () => {
