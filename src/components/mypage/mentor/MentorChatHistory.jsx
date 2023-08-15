@@ -2,24 +2,35 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { styled } from "styled-components";
 
-const MentorChatHistory = () => {
+const MentorChatHistory = ({ history }) => {
   const navigate = useNavigate();
-
   const onClick = () => {
-    navigate("/checkAnswer");
+    navigate(`/checkAnswer/${history.id}`);
+    console.log(history);
   };
+  const title =
+    history.question.length > 30
+      ? history.question.substring(0, 30) + "..."
+      : history.question;
+
+  const date = history.question_time;
+  const year = date.substring(0, 4);
+  const month = date.substring(5, 7);
+  const day = date.substring(8, 10);
 
   return (
     <>
       <List onClick={onClick}>
         <ProfileSection>
           <ProfileCircle>
-            <ProfileImg src="/img/minicloud_ori.png" />
+            <ProfileImg src="/img/mentee_profile.png" />
           </ProfileCircle>
-          오뚱뚱
+          멘티둥
         </ProfileSection>
-        <ChatTitle>00대학교에서 현지 재학생 분들을 만나기 쉬운가요?</ChatTitle>
-        <Date>23/08/11 답변 완료</Date>
+        <ChatTitle>{title}</ChatTitle>
+        <Date>
+          {year}년 {month}월 {day}일 답변 완료
+        </Date>
       </List>
     </>
   );

@@ -1,11 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { styled } from "styled-components";
 import WaitChat from "./WaitChat";
-import MentorChatHistory from "./MentorChatHistory";
+import { getAllChat } from "../../../apis/chat";
+import MentorChatDataSection from "./MentorChatDataSection";
 
 const MentorChatingModal = () => {
   const waitChatLength = 4;
-  const chatHistoryLength = 7;
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await getAllChat();
+      setData(response);
+    };
+    fetchData();
+  }, []);
+
   return (
     <Wrapper>
       <SubWrapper>
@@ -21,11 +31,7 @@ const MentorChatingModal = () => {
       <SubWrapper>
         <Title>나의 오리챗 기록</Title>
         <HistoryListSection>
-          {Array.from({ length: chatHistoryLength }, (_, index) => (
-            <>
-              <MentorChatHistory key={index} />
-            </>
-          ))}
+          <MentorChatDataSection data={data} />
         </HistoryListSection>
       </SubWrapper>
     </Wrapper>
