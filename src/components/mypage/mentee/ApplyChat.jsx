@@ -1,9 +1,9 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import { styled } from "styled-components";
 
 const ApplyChat = ({ database }) => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   console.log(database);
   const title =
     database.question.length > 50
