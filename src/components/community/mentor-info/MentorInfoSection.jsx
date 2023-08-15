@@ -7,17 +7,17 @@ import { getMentorProfiles } from "../../../apis/accounts";
 const MentorInfoSection = () => {
   const navigate = useNavigate();
   const { continent } = useParams();
-  const { num } = useParams();
+  const { id } = useParams();
   const [mentor, setMentor] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
       const response = await getMentorProfiles(continent);
-      const filteredMentor = response.data.result.find(mentor => mentor.id === Number(num));
+      const filteredMentor = response.data.result.find(mentor => mentor.id === Number(id));
       setMentor(filteredMentor);
     };
     fetchData();
-  }, [continent, num]);
+  }, [continent, id]);
 
   // 데이터가 세팅 되기 전까지 컴포넌트 렌더링 x
   if (mentor === null) {
