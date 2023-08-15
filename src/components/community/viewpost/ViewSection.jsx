@@ -1,97 +1,65 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { styled } from "styled-components";
+import { getPost } from "../../../apis/posts";
+import { getMentorInfo } from "../../../apis/accounts";
 
 const ViewSection = () => {
   const router = useNavigate();
+  const [tip, setTip] = useState(null);
+  const [writer, setWriter] = useState(null);
+  const { id } = useParams();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response1 = await getPost(id);
+        setTip(response1.data.result);
+        const writerId = response1.data.result.writer; // Get writer ID from the response
+        const response2 = await getMentorInfo(writerId);
+        setWriter(response2.data.result.name);
+      } catch (error) {
+        console.log("특정 게시물 가져오기 에러");
+      }
+    };
+    fetchData();
+  }, [id]);
 
   const onClick = () => {
     router("/apply");
   };
+
+  // 데이터가 세팅 되기 전까지 컴포넌트 렌더링 x
+  if (tip === null) {
+    return null;
+  }
+
+  const title = tip.title;
+  const content = tip.content.slice(1, -1);
+  const tag1 = tip.tag1 === null ? null : tip.tag1;
+  const tag2 = tip.tag2 === null ? null : tip.tag2;
+  const image = tip.image;
+  const date = tip.created_at;
+  const year = date.substring(0, 4);
+  const month = date.substring(5, 7);
+  const day = date.substring(8, 10);
+
   return (
     <Wrapper>
       <ViewWrapper>
-        <Title>중국가면 꼭 해야할 일 TOP5</Title>
+        <Title>{title}</Title>
         <InfoSection>
-          <MentorName>최재영</MentorName>
-          <Date> 2023-08-07</Date>
+          <MentorName>{writer}</MentorName>
+          <Date>
+            {year}년 {month}월 {day}일
+          </Date>
         </InfoSection>
         <Row1>
-          <Category>학교생활</Category>
-          <Category>어학준비</Category>
-          <Category>여행꿀팁</Category>
+          {tag1 === null ? null : <Category>{tag1}</Category>}
+          {tag2 === null ? null : <Category>{tag2}</Category>}
         </Row1>
-        <Image src="/img/postimg.png" />
-        <Post>
-          Wish it was a bad trip Wish it was a movie 다 꿈이였음 좋겠지만서도
-          yeah, lately I cannot let it go (cannot let it go) I cannot let it
-          go-whoa, go-whoa, go (hey) A black rose in my heart 타버린 사랑,
-          변해버린 나 With my broken heart A black rose in your heart 타버린
-          사랑, 변해버린 너 까맣게 타들어 가버린 rose 꼭 쥐고 싶었지 난 나를
-          다치게 해도 괜찮아 I'll be fine, yeah-eh 지금은 타버리고 재밖에 안
-          남았지 그 말들 (oh) 돌리고 싶어도 이미 지난 시간들 (hey) 아직도 잠을
-          못 자 여전히 허전한 내 sofa (ha) 아름다웠었던 꽃 한 송이 아파도 놓진
-          말자 다신 하지 못할 여러 약속들까지 함께 타들어 가버렸네 우리의 불같이
-          Wish it was a bad trip Wish it was a movie 다 꿈이였음 좋겠지만서도
-          yeah, lately I cannot let it go (cannot let it go) I cannot let it
-          go-whoa, go-whoa, go (hey) A black rose in my heart 타버린 사랑,
-          변해버린 나 With my broken heart A black rose in your heart 타버린
-          사랑, 변해버린 너 까맣게 타들어 가버린 rose 여전히 내 옷장 한켠에는
-          너가 후회를 했어 사실 난 (oh) 하루도 빠짐없이 모든 날 (hey) 손 하나를
-          흔들지 못해서 못 한 goodbye (goodbye) 바보 같앴지 너를 보내면서 했었던
-          그 말 지금이라도 돌아와 준담 혹시 We'll be lovin' all night 'til the
-          mornin' (hoo) 잘 가, 고맙단 말 말하지 못했어 넌 안 들리겠지만 I miss
-          you Wish it was a bad trip Wish it was a movie 다 꿈이였음
-          좋겠지만서도 yeah, lately I cannot let it go (cannot let it go) I
-          cannot let it go-whoa, go-whoa, go (hey) A black rose in my heart
-          타버린 사랑, 변해버린 나 With my broken heart A black rosе in your
-          heart 타버린 사랑, 변해버린 너 까맣게 타들어 가버린 rose Wish it was a
-          bad trip Wish it was a movie 다 꿈이였음 좋겠지만서도 yeah, lately I
-          cannot let it go (cannot let it go) I cannot let it go-whoa, go-whoa,
-          go (hey) A black rose in my heart 타버린 사랑, 변해버린 나 With my
-          broken heart A black rose in your heart 타버린 사랑, 변해버린 너
-          까맣게 타들어 가버린 rose 꼭 쥐고 싶었지 난 나를 다치게 해도 괜찮아
-          I'll be fine, yeah-eh 지금은 타버리고 재밖에 안 남았지 그 말들 (oh)
-          돌리고 싶어도 이미 지난 시간들 (hey) 아직도 잠을 못 자 여전히 허전한
-          내 sofa (ha) 아름다웠었던 꽃 한 송이 아파도 놓진 말자 다신 하지 못할
-          여러 약속들까지 함께 타들어 가버렸네 우리의 불같이 Wish it was a bad
-          trip Wish it was a movie 다 꿈이였음 좋겠지만서도 yeah, lately I
-          cannot let it go (cannot let it go) I cannot let it go-whoa, go-whoa,
-          go (hey) A black rose in my heart 타버린 사랑, 변해버린 나 With my
-          broken heart A black rose in your heart 타버린 사랑, 변해버린 너
-          까맣게 타들어 가버린 rose 여전히 내 옷장 한켠에는 너가 후회를 했어
-          사실 난 (oh) 하루도 빠짐없이 모든 날 (hey) 손 하나를 흔들지 못해서 못
-          한 goodbye (goodbye) 바보 같앴지 너를 보내면서 했었던 그 말 지금이라도
-          돌아와 준담 혹시 We'll be lovin' all night 'til the mornin' (hoo) 잘
-          가, 고맙단 말 말하지 못했어 넌 안 들리겠지만 I miss you Wish it was a
-          bad trip Wish it was a movie 다 꿈이였음 좋겠지만서도 yeah, lately I
-          cannot let it go (cannot let it go) I cannot let it go-whoa, go-whoa,
-          go (hey) A black rose in my heart 타버린 사랑, 변해버린 나 With my
-          broken heart A black rosе in your heart 타버린 사랑, 변해버린 너
-          까맣게 타들어 가버린 rose Wish it was a bad trip Wish it was a movie
-          다 꿈이였음 좋겠지만서도 yeah, lately I cannot let it go (cannot let
-          it go) I cannot let it go-whoa, go-whoa, go (hey) A black rose in my
-          heart 타버린 사랑, 변해버린 나 With my broken heart A black rose in
-          your heart 타버린 사랑, 변해버린 너 까맣게 타들어 가버린 rose 꼭 쥐고
-          싶었지 난 나를 다치게 해도 괜찮아 I'll be fine, yeah-eh 지금은
-          타버리고 재밖에 안 남았지 그 말들 (oh) 돌리고 싶어도 이미 지난 시간들
-          (hey) 아직도 잠을 못 자 여전히 허전한 내 sofa (ha) 아름다웠었던 꽃 한
-          송이 아파도 놓진 말자 다신 하지 못할 여러 약속들까지 함께 타들어
-          가버렸네 우리의 불같이 Wish it was a bad trip Wish it was a movie 다
-          꿈이였음 좋겠지만서도 yeah, lately I cannot let it go (cannot let it
-          go) I cannot let it go-whoa, go-whoa, go (hey) A black rose in my
-          heart 타버린 사랑, 변해버린 나 With my broken heart A black rose in
-          your heart 타버린 사랑, 변해버린 너 까맣게 타들어 가버린 rose 여전히
-          내 옷장 한켠에는 너가 후회를 했어 사실 난 (oh) 하루도 빠짐없이 모든 날
-          (hey) 손 하나를 흔들지 못해서 못 한 goodbye (goodbye) 바보 같앴지 너를
-          보내면서 했었던 그 말 지금이라도 돌아와 준담 혹시 We'll be lovin' all
-          night 'til the mornin' (hoo) 잘 가, 고맙단 말 말하지 못했어 넌 안
-          들리겠지만 I miss you Wish it was a bad trip Wish it was a movie 다
-          꿈이였음 좋겠지만서도 yeah, lately I cannot let it go (cannot let it
-          go) I cannot let it go-whoa, go-whoa, go (hey) A black rose in my
-          heart 타버린 사랑, 변해버린 나 With my broken heart A black rosе in
-          your heart 타버린 사랑, 변해버린 너 까맣게 타들어 가버린 rose
-        </Post>
+        <Image src={image} />
+        <Post>{content}</Post>
       </ViewWrapper>
       <Text>멘토와 대화를 나누고싶덕?</Text>
       <Btn onClick={onClick}>오리챗 신청하기</Btn>
@@ -137,6 +105,7 @@ const Post = styled.div`
   width: 100%;
   font-size: 14px;
   margin-bottom: 50px;
+  white-space: pre-line;
 `;
 
 const Date = styled.div`
@@ -190,7 +159,7 @@ const Title = styled.div`
 `;
 
 const Row1 = styled.div`
-  margin-top: 2%;
+  margin-top: 1%;
   width: 100%;
   display: flex;
   gap: 10px;
