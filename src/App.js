@@ -62,7 +62,7 @@ function App() {
           <Route path="reviews" element={<ReviewsModal />} />
         </Route>
         {/* 답변확인 페이지 */}
-        <Route path="/readAnswer" element={<ReadAnswerPage />} />
+        <Route path="/readAnswer/:id" element={<ReadAnswerPage />} />
         <Route path="/checkAnswer/:id" element={<CheckAnswerPage />} />
       </Routes>
     </>
