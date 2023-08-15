@@ -37,7 +37,10 @@ const ViewSection = () => {
   }
 
   const title = tip.title;
-  const content = tip.content.slice(1, -1);
+  let content = tip.content;
+  if (content[0] === '"' && content[content.length - 1] === '"') {
+    content = content.slice(1, -1);
+  }
   const tag1 = tip.tag1 === null ? null : tip.tag1;
   const tag2 = tip.tag2 === null ? null : tip.tag2;
   const image = tip.image;

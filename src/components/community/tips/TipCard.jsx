@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { styled } from "styled-components";
-import { getMentorInfo } from '../../../apis/accounts';
+import { getMentorInfo } from "../../../apis/accounts";
 
 const TipCard = ({ tip }) => {
   const navigate = useNavigate();
@@ -9,26 +9,29 @@ const TipCard = ({ tip }) => {
   const id = tip.id;
   const title =
     tip.title.length > 15 ? tip.title.substring(0, 15) + "..." : tip.title;
-  const contentPreview =
+  let contentPreview =
     tip.content.length > 80
-      ? tip.content.substring(1, 80) + "..."
+      ? tip.content.substring(0, 80) + "..."
       : tip.content;
+  if (contentPreview[0] === '"') {
+    contentPreview = contentPreview.slice(1);
+  }
   const tag1 = tip.tag1 === null ? null : tip.tag1;
   const tag2 = tip.tag2 === null ? null : tip.tag2;
   const image = tip.image;
   const date = tip.created_at;
-  const year = date.substring(0,4)
-  const month = date.substring(5,7)
-  const day = date.substring(8,10)
+  const year = date.substring(0, 4);
+  const month = date.substring(5, 7);
+  const day = date.substring(8, 10);
   const writerId = tip.writer;
 
   useEffect(() => {
     const fetchData = async () => {
-      try{
+      try {
         const response = await getMentorInfo(writerId);
         setWriter(response.data.result.name);
-      }catch(error){
-          console.log("작성자 프로필 가져오기 에러");
+      } catch (error) {
+        console.log("작성자 프로필 가져오기 에러");
       }
     };
     fetchData();
@@ -48,7 +51,9 @@ const TipCard = ({ tip }) => {
           <Text3>{contentPreview}</Text3>
         </Row>
         <Row>
-          <Text4>{year}년 {month}월 {day}일</Text4>
+          <Text4>
+            {year}년 {month}월 {day}일
+          </Text4>
           <CategoryRow>
             {tag1 === null ? null : <Category>{tag1}</Category>}
             {tag2 === null ? null : <Category>{tag2}</Category>}
