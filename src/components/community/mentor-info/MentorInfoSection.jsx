@@ -13,7 +13,9 @@ const MentorInfoSection = () => {
   useEffect(() => {
     const fetchData = async () => {
       const response = await getMentorProfiles(continent);
-      const filteredMentor = response.data.result.find(mentor => mentor.id === Number(id));
+      const filteredMentor = response.data.result.find(
+        (mentor) => mentor.id === Number(id)
+      );
       setMentor(filteredMentor);
     };
     fetchData();
@@ -30,7 +32,9 @@ const MentorInfoSection = () => {
   const korUniv = mentor.kor_univ;
   const major = mentor.kor_major;
   const chatCount = mentor.chat_count === null ? 0 : mentor.chat_count;
-  const totalScore = mentor.total_score  === null ? 0 : mentor.total_score;
+  const totalScore = mentor.total_score === null ? 0 : mentor.total_score;
+  const tag1 = mentor.tag1 === null ? "키워드" : mentor.tag1;
+  const tag2 = mentor.tag2 === null ? "넣어주세요" : mentor.tag2;
 
   const getContinentNumber = (continent) => {
     switch (continent) {
@@ -80,7 +84,9 @@ const MentorInfoSection = () => {
             </Info>
             <Info>
               <Text2>오리챗 횟수/평점</Text2>
-              <Text3>{chatCount}번 / {totalScore}점</Text3>
+              <Text3>
+                {chatCount}번 / {totalScore}점
+              </Text3>
             </Info>
           </InfoWrapper>
         </LeftWrapper>
@@ -88,9 +94,8 @@ const MentorInfoSection = () => {
           <Column>
             <Text>답변 가능한 주제</Text>
             <Row1>
-              <Category>학교생활</Category>
-              <Category>어학준비</Category>
-              <Category>여행꿀팁</Category>
+              {tag1 === null ? null : <Category>{tag1}</Category>}
+              {tag2 === null ? null : <Category>{tag2}</Category>}
             </Row1>
           </Column>
           <Column>
@@ -102,7 +107,7 @@ const MentorInfoSection = () => {
               &gt;
             </Row2>
           </Column>
-          <Btn onClick={()=> navigate(`/apply`)}>오리챗 신청하기</Btn>
+          <Btn onClick={() => navigate(`/apply`)}>오리챗 신청하기</Btn>
         </RightWrapper>
       </Box>
     </Wrapper>
