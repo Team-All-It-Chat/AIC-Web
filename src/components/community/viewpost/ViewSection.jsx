@@ -3,6 +3,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import { styled } from "styled-components";
 import { getPost } from "../../../apis/posts";
 import { getMentorInfo } from "../../../apis/accounts";
+import { useRecoilValue } from "recoil";
+import { isMentorAtom } from "../../../recoil/atoms";
 
 const ViewSection = () => {
   const router = useNavigate();
@@ -10,6 +12,7 @@ const ViewSection = () => {
   const [mentorId, setMentorId] = useState(null);
   const [writer, setWriter] = useState(null);
   const { id } = useParams();
+  const isMentor = useRecoilValue(isMentorAtom);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -66,8 +69,12 @@ const ViewSection = () => {
         <Image src={image} />
         <Post>{content}</Post>
       </ViewWrapper>
-      <Text>멘토와 대화를 나누고싶덕?</Text>
-      <Btn onClick={onClick}>오리챗 신청하기</Btn>
+      {isMentor ? null : (
+        <>
+          <Text>멘토와 대화를 나누고싶덕?</Text>{" "}
+          <Btn onClick={onClick}>오리챗 신청하기</Btn>
+        </>
+      )}
     </Wrapper>
   );
 };
