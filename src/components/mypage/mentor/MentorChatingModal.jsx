@@ -1,20 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { styled } from "styled-components";
-import { getAllChat } from "../../../apis/chat";
 import MentorChatDataSection from "./MentorChatDataSection";
 import WaitChatDataSection from "./WaitChatDataSection";
+import useAllChat from "../../../hooks/useAllChat";
 
 const MentorChatingModal = () => {
-  const [data, setData] = useState([]);
+  const data = useAllChat();
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await getAllChat();
-      setData(response);
-    };
-    fetchData();
-  }, []);
-  console.log(data);
   return (
     <Wrapper>
       <SubWrapper>
