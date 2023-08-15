@@ -2,15 +2,14 @@ import React from "react";
 import MentorChatHistory from "./MentorChatHistory";
 
 const MentorChatDataSection = ({ data }) => {
+  const filteredHistory = data.filter((history) => history.status === 1);
+  const reversedFilteredHistory = filteredHistory.slice().reverse();
+
   return (
     <>
-      {data &&
-        data.map((history, i) => {
-          if (history.status === 1) {
-            return <MentorChatHistory key={history.id} history={history} />;
-          }
-          return null;
-        })}
+      {reversedFilteredHistory.map((history) => (
+        <MentorChatHistory key={history.id} history={history} />
+      ))}
     </>
   );
 };
