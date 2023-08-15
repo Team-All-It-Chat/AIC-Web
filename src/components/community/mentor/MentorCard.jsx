@@ -17,25 +17,25 @@ const MentorCard = ({ mentor }) => {
       ? originalForeignUniv.substring(0, 19) + "..."
       : originalForeignUniv;
   const chatCount = mentor.chat_count === null ? 0 : mentor.chat_count;
-  const reviewContent = recentReview === null ? '아직 리뷰가 없어요!' : recentReview.content;
+  const reviewContent =
+    recentReview === null ? "" : recentReview.content;
   const reviewRate = recentReview === null ? 0 : recentReview.rate;
-  const reviewer = recentReview === null ? 0 : recentReview.reviewer;
+  const reviewer = recentReview === null ? "오리챗 후기" : recentReview.reviewer;
 
   useEffect(() => {
     const fetchData = async () => {
       // console.log(continent);
-      try{
+      try {
         const response = await getRecentReview(id);
         // console.log(response);
-        if(response.data.status === 200){
+        if (response.data.status === 200) {
           setRecentReview(response.data.review);
-        } else{
-          setRecentReview(null)
+        } else {
+          setRecentReview(null);
         }
-      }catch(error){
-          console.log("리뷰 가져오기 에러 발생")
+      } catch (error) {
+        console.log("리뷰 가져오기 에러 발생");
       }
-      
     };
     fetchData();
   }, [id]);
@@ -61,7 +61,6 @@ const MentorCard = ({ mentor }) => {
 
   const continentNum = getContinentNumber(continent);
 
-
   return (
     <Card onClick={() => navigate(`/viewMentor/${continent}/${id}`)}>
       <TopWrapper>
@@ -85,11 +84,13 @@ const MentorCard = ({ mentor }) => {
         <Text3>총 {chatCount} 번의 오리챗을 했어요</Text3>
         <Row>
           <Text4>{reviewer}</Text4>
-          <ViewStarRate rate={reviewRate}/>
+          {recentReview === null ? "" : <ViewStarRate rate={reviewRate} />}
         </Row>
-        <Text5>
-          {reviewContent}
-        </Text5>
+        {recentReview === null ? (
+          <Text5>아직 오리챗 후기가 없어요!</Text5>
+        ) : (
+          <Text5>{reviewContent}</Text5>
+        )}
       </BottomWrapper>
     </Card>
   );
