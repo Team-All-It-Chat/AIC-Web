@@ -5,17 +5,18 @@ import { styled } from "styled-components";
 import ChatModal from "../common/ChatModal";
 import AlertBack from "../background/AlertBack";
 import { useParams } from "react-router-dom";
-import { getChat } from "../../apis/chat";
+import { answerQuestion, getChat } from "../../apis/chat";
 import { useRecoilValue } from "recoil";
 import { mentorImgAtom } from "../../recoil/atoms";
 import Goback from "../mypage/Goback";
+import { useForm } from "../../hooks/useForm";
 
 // 오리챗 신청이 들어왔어요! 페이지
 const ApplyAlert = () => {
   const [modal, setModal] = useState(false);
   const myImg = useRecoilValue(mentorImgAtom);
   const { id } = useParams();
-
+  const [answer, onChangeAnswer] = useForm();
   const [data, setData] = useState();
 
   useEffect(() => {
@@ -33,6 +34,11 @@ const ApplyAlert = () => {
   const onClick = () => {
     const confirmed = window.confirm("전송하시겠습니까?");
     if (confirmed) {
+      const body = {
+        chat_id: id,
+        answer: answer,
+      };
+      answerQuestion(body);
       setModal(true);
     }
   };
@@ -64,7 +70,12 @@ const ApplyAlert = () => {
               <Text>친절한 답변 부탁드린덕!</Text>
             </MentorWrapper>
           </Wrapper2>
-          <AnswerSection placeholder="답변을 작성해덕!"></AnswerSection>
+          <AnswerSection
+            type="answer"
+            placeholder="답변을 작성해덕!"
+            value={answer}
+            onChange={onChangeAnswer}
+          ></AnswerSection>
           <Btn onClick={onClick}>멘티에게 답변 보내기</Btn>
         </AnswerWrapper>
         <AlertBack />

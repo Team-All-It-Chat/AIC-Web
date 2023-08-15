@@ -31,7 +31,7 @@ const Apply = () => {
     if (confirmed) {
       const body = {
         question: question,
-        answerer: id
+        answerer: id,
       };
       console.log(body);
       applyQuestion(body);
