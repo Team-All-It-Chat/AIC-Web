@@ -31,5 +31,4 @@ const CardWrapper = styled.div`
   height: fit-content;
   margin-bottom: 50px;
   gap: 2%;
-  background-color: aliceblue;
 `;
