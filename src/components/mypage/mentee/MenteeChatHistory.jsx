@@ -4,9 +4,8 @@ import { styled } from "styled-components";
 
 const MenteeChatHistory = ({ history }) => {
   const navigate = useNavigate();
-  // console.log(history);
   const onClick = () => {
-    navigate("/readAnswer");
+    navigate(`/readAnswer/${history.id}`);
   };
   const title =
     history.question.length > 30

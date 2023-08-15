@@ -1,20 +1,17 @@
-import React, { useState } from "react";
+import React from "react";
 import { styled } from "styled-components";
-import StarRate from "../../apply/StarRate";
+import ViewStarRate from "../../community/mentor/ViewStarRate";
 
-const ReadReview = () => {
-  const [rate, setRate] = useState(0);
-  console.log(rate);
-
+const ReadReview = ({ content, rate }) => {
   return (
     <>
       <ReviewSection>
         <StarWrapper>
           <Text>별점</Text>
-          <StarRate onChange={setRate} />
+          <ViewStarRate rate={rate} />
         </StarWrapper>
-        <Text2>멘티동의 후기</Text2>
-        <Review2>이것이 나 멘티동의 후기다!!</Review2>
+        <Text2>멘티동님의 후기</Text2>
+        <Review2>{content}</Review2>
       </ReviewSection>
     </>
   );

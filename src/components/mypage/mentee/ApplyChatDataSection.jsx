@@ -9,7 +9,7 @@ const ApplyChatDataSection = ({ data }) => {
           if (database.status === 0) {
             return <ApplyChat ket={database.id} database={database} />;
           }
-          return console.log(database);
+          return null;
         })}
     </>
   );
