@@ -192,6 +192,7 @@ const Category = styled.div`
 const Row = styled.div`
   width: 100%;
   display: flex;
+  align-items: center;
   gap: 10px;
 `;
 

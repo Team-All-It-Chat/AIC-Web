@@ -23,6 +23,6 @@ const StarContainer = styled.div`
 `;
 
 const Star = styled.span`
-  font-size: 17px;
+  font-size: 20px;
   color: ${({ filled }) => (filled ? "#FFA946" : "lightgray")};
 `;
