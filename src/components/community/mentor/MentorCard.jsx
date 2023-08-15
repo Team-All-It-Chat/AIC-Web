@@ -19,12 +19,14 @@ const MentorCard = ({ mentor }) => {
   const chatCount = mentor.chat_count === null ? 0 : mentor.chat_count;
   const reviewContent = recentReview === null ? '아직 리뷰가 없어요!' : recentReview.content;
   const reviewRate = recentReview === null ? 0 : recentReview.rate;
+  const reviewer = recentReview === null ? 0 : recentReview.reviewer;
 
   useEffect(() => {
     const fetchData = async () => {
       // console.log(continent);
       try{
         const response = await getRecentReview(id);
+        // console.log(response);
         if(response.data.status === 200){
           setRecentReview(response.data.review);
         } else{
@@ -82,7 +84,7 @@ const MentorCard = ({ mentor }) => {
       <BottomWrapper>
         <Text3>총 {chatCount} 번의 오리챗을 했어요</Text3>
         <Row>
-          <Text4>최신 리뷰</Text4>
+          <Text4>{reviewer}</Text4>
           <ViewStarRate rate={reviewRate}/>
         </Row>
         <Text5>
