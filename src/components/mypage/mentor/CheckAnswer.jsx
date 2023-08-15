@@ -60,9 +60,7 @@ const CheckAnswer = () => {
           </Wrapper2>
           <AnswerSection>{data.answer}</AnswerSection>
         </AnswerWrapper>
-        {review[0].content === "" ? (
-          ""
-        ) : (
+        {review[0] && review[0].content !== "" && (
           <CheckReview content={review[0].content} rate={review[0].rate} />
         )}
         <AlertBack2 />
@@ -130,7 +128,7 @@ const MentorWrapper = styled.div`
 `;
 
 const AnswerWrapper = styled.div`
-  margin-top: 1%;
+  margin-top: 2%;
   width: 55%;
   min-width: 500px;
   height: fit-content;
