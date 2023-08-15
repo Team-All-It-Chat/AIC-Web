@@ -1,15 +1,33 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import CommunityNavBar from "../community/CommunityNavBar";
 import { styled } from "styled-components";
 // import { useNavigate } from "react-router-dom";
 import ChatModal from "../common/ChatModal";
 import AlertBack from "../background/AlertBack";
+import { useParams } from "react-router-dom";
+import { getChat } from "../../apis/chat";
+import { useRecoilValue } from "recoil";
+import { mentorImgAtom } from "../../recoil/atoms";
 
 // 오리챗 신청이 들어왔어요! 페이지
 const ApplyAlert = () => {
   const [modal, setModal] = useState(false);
+  const myImg = useRecoilValue(mentorImgAtom);
+  const { id } = useParams();
 
-  // const router = useNavigate();
+  const [data, setData] = useState();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await getChat(id);
+      setData(response.data);
+    };
+    fetchData();
+  }, [id]);
+
+  if (!data) {
+    return null;
+  }
 
   const onClick = () => {
     const confirmed = window.confirm("전송하시겠습니까?");
@@ -22,26 +40,20 @@ const ApplyAlert = () => {
     <>
       <CommunityNavBar />
       <Wrapper>
-        <Title>오리챗 신청이 들어왔어요!</Title>
+        <Title>오리챗 신청이 들어왔덕!</Title>
         <ApplyWrapper>
           <ProfileCircle>
-            <ProfileImg src="/img/navprofile.png" />
+            <ProfileImg src="/img/mentee_profile.png" />
           </ProfileCircle>
           <QuestionWrapper>
-            <Name>오동동</Name>
-            <Question>
-              안녕하세요 저는 오동동 살이 찐 오동동입니다.안녕하세요 저는 오동동
-              살이 찐 오동동입니다.안녕하세요 저는 오동동 살이 찐
-              오동동입니다.안녕하세요 저는 오동동 살이 찐 오동동입니다.
-              안녕하세요 저는 오동동 살이 찐 오동동입니다.안녕하세요 저는 오동동
-              살이 찐 오동동입니다.안녕하세요 저는 오동동 살이 찐 오동동입니다.
-            </Question>
+            <Name>멘티둥</Name>
+            <Question>{data.question}</Question>
           </QuestionWrapper>
         </ApplyWrapper>
         <AnswerWrapper>
           <Wrapper2>
             <ProfileCircle>
-              <ProfileImg src="/img/navprofile.png" />
+              <ProfileImg src={myImg} />
             </ProfileCircle>
             <MentorWrapper>
               <Name>최재영</Name>

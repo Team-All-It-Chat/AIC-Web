@@ -20,7 +20,7 @@ const WaitChat = ({ database }) => {
           <ProfileCircle>
             <ProfileImg src="/img/mentee_profile.png" />
           </ProfileCircle>
-          멘티동
+          멘티둥
         </ProfileSection>
         <ChatTitle>{title}</ChatTitle>
         <BtnWrapper>
