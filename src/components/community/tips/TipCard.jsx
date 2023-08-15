@@ -1,29 +1,57 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { styled } from "styled-components";
+import { getMentorInfo } from '../../../apis/accounts';
 
-const TipCard = ({ num }) => {
+const TipCard = ({ tip }) => {
   const navigate = useNavigate();
+  const [writer, setWriter] = useState(null);
+  const id = tip.id;
+  const title =
+    tip.title.length > 15 ? tip.title.substring(0, 15) + "..." : tip.title;
+  const contentPreview =
+    tip.content.length > 80
+      ? tip.content.substring(1, 80) + "..."
+      : tip.content;
+  const tag1 = tip.tag1 === null ? null : tip.tag1;
+  const tag2 = tip.tag2 === null ? null : tip.tag2;
+  const image = tip.image;
+  const date = tip.created_at;
+  const year = date.substring(0,4)
+  const month = date.substring(5,7)
+  const day = date.substring(8,10)
+  const writerId = tip.writer;
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try{
+        const response = await getMentorInfo(writerId);
+        setWriter(response.data.result.name);
+      }catch(error){
+          console.log("작성자 프로필 가져오기 에러");
+      }
+    };
+    fetchData();
+  }, [writerId]);
 
   return (
-    <Card onClick={() => navigate(`/viewPost/${num}`)}>
-      <TopWrapper>{/* <ThumbnailImg src="/img/halfduck.png" /> */}</TopWrapper>
+    <Card onClick={() => navigate(`/viewPost/${id}`)}>
+      <TopWrapper>
+        <ThumbnailImg src={image} />
+      </TopWrapper>
       <BottomWrapper>
         <Row>
-          <Text1>(제목) 중국 퀸카카카카~</Text1>
-          <Text2>by 닉네임</Text2>
+          <Text1>{title}</Text1>
+          <Text2>by {writer}</Text2>
         </Row>
         <Row>
-          <Text3>
-            (내용 미리보기) 퀸카~ 암 핫~ 마이
-            붐앤부디스핫~스팟라잇~~~~~~~~~~~~~~~~~~~~~~~~~...
-          </Text3>
+          <Text3>{contentPreview}</Text3>
         </Row>
         <Row>
-          <Text4>2023년 09월 11일</Text4>
+          <Text4>{year}년 {month}월 {day}일</Text4>
           <CategoryRow>
-            <Category>생활</Category>
-            <Category>의사소통</Category>
+            {tag1 === null ? null : <Category>{tag1}</Category>}
+            {tag2 === null ? null : <Category>{tag2}</Category>}
           </CategoryRow>
         </Row>
       </BottomWrapper>
@@ -49,15 +77,16 @@ const Card = styled.div`
   cursor: pointer;
 `;
 
-// const ThumbnailImg = styled.img`
-//   width: 100%;
-//   height: 100%;
-//   object-fit: cover;
-// `;
+const ThumbnailImg = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 30px 30px 0px 0px;
+`;
 
 const TopWrapper = styled.div`
   width: 100%;
-  height: 60%;
+  height: 55%;
   display: flex;
   align-items: center;
   justify-content: start;
@@ -68,13 +97,13 @@ const TopWrapper = styled.div`
 
 const BottomWrapper = styled.div`
   width: 85%;
-  height: 40%;
+  height: 45%;
   display: flex;
   flex-direction: column;
   align-items: start;
   justify-content: space-between;
   gap: 5%;
-  padding: 6% 2% 6% 2%;
+  padding: 3% 2% 6% 2%;
 `;
 
 const Category = styled.div`

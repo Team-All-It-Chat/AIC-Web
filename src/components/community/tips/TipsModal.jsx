@@ -1,18 +1,26 @@
-import React from "react";
-import TipCard from "./TipCard";
+import React, { useEffect, useState } from "react";
 import { styled } from "styled-components";
+import TipDataSection from './TipDataSection';
+import { useParams } from "react-router-dom";
+import { getPostsOfContinent } from "../../../apis/posts";
 
 const TipsModal = () => {
-  const length = 7;
+  const { continent } = useParams();
+  const [tipDataList, setTipList] = useState([]);
+
+  // 렌더 전 데이터 패칭을 위한 useEffect
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await getPostsOfContinent(continent);
+      setTipList(response.data.result);
+    };
+    fetchData();
+  }, [continent]);
 
   return (
     <Wrapper>
       <Title>오리챗 멘토의 생생한 이야기를 들어보덕!</Title>
-      <CardWrapper>
-        {Array.from({ length: length }, (_, index) => (
-          <TipCard key={index} num={index + 1} />
-        ))}
-      </CardWrapper>
+      <TipDataSection tipDataList={tipDataList}/>
     </Wrapper>
   );
 };
