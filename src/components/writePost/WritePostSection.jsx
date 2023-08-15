@@ -1,11 +1,15 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { styled } from "styled-components";
+import { useForm } from "../../hooks/useForm";
+import { postNewTip } from "../../apis/posts";
 
 const WritePostSection = () => {
   const navigate = useNavigate();
   const [selectedKeywords, setSelectedKeywords] = useState([]);
   const [previewImg, setPreviewImg] = useState("/img/previewDefalut.svg");
+  const [title, onChangeTitle] = useForm();
+  const [content, onChangeContent] = useForm();
 
   const keywords = [
     "진로",
@@ -38,6 +42,17 @@ const WritePostSection = () => {
     const userConfirmed = window.confirm("게시글을 업로드 하시겠습니까?");
     if (userConfirmed) {
       // 폼 제출 로직 추가 (API 호출 등)
+      const body = {
+        writer: 3,
+        title: title,
+        content: content,
+        tag1 : selectedKeywords.length > 0 ? selectedKeywords[0] : null,
+        tag2 : selectedKeywords.length > 1 ? selectedKeywords[1] : null,
+        image : previewImg === "/img/previewDefalut.svg" ? null : previewImg
+      };
+
+      console.log(body);
+      postNewTip(body);
       alert("업로드 완료!");
       navigate("/mypageMentor/posts");
     }
@@ -64,7 +79,12 @@ const WritePostSection = () => {
   return (
     <Wrapper>
       <Form>
-        <TitleInput type="title" placeholder="제목"></TitleInput>
+        <TitleInput
+          type="title"
+          placeholder="제목"
+          value={title}
+          onChange={onChangeTitle}
+        ></TitleInput>
         <ImgSection>
           <PreviewImg src={previewImg} />
           <ImgLabel htmlFor="imageInput">이미지 업로드</ImgLabel>
@@ -90,6 +110,8 @@ const WritePostSection = () => {
         <ContentInput
           type="content"
           placeholder="교환학생 꿀팁을 자유롭게 적어주세요."
+          value={content}
+          onChange={onChangeContent}
         ></ContentInput>
         <SubmitBtn onClick={handleSubmit} type="submit">
           게시글 업로드
