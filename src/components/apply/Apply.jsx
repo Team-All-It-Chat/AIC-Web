@@ -1,15 +1,40 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { styled } from "styled-components";
 import ApplyBack from "../background/ApplyBack";
 import ChatModal from "../common/ChatModal";
+import { getMentorInfo } from "../../apis/accounts";
+import { useParams } from "react-router-dom";
+import { useForm } from "../../hooks/useForm";
+import { applyQuestion } from "../../apis/chat";
 
 // 오리챗 신청 페이지
 const Apply = () => {
+  const { id } = useParams();
   const [modal, setModal] = useState(false);
+  const [answerer, setAnswerer] = useState(null);
+  const [question, onChangeQuestion] = useForm();
 
-  const onClick = () => {
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await getMentorInfo(id);
+        setAnswerer(response.data.result.name);
+      } catch (error) {
+        console.log("멘토 프로필 가져오기 에러");
+      }
+    };
+    fetchData();
+  }, [id]);
+
+  const handleSubmit = () => {
     const confirmed = window.confirm("신청하시겠습니까❓");
     if (confirmed) {
+      const body = {
+        question: question,
+        answerer: id
+      };
+      console.log(body);
+      applyQuestion(body);
       setModal(true);
     }
   };
@@ -18,12 +43,19 @@ const Apply = () => {
       <Wrapper>
         <ApplyWrapper>
           <ProfileCircle>
-            <ProfileImg src="/img/mentee_ori.png" />
+            <ProfileImg src="/img/mentor_profile.png" />
           </ProfileCircle>
-          <Text1>최재영</Text1>
+          <Text1>{answerer}</Text1>
           <Text2>멘토님에게 질문 보내기</Text2>
-          <QuestionSection placeholder="질문을 작성해덕!"></QuestionSection>
-          <Btn onClick={onClick}>오리챗 신청하기</Btn>
+          <QuestionSection
+            type="question"
+            placeholder="질문을 작성해덕!"
+            value={question}
+            onChange={onChangeQuestion}
+          ></QuestionSection>
+          <Btn onClick={handleSubmit} type="submit">
+            오리챗 신청하기
+          </Btn>
         </ApplyWrapper>
         <ApplyBack />
         {modal && <ChatModal isMentor={false} name={"오리챗 신청"} />}
@@ -78,12 +110,8 @@ const Btn = styled.div`
 `;
 
 const ProfileImg = styled.img`
-  width: 85%;
-  height: 85%;
-  margin-top: 20%;
-  object-fit: contain;
-  border-bottom-left-radius: 50%;
-  border-bottom-right-radius: 50%;
+  width: 100%;
+  object-fit: cover;
 `;
 
 const Text2 = styled.div`
@@ -116,9 +144,8 @@ const QuestionSection = styled.textarea`
   font-size: 16px;
   box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
   margin-bottom: 3%;
-  resize: vertical; /* 세로 크기 조절을 허용 */
+  resize: none; /* 세로 크기 조절을 허용 */
   line-height: 1.5; /* 줄 간격 설정 */
-  overflow: auto; /* 내용이 넘칠 경우 스크롤 생성 */
   outline: none;
   font-family: "Times New Roman";
 `;

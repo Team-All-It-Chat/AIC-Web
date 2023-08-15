@@ -110,7 +110,7 @@ const MentorInfoSection = () => {
               &gt;
             </Row2>
           </Column>
-          {isMentor ? null :<Btn onClick={() => navigate(`/apply`)}>오리챗 신청하기</Btn>}
+          {isMentor ? null :<Btn onClick={() => navigate(`/apply/${id}`)}>오리챗 신청하기</Btn>}
         </RightWrapper>
       </Box>
     </Wrapper>

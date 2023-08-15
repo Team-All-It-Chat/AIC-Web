@@ -7,6 +7,7 @@ import { getMentorInfo } from "../../../apis/accounts";
 const ViewSection = () => {
   const router = useNavigate();
   const [tip, setTip] = useState(null);
+  const [mentorId, setMentorId] = useState(null);
   const [writer, setWriter] = useState(null);
   const { id } = useParams();
 
@@ -17,6 +18,7 @@ const ViewSection = () => {
         setTip(response1.data.result);
         const writerId = response1.data.result.writer; // Get writer ID from the response
         const response2 = await getMentorInfo(writerId);
+        setMentorId(writerId);
         setWriter(response2.data.result.name);
       } catch (error) {
         console.log("특정 게시물 가져오기 에러");
@@ -26,7 +28,7 @@ const ViewSection = () => {
   }, [id]);
 
   const onClick = () => {
-    router("/apply");
+    router(`/apply/${mentorId}`);
   };
 
   // 데이터가 세팅 되기 전까지 컴포넌트 렌더링 x
