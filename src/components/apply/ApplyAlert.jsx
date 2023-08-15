@@ -135,9 +135,9 @@ const AnswerSection = styled.textarea`
   box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
   margin-bottom: 3%;
   margin: 10px 0px;
-  resize: vertical; /* 세로 크기 조절을 허용 */
-  line-height: 1.5; /* 줄 간격 설정 */
-  overflow: auto; /* 내용이 넘칠 경우 스크롤 생성 */
+  resize: none;
+  line-height: 1.5;
+  overflow: auto;
   outline: none;
   font-family: "Times New Roman";
 `;
