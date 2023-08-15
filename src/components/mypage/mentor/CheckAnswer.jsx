@@ -15,7 +15,7 @@ const CheckAnswer = () => {
   const myImg = useRecoilValue(mentorImgAtom);
   const { id } = useParams();
 
-  const [data, setData] = useState();
+  const [data, setData] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -30,7 +30,7 @@ const CheckAnswer = () => {
   }
 
   const review = data.reviews === [] ? null : data.reviews;
-  console.log(data);
+
   return (
     <>
       <CommunityNavBar />

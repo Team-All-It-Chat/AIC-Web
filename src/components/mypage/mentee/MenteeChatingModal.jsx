@@ -1,13 +1,21 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import ApplyChatDataSection from "./ApplyChatDataSection";
 import MenteeChatDataSection from "./MenteeChatDataSection";
 import { styled } from "styled-components";
 // import { useNavigate } from "react-router-dom";
 import useAllChat from "../../../hooks/useAllChat";
+import { getAllChat } from "../../../apis/chat";
 
 const MenteeChatingModal = () => {
-  const data = useAllChat();
-  // console.log(data);
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await getAllChat();
+      setData(response);
+    };
+    fetchData();
+  }, []);
 
   return (
     <Wrapper>
