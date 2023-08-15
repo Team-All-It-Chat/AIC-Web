@@ -21,11 +21,11 @@ const CommunityNavBar = () => {
 
   return (
     <Wrapper>
-      <LogoWrapper onClick={() => navigate(`/`)}>
+      <LogoWrapper>
         <LogoImage src="/img/navlogo.png" />
       </LogoWrapper>
       <ButtonWrapper>
-        <SideBar mypageBtnHandle={mypageBtnHandle} />
+        <SideBar/>
         <ProfileCircle onClick={mypageBtnHandle}>
           {isMentor ? (
             <ProfileImg src={mentorImg} />
@@ -58,7 +58,6 @@ const LogoImage = styled.img`
 
 const LogoWrapper = styled.div`
   display: flex;
-  cursor: pointer;
   justify-content: center;
   align-items: center;
   margin-left: 5%;
