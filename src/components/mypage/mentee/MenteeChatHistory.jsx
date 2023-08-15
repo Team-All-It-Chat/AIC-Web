@@ -2,21 +2,35 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { styled } from "styled-components";
 
-const MenteeChatHistory = () => {
+const MenteeChatHistory = ({ history }) => {
   const navigate = useNavigate();
+  // console.log(history);
+  const onClick = () => {
+    navigate("/readAnswer");
+  };
+  const title =
+    history.question.length > 30
+      ? history.question.substring(0, 30) + "..."
+      : history.question;
+
+  const date = history.question_time;
+  const year = date.substring(0, 4);
+  const month = date.substring(5, 7);
+  const day = date.substring(8, 10);
+
   return (
     <>
-      <List>
+      <List onClick={onClick}>
         <ProfileSection>
           <ProfileCircle>
-            <ProfileImg src="/img/china_cut_ori.png" />
+            <ProfileImg src="/img/duck1.png" />
           </ProfileCircle>
-          멘토덕
+          {history.answerer.name}
         </ProfileSection>
-        <ChatTitle onClick={() => navigate(`/readAnswer`)}>
-          00대학교에서 적응할 때 제일 힘들었던 점은 무엇인가요?{" "}
-        </ChatTitle>
-        <Date>23/08/11 답변 완료</Date>
+        <ChatTitle>{title}</ChatTitle>
+        <Date>
+          {year}년 {month}월 {day}일 답변 완료
+        </Date>
       </List>
     </>
   );
@@ -37,8 +51,9 @@ const List = styled.div`
 const ProfileSection = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: start;
   width: fit-content;
+  min-width: 90px;
   gap: 10px;
   font-size: 2rem;
   font-weight: 600;

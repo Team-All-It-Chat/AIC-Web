@@ -1,37 +1,34 @@
-import React from "react";
-import ApplyChat from "./ApplyChat";
-import MenteeChatHistory from "./MenteeChatHistory";
+import React, { useState, useEffect } from "react";
+import ApplyChatDataSection from "./ApplyChatDataSection";
+import MenteeChatDataSection from "./MenteeChatDataSection";
 import { styled } from "styled-components";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
+import { getAllChat } from "../../../apis/chat";
 
 const MenteeChatingModal = () => {
-  const applyChatLength = 4;
-  const chatHistoryLength = 7;
-  const navigate = useNavigate("");
+  const [data, setData] = useState([]);
 
-  const onClick = () => {
-    navigate("/readAnswer");
-  };
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await getAllChat();
+      setData(response);
+    };
+    fetchData();
+  }, []);
+  // console.log(data);
+
   return (
     <Wrapper>
       <SubWrapper>
         <Title>나의 오리챗 신청 현황</Title>
         <WaitListSection>
-          {Array.from({ length: applyChatLength }, (_, index) => (
-            <>
-              <ApplyChat key={index} />
-            </>
-          ))}
+          <ApplyChatDataSection data={data} />
         </WaitListSection>
       </SubWrapper>
       <SubWrapper>
         <Title>나의 오리챗 기록</Title>
         <HistoryListSection>
-          {Array.from({ length: chatHistoryLength }, (_, index) => (
-            <>
-              <MenteeChatHistory key={index} onClick={onClick} />
-            </>
-          ))}
+          <MenteeChatDataSection data={data} />
         </HistoryListSection>
       </SubWrapper>
     </Wrapper>
