@@ -2,10 +2,12 @@ import React from "react";
 import WaitChat from "./WaitChat";
 
 const WaitChatDataSection = ({ data }) => {
+  const reverseData = data.slice().reverse();
+
   return (
     <>
-      {data &&
-        data.map((database, i) => {
+      {reverseData &&
+        reverseData.map((database, i) => {
           if (database.status === 0) {
             return <WaitChat key={database.id} database={database} />;
           }
