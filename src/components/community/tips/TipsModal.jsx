@@ -41,14 +41,3 @@ const Title = styled.div`
   width: 100%;
   margin-bottom: 3%;
 `;
-
-const CardWrapper = styled.div`
-  width: 95%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 2%;
-  height: fit-content;
-  margin-bottom: 50px;
-`;
