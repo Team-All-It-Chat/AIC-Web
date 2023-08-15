@@ -11,7 +11,7 @@ const WaitChat = ({ database }) => {
       : database.question;
 
   const onClick = () => {
-    navigate(`/applyAlert`);
+    navigate(`/applyAlert/${database.id}`);
   };
   return (
     <>
