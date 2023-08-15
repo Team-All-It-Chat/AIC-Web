@@ -8,6 +8,7 @@ import { useParams } from "react-router-dom";
 import { getChat } from "../../apis/chat";
 import { useRecoilValue } from "recoil";
 import { mentorImgAtom } from "../../recoil/atoms";
+import Goback from "../mypage/Goback";
 
 // 오리챗 신청이 들어왔어요! 페이지
 const ApplyAlert = () => {
@@ -40,7 +41,10 @@ const ApplyAlert = () => {
     <>
       <CommunityNavBar />
       <Wrapper>
-        <Title>오리챗 신청이 들어왔덕!</Title>
+        <TitleWrapper>
+          <Goback />
+          <Title>오리챗 기록</Title>
+        </TitleWrapper>
         <ApplyWrapper>
           <ProfileCircle>
             <ProfileImg src="/img/mentee_profile.png" />
@@ -71,6 +75,13 @@ const ApplyAlert = () => {
 };
 
 export default ApplyAlert;
+
+const TitleWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 80%;
+  margin-right: 3rem;
+`;
 
 const ProfileImg = styled.img`
   width: 100%;
