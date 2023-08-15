@@ -19,3 +19,15 @@ export const getPost = async (postId) => {
   const result = await axios.get(`${baseUrl}/${postId}/`);
   return result;
 };
+
+// 게시글 생성
+export const postNewTip = async (body) => {
+  try {
+    const response = await axios.post(`${baseUrl}/`, body);
+    console.log("게시물 업로드 성공:", response.data);
+    return response.data;
+  } catch (error) {
+    console.error("Error sending POST request:", error);
+    throw error;
+  }
+};
