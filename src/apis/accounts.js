@@ -29,3 +29,9 @@ export const getMentorProfiles = async (continent) => {
   const result = await axios.get(`${baseUrl}/${continent}/`);
   return result;
 };
+
+// 특정 프로필 가져오기
+export const getMentorInfo = async (mentorId) => {
+  const result = await axios.get(`${baseUrl}/profile/${mentorId}/`);
+  return result;
+};
