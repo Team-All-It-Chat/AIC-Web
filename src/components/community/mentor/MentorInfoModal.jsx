@@ -22,7 +22,7 @@ const MentorInfoModal = () => {
   return (
     <Wrapper>
       <Title>오리챗 멘토를 찾아보덕!</Title>
-        <MentorDataSection mentorDataList={mentorDataList} />
+      <MentorDataSection mentorDataList={mentorDataList} />
     </Wrapper>
   );
 };
@@ -30,6 +30,7 @@ const MentorInfoModal = () => {
 export default MentorInfoModal;
 
 const Wrapper = styled.div`
+width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
