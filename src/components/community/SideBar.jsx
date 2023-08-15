@@ -2,15 +2,26 @@ import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import styled from "styled-components";
-import { continentAtom } from "../../recoil/atoms";
+import { continentAtom, isMentorAtom } from "../../recoil/atoms";
 
-const SideMenu = ({mypageBtnHandle}) => {
+const SideMenu = () => {
   const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const continent = useRecoilValue(continentAtom);
   const sideMenuContainerRef = useRef(null);
   const sideMenuBGRef = useRef(null);
   const menuListRef = useRef(null);
+  const isMentor = useRecoilValue(isMentorAtom);
+
+  const mypageBtnHandle = () => {
+    if (isMentor) {
+      navigate("/mypageMentor/chats");
+    } else {
+      navigate("/mypageMentee/chats");
+    }
+    setIsMenuOpen(false);
+  };
+
 
   useEffect(() => {
     if (!sideMenuContainerRef || !sideMenuContainerRef.current) return;
@@ -29,12 +40,16 @@ const SideMenu = ({mypageBtnHandle}) => {
 
   const BtnHandle = (type) => {
     if (type === "대륙선택") {
+      setIsMenuOpen(false);
       navigate(`/continentSelect`);
     } else if (type === "꿀팁") {
       navigate(`/community/${continent}/tips`);
-    } else {
+    } else if(type === "멘토") {
       navigate(`/community/${continent}/mentor`);
+    } else if (type === "로그아웃") {
+      navigate(`/`);
     }
+    setIsMenuOpen(false);
   };
 
   return (
@@ -76,7 +91,7 @@ const SideMenu = ({mypageBtnHandle}) => {
             <Line />
           </Category>
           <Category>
-            <Title>로그아웃</Title>
+            <Title onClick={() => BtnHandle("로그아웃")}>로그아웃</Title>
             <Line />
           </Category>
         </CategorySection>
@@ -105,6 +120,7 @@ const SideMenuContainer = styled.div`
   left: 0;
   right: 0;
   background: transparent;
+  visibility: hidden;
 `;
 
 const SideMenuBG = styled.div`
