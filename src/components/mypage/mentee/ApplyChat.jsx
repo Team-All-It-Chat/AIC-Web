@@ -4,7 +4,6 @@ import { styled } from "styled-components";
 
 const ApplyChat = ({ database }) => {
   // const navigate = useNavigate();
-  console.log(database);
   const title =
     database.question.length > 50
       ? database.question.substring(0, 50) + "..."

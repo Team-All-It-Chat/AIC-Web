@@ -1,29 +1,37 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import CommunityNavBar from "../../community/CommunityNavBar";
 import { styled } from "styled-components";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import ReadReview from "./ReadReview";
 import AlertBack from "../../background/AlertBack";
 import Goback from "../Goback";
+import { getChat } from "../../../apis/chat";
 
 // 멘티 오리챗 기록 확인 페이지
 const Answer = () => {
-  const review = true;
-  //   const [review, setReview] = useState(true);
+  const { id } = useParams();
   const navigate = useNavigate();
+  const [data, setData] = useState();
 
   const onClick = () => {
     navigate("/writeReview");
   };
 
-  //   useEffect(() => {
-  //     if (review) {
-  //       return <ReadReview />;
-  //     } else {
-  //       return <Btn onClick={onClick}>답변 후기 남기러 가기</Btn>;
-  //     }
-  //   }, [review]);
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await getChat(id);
+      setData(response.data);
+    };
+    fetchData();
+  }, [id]);
 
+  if (!data) {
+    return null;
+  }
+
+  const review = data.reviews === [] ? null : data.reviews;
+
+  console.log(data);
   return (
     <>
       <CommunityNavBar />
@@ -34,31 +42,29 @@ const Answer = () => {
         </TitleWrapper>
         <ApplyWrapper>
           <ProfileCircle>
-            <ProfileImg src="/img/navprofile.png" />
+            <ProfileImg src="/img/mentee_profile.png" />
           </ProfileCircle>
           <QuestionWrapper>
-            <Name>멘티둥</Name>
-            <Question>
-              00대학교에서 현지 재학생 분들을 만나기 쉬운가요?
-            </Question>
+            <Name>{data.questioner}</Name>
+            <Question>{data.question}</Question>
           </QuestionWrapper>
         </ApplyWrapper>
         <AnswerWrapper>
           <Wrapper2>
             <ProfileCircle>
-              <ProfileImg src="/img/navprofile.png" />
+              <ProfileImg src="/img/duck1.png" />
             </ProfileCircle>
             <MentorWrapper>
-              <Name>멘토덕</Name>
+              <Name>{data.answerer}</Name>
               <Text>멘토님의 친절한 답변이덕!</Text>
             </MentorWrapper>
           </Wrapper2>
-          <AnswerSection>이지합니다.</AnswerSection>
+          <AnswerSection>{data.answer}</AnswerSection>
         </AnswerWrapper>
-        {review ? (
-          <ReadReview />
+        {review[0].content === "" ? (
+          <Btn onClick={onClick}>후기 남기러 가기!</Btn>
         ) : (
-          <Btn onClick={onClick}>답변 후기 남기러 가기</Btn>
+          <ReadReview content={review[0].content} rate={review[0].rate} />
         )}
         <AlertBack />
       </Wrapper>
