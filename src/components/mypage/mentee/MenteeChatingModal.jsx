@@ -67,8 +67,7 @@ const WaitListSection = styled.div`
   height: fit-content;
   max-height: 200px;
   margin-top: 2%;
-  overflow-x: hidden;
-  overflow-y: scroll;
+  overflow: auto; /* 내용이 넘칠 경우 스크롤 생성 */
 `;
 
 const HistoryListSection = styled.div`
@@ -78,6 +77,5 @@ const HistoryListSection = styled.div`
   height: fit-content;
   max-height: 300px;
   margin-top: 2%;
-  overflow-x: hidden;
-  overflow-y: scroll;
+  overflow: auto; /* 내용이 넘칠 경우 스크롤 생성 */
 `;
