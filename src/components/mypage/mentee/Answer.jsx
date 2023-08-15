@@ -6,17 +6,16 @@ import ReadReview from "./ReadReview";
 import AlertBack from "../../background/AlertBack";
 import Goback from "../Goback";
 import { getChat } from "../../../apis/chat";
-import useChat from "../../../hooks/useChat";
+
 // 멘티 오리챗 기록 확인 페이지
 const Answer = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const [data, setData] = useState();
 
   const onClick = () => {
     navigate("/writeReview");
   };
-
-  const [data, setData] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -32,6 +31,7 @@ const Answer = () => {
 
   const review = data.reviews === [] ? null : data.reviews;
 
+  console.log(data);
   return (
     <>
       <CommunityNavBar />

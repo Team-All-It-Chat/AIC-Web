@@ -1,83 +1,110 @@
-import React, { useState, useEffect } from "react";
-import ApplyChatDataSection from "./ApplyChatDataSection";
-import MenteeChatDataSection from "./MenteeChatDataSection";
+import React from "react";
+import { useNavigate } from "react-router-dom";
 import { styled } from "styled-components";
-// import { useNavigate } from "react-router-dom";
-import { getAllChat } from "../../../apis/chat";
 
-const MenteeChatingModal = () => {
-  const [data, setData] = useState([]);
+const MenteeChatHistory = ({ history }) => {
+  const navigate = useNavigate();
+  const onClick = () => {
+    navigate(`/readAnswer/${history.id}`);
+  };
+  const title =
+    history.question.length > 30
+      ? history.question.substring(0, 30) + "..."
+      : history.question;
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await getAllChat();
-      setData(response);
-    };
-    fetchData();
-  }, []);
+  const date = history.question_time;
+  const year = date.substring(0, 4);
+  const month = date.substring(5, 7);
+  const day = date.substring(8, 10);
 
   return (
-    <Wrapper>
-      <SubWrapper>
-        <Title>나의 오리챗 신청 현황</Title>
-        <WaitListSection>
-          <ApplyChatDataSection data={data} />
-        </WaitListSection>
-      </SubWrapper>
-      <SubWrapper>
-        <Title>나의 오리챗 기록</Title>
-        <HistoryListSection>
-          <MenteeChatDataSection data={data} />
-        </HistoryListSection>
-      </SubWrapper>
-    </Wrapper>
+    <>
+      <List onClick={onClick}>
+        <ProfileSection>
+          <ProfileCircle>
+            <ProfileImg src="/img/duck1.png" />
+          </ProfileCircle>
+          <Name>{history.answerer.name}</Name>
+        </ProfileSection>
+        <ChatTitle>{title}</ChatTitle>
+        <Date>
+          {year}년 {month}월 {day}일 답변 완료
+        </Date>
+      </List>
+    </>
   );
 };
 
-export default MenteeChatingModal;
+export default MenteeChatHistory;
 
-const Wrapper = styled.div`
+const List = styled.div`
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   width: 100%;
-  height: 100%;
+  border-bottom: solid 1px #dadada;
+  padding-bottom: 0.5%;
+  margin-top: 1%;
 `;
 
-const SubWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  margin-top: 3%;
-`;
-
-const Title = styled.div`
-  font-size: 2.5rem;
-  font-weight: 400;
+const Name = styled.div`
+  width: fit-content;
+  min-width: 65px;
   @media (max-width: 900px) {
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
 `;
 
-const WaitListSection = styled.div`
+const ProfileSection = styled.div`
   display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: fit-content;
-  max-height: 200px;
-  margin-top: 2%;
-  overflow-x: hidden;
-  overflow-y: scroll;
+  align-items: center;
+  justify-content: start;
+  width: fit-content;
+  min-width: 90px;
+  gap: 10px;
+  font-size: 2rem;
+  font-weight: 600;
+  @media (max-width: 900px) {
+    font-size: 1.5rem;
+  }
 `;
 
-const HistoryListSection = styled.div`
+const ProfileCircle = styled.div`
+  height: 50px;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
   display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: fit-content;
-  max-height: 300px;
-  margin-top: 2%;
-  overflow-x: hidden;
-  overflow-y: scroll;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  @media (max-width: 900px) {
+    height: 35px;
+  }
+`;
+
+const ProfileImg = styled.img`
+  width: 90%;
+  height: 80%;
+  object-fit: contain;
+  border-bottom-left-radius: 50%;
+  border-bottom-right-radius: 50%;
+`;
+
+const ChatTitle = styled.div`
+  width: 60%;
+  font-size: 1.8rem;
+  font-weight: 300;
+  cursor: pointer;
+  @media (max-width: 900px) {
+    font-size: 1.3rem;
+  }
+`;
+
+const Date = styled.div`
+  font-size: 1.2rem;
+  font-weight: 300;
+  width: fit-content;
+  @media (max-width: 900px) {
+    font-size: 1rem;
+  }
 `;
