@@ -21,6 +21,8 @@ const MentorCard = ({ mentor }) => {
     recentReview === null ? "" : recentReview.content;
   const reviewRate = recentReview === null ? 0 : recentReview.rate;
   const reviewer = recentReview === null ? "오리챗 후기" : recentReview.reviewer;
+  const tag1 = mentor.tag1 === null ? '키워드' : mentor.tag1;
+  const tag2 = mentor.tag2 === null ? '넣어주세요' : mentor.tag2;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -74,8 +76,8 @@ const MentorCard = ({ mentor }) => {
           <Country>{country}</Country>
           <Text2>{foreignUniv}</Text2>
           <Row>
-            <Category>어학</Category>
-            <Category>문화/생활</Category>
+            {tag1 === null ? null : <Category>{tag1}</Category>}
+            {tag2 === null ? null : <Category>{tag2}</Category>}
           </Row>
         </ProfileText>
       </TopWrapper>
