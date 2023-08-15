@@ -23,6 +23,8 @@ import AnswerPage from "./pages/AnswerPage";
 import ReadAnswerPage from "./pages/ReadAnswerPage";
 import CheckAnswerPage from "./pages/CheckAnswerPage";
 import WritePostPage from "./pages/WritePostPage";
+import MentorSetting from "./components/mypage/mentor/MentorSetting";
+import MenteeSetting from "./components/mypage/mentee/MenteeSetting";
 
 function App() {
   return (
@@ -64,6 +66,9 @@ function App() {
         {/* 답변확인 페이지 */}
         <Route path="/readAnswer/:id" element={<ReadAnswerPage />} />
         <Route path="/checkAnswer/:id" element={<CheckAnswerPage />} />
+        {/* 프로필 설정 페이지 */}
+        <Route path="/mentorSetting" element={<MentorSetting />} />
+        <Route path="/menteeSetting" element={<MenteeSetting />} />
       </Routes>
     </>
   );

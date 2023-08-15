@@ -22,7 +22,6 @@ const SideMenu = () => {
     setIsMenuOpen(false);
   };
 
-
   useEffect(() => {
     if (!sideMenuContainerRef || !sideMenuContainerRef.current) return;
     if (!menuListRef || !menuListRef.current) return;
@@ -44,12 +43,20 @@ const SideMenu = () => {
       navigate(`/continentSelect`);
     } else if (type === "꿀팁") {
       navigate(`/community/${continent}/tips`);
-    } else if(type === "멘토") {
+    } else if (type === "멘토") {
       navigate(`/community/${continent}/mentor`);
     } else if (type === "로그아웃") {
       navigate(`/`);
     }
     setIsMenuOpen(false);
+  };
+
+  const SettingBtnHandle = () => {
+    if (isMentor) {
+      navigate("/mentorSetting");
+    } else {
+      navigate("/menteeSetting");
+    }
   };
 
   return (
@@ -81,13 +88,11 @@ const SideMenu = () => {
             <Line />
           </Category>
           <Category>
-            <Title onClick={mypageBtnHandle}>
-              마이페이지
-            </Title>
+            <Title onClick={mypageBtnHandle}>마이페이지</Title>
             <Line />
           </Category>
           <Category>
-            <Title>설정</Title>
+            <Title onClick={SettingBtnHandle}>설정</Title>
             <Line />
           </Category>
           <Category>
