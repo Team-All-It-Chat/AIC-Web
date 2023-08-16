@@ -17,7 +17,7 @@ export default MenteeSetting;
 
 const Img = styled.img`
   width: 550px;
-  height: 800px;
+  height: 760px;
   margin-top: 2%;
   margin-bottom: 3%;
 `;
