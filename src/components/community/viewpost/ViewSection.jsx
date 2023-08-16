@@ -44,6 +44,10 @@ const ViewSection = () => {
     }
   }
 
+  const goEditPage = () => {
+    router(`/editPost/${id}`);
+  }
+
   // 데이터가 세팅 되기 전까지 컴포넌트 렌더링 x
   if (tip === null) {
     return null;
@@ -80,7 +84,7 @@ const ViewSection = () => {
           <Row2>
             {mentorId === 3 && isMentor ? (
               <>
-                <PostBtn>수정</PostBtn>
+                <PostBtn onClick={goEditPage}>수정</PostBtn>
                 <PostBtn onClick={deleteBtn}>삭제</PostBtn>
               </>
             ) : null}

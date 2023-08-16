@@ -25,6 +25,7 @@ import CheckAnswerPage from "./pages/CheckAnswerPage";
 import WritePostPage from "./pages/WritePostPage";
 import MentorSetting from "./components/mypage/mentor/MentorSetting";
 import MenteeSetting from "./components/mypage/mentee/MenteeSetting";
+import EditPostPage from "./pages/EditPostPage";
 
 function App() {
   return (
@@ -54,6 +55,7 @@ function App() {
         {/* 작성 페이지 */}
         <Route path="/writeReview" element={<ReviewPage />} />
         <Route path="/writePost" element={<WritePostPage />} />
+        <Route path="/editPost/:id" element={<EditPostPage/>}/>
         {/* 마이페이지 */}
         <Route path="/mypageMentor" element={<MentorMyPage />}>
           <Route path="chats" element={<MentorChatingModal />} />
