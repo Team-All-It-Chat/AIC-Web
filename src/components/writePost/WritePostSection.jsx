@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { json, useNavigate } from "react-router-dom";
 import { styled } from "styled-components";
 import { useForm } from "../../hooks/useForm";
 import { postNewTip } from "../../apis/posts";
@@ -38,22 +38,20 @@ const WritePostSection = () => {
     }
   };
 
+  // 폼데이터로 전송 테스트
   const handleSubmit = (event) => {
     event.preventDefault();
     const userConfirmed = window.confirm("게시글을 업로드 하시겠습니까?");
     if (userConfirmed) {
-      // 폼 제출 로직 추가 (API 호출 등)
-      const body = {
-        writer: 3,
-        title: title,
-        content: content,
-        tag1 : selectedKeywords.length > 0 ? selectedKeywords[0] : null,
-        tag2 : selectedKeywords.length > 1 ? selectedKeywords[1] : null,
-        image : previewImg === "/img/previewDefalut.svg" ? null : uploadedImage
-      };
+      const formData = new FormData();
+      formData.append("image", uploadedImage);
+      formData.append("writer", 3);
+      formData.append("title", title);
+      formData.append("content", content);
+      formData.append("tag1", selectedKeywords.length > 0 ? selectedKeywords[0] : null);
+      formData.append("tag2", selectedKeywords.length > 0 ? selectedKeywords[1] : null);
 
-      console.log(body);
-      postNewTip(body);
+      postNewTip(formData);
       alert("업로드 완료!");
       navigate("/mypageMentor/posts");
     }
@@ -62,7 +60,12 @@ const WritePostSection = () => {
   // 이미지 프리뷰 및 전송 이미지 세팅
   const insertImg = (e) => {
     let reader = new FileReader();
+    // 업로드 파일 세팅 부분
+    const file = e.target.files[0];
+    console.log(file);
+    setUploadedImage(file);
 
+    // 프리뷰 이미지 세팅 부분
     if (e.target.files[0]) {
       reader.readAsDataURL(e.target.files[0]);
     } else {
@@ -76,11 +79,6 @@ const WritePostSection = () => {
         setPreviewImg(previewImgUrl);
       }
     };
-
-    // 업로드 파일 세팅 부분
-    const file = e.target.files[0];
-    const imageUrl = URL.createObjectURL(file);
-    setUploadedImage(imageUrl);
   };
 
   return (
