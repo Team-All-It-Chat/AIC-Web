@@ -42,6 +42,7 @@ const ApplyAlert = () => {
       setModal(true);
     }
   };
+  console.log(data);
 
   return (
     <>
@@ -56,7 +57,7 @@ const ApplyAlert = () => {
             <ProfileImg src="/img/mentee_profile.png" />
           </ProfileCircle>
           <QuestionWrapper>
-            <Name>멘티둥</Name>
+            <Name>{data.questioner.name}</Name>
             <Question>{data.question}</Question>
           </QuestionWrapper>
         </ApplyWrapper>
@@ -66,7 +67,7 @@ const ApplyAlert = () => {
               <ProfileImg src={myImg} />
             </ProfileCircle>
             <MentorWrapper>
-              <Name>최재영</Name>
+              <Name>{data.answerer.name}</Name>
               <Text>친절한 답변 부탁드린덕!</Text>
             </MentorWrapper>
           </Wrapper2>
