@@ -10,15 +10,15 @@ const TipCard = ({ tip }) => {
   const title =
     tip.title.length > 15 ? tip.title.substring(0, 15) + "..." : tip.title;
   let contentPreview =
-    tip.content.length > 80
-      ? tip.content.substring(0, 80) + "..."
+    tip.content.length > 70
+      ? tip.content.substring(0, 70) + "..."
       : tip.content;
   if (contentPreview[0] === '"') {
     contentPreview = contentPreview.slice(1);
   }
   const tag1 = tip.tag1 === null ? null : tip.tag1;
   const tag2 = tip.tag2 === null ? null : tip.tag2;
-  const image = tip.image;
+  const image = tip.image === null ? '/img/tip_defalut.png' : tip.image;
   const date = tip.created_at;
   const year = date.substring(0, 4);
   const month = date.substring(5, 7);
@@ -91,7 +91,7 @@ const ThumbnailImg = styled.img`
 
 const TopWrapper = styled.div`
   width: 100%;
-  height: 55%;
+  height: 52%;
   display: flex;
   align-items: center;
   justify-content: start;
@@ -102,7 +102,7 @@ const TopWrapper = styled.div`
 
 const BottomWrapper = styled.div`
   width: 85%;
-  height: 45%;
+  height: 48%;
   display: flex;
   flex-direction: column;
   align-items: start;
