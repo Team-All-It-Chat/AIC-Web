@@ -17,12 +17,15 @@ const MentorCard = ({ mentor }) => {
       ? originalForeignUniv.substring(0, 19) + "..."
       : originalForeignUniv;
   const chatCount = mentor.chat_count === null ? 0 : mentor.chat_count;
-  const reviewContent =
-    recentReview === null ? "" : recentReview.content;
+  let reviewContent = recentReview === null ? "" : recentReview.content;
+  if (reviewContent != null) {
+   reviewContent = reviewContent.length > 68 ? reviewContent.substring(0, 68) + "..." : reviewContent;
+  }
   const reviewRate = recentReview === null ? 0 : recentReview.rate;
-  const reviewer = recentReview === null ? "오리챗 후기" : recentReview.reviewer;
-  const tag1 = mentor.tag1 === null ? '키워드' : mentor.tag1;
-  const tag2 = mentor.tag2 === null ? '넣어주세요' : mentor.tag2;
+  const reviewer =
+    recentReview === null ? "오리챗 후기" : recentReview.reviewer;
+  const tag1 = mentor.tag1 === null ? null : mentor.tag1;
+  const tag2 = mentor.tag2 === null ? null : mentor.tag2;
 
   useEffect(() => {
     const fetchData = async () => {

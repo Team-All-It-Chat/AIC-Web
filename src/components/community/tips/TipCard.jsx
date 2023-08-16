@@ -18,7 +18,7 @@ const TipCard = ({ tip }) => {
   }
   const tag1 = tip.tag1 === null ? null : tip.tag1;
   const tag2 = tip.tag2 === null ? null : tip.tag2;
-  const image = tip.image;
+  const image = tip.image === null ? '/img/tip_defalut.png' : tip.image;
   const date = tip.created_at;
   const year = date.substring(0, 4);
   const month = date.substring(5, 7);
