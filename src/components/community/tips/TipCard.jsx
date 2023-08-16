@@ -10,8 +10,8 @@ const TipCard = ({ tip }) => {
   const title =
     tip.title.length > 15 ? tip.title.substring(0, 15) + "..." : tip.title;
   let contentPreview =
-    tip.content.length > 80
-      ? tip.content.substring(0, 80) + "..."
+    tip.content.length > 70
+      ? tip.content.substring(0, 70) + "..."
       : tip.content;
   if (contentPreview[0] === '"') {
     contentPreview = contentPreview.slice(1);
@@ -91,7 +91,7 @@ const ThumbnailImg = styled.img`
 
 const TopWrapper = styled.div`
   width: 100%;
-  height: 55%;
+  height: 52%;
   display: flex;
   align-items: center;
   justify-content: start;
@@ -102,7 +102,7 @@ const TopWrapper = styled.div`
 
 const BottomWrapper = styled.div`
   width: 85%;
-  height: 45%;
+  height: 48%;
   display: flex;
   flex-direction: column;
   align-items: start;
