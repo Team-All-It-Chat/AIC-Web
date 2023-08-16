@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import CommunityNavBar from "../../community/CommunityNavBar";
 import { styled } from "styled-components";
 import { useNavigate, useParams } from "react-router-dom";
-import ReadReview from "./ReadReview";
 import AlertBack from "../../background/AlertBack";
 import Goback from "../Goback";
 import { getChat } from "../../../apis/chat";
+import CheckReview from "../mentor/CheckReview";
 
 // 멘티 오리챗 기록 확인 페이지
 const Answer = () => {
@@ -29,7 +29,13 @@ const Answer = () => {
     return null;
   }
 
-  const review = data.reviews === [] ? null : data.reviews;
+  const questioner = data.questioner.name;
+  const question = data.question;
+  const answerer = data.answerer.name;
+  const answer = data.answer;
+  const review = data.reviews.length === 0 ? null : data.reviews[0];
+  const reviewContent = review === null ? null : data.reviews[0].content;
+  const reviewRate = review === null ? null : data.reviews[0].rate;
 
   console.log(data);
   return (
@@ -45,8 +51,8 @@ const Answer = () => {
             <ProfileImg src="/img/mentee_profile.png" />
           </ProfileCircle>
           <QuestionWrapper>
-            <Name>{data.questioner}</Name>
-            <Question>{data.question}</Question>
+            <Name>{questioner}</Name>
+            <Question>{question}</Question>
           </QuestionWrapper>
         </ApplyWrapper>
         <AnswerWrapper>
@@ -55,16 +61,16 @@ const Answer = () => {
               <ProfileImg src="/img/duck1.png" />
             </ProfileCircle>
             <MentorWrapper>
-              <Name>{data.answerer}</Name>
+              <Name>{answerer}</Name>
               <Text>멘토님의 친절한 답변이덕!</Text>
             </MentorWrapper>
           </Wrapper2>
-          <AnswerSection>{data.answer}</AnswerSection>
+          <AnswerSection>{answer}</AnswerSection>
         </AnswerWrapper>
-        {review.length === 0 || review[0].content === null ? (
+        {review === null ? (
           <Btn onClick={onClick}>후기 남기러 가기!</Btn>
         ) : (
-          <ReadReview content={review[0].content} rate={review[0].rate} />
+          <CheckReview content={reviewContent} rate={reviewRate} />
         )}
         <AlertBack />
       </Wrapper>
@@ -105,7 +111,7 @@ const Btn = styled.div`
   align-items: center;
   justify-content: center;
   height: 6.5%;
-  min-width: 60%;
+  min-width: 40%;
   min-height: 52px;
   background-color: #ffd5d5;
   color: black;
@@ -116,6 +122,7 @@ const Btn = styled.div`
   box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
   margin-bottom: 2rem;
   cursor: pointer;
+  margin-top: 2%;
 `;
 
 const Wrapper2 = styled.div`
