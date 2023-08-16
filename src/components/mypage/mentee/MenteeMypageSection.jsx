@@ -22,7 +22,7 @@ const MenteeMypageSection = () => {
           <ProfileCircle>
             <ProfileImg src="/img/mentee_profile.png" />
           </ProfileCircle>
-          <UserTitle>멘티둥 &gt;</UserTitle>
+          <UserTitle>멘티둥</UserTitle>
         </ProfileSection>
         <MypageBox>
           <MenuBtnWrapper>
