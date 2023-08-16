@@ -75,7 +75,7 @@ const EditPostSection = () => {
       "tag2",
       selectedKeywords.length > 0 ? selectedKeywords[1] : null
     );
-    if (uploadedImage) {
+    if (uploadedImage!=null) {
       formData.append("image", uploadedImage);
     } else if (previewImg.startsWith("http")) {
       // 이미지 수정이 없다면 기존 서버 url이미지를 파일객체로 변환
@@ -86,11 +86,10 @@ const EditPostSection = () => {
         });
         formData.append("image", file);
       }
-
-      editPost(id, formData);
-      alert("게시글 수정 완료");
-      navigate("/mypageMentor/posts");
     }
+    editPost(id, formData);
+    alert("게시글 수정 완료");
+    navigate("/mypageMentor/posts");
   };
 
   // 이미지 프리뷰 및 전송 이미지 세팅
