@@ -9,7 +9,7 @@ const ApplyChatDataSection = ({ data }) => {
       {reverseData &&
         reverseData.map((database) => {
           if (database.status === 0) {
-            return <ApplyChat ket={database.id} database={database} />;
+            return <ApplyChat key={database.id} database={database} />;
           }
           return null;
         })}

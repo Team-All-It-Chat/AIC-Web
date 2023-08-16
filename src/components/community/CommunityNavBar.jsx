@@ -25,7 +25,7 @@ const CommunityNavBar = () => {
         <LogoImage src="/img/navlogo.png" />
       </LogoWrapper>
       <ButtonWrapper>
-        <SideBar/>
+        <SideBar />
         <ProfileCircle onClick={mypageBtnHandle}>
           {isMentor ? (
             <ProfileImg src={mentorImg} />
