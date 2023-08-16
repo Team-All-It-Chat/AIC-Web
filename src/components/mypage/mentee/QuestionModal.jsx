@@ -63,6 +63,10 @@ const Btn = styled.div`
   font-weight: bold;
   box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
   cursor: pointer;
+  &:hover {
+    background-color: #c5e5f6;
+    color: white;
+  }
 `;
 
 const Text = styled.div`
