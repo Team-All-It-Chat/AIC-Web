@@ -44,7 +44,9 @@ const WritePostSection = () => {
     const userConfirmed = window.confirm("게시글을 업로드 하시겠습니까?");
     if (userConfirmed) {
       const formData = new FormData();
-      formData.append("image", uploadedImage);
+      if(uploadedImage!=null){
+        formData.append("image", uploadedImage);
+      }
       formData.append("writer", 3);
       formData.append("title", title);
       formData.append("content", content);

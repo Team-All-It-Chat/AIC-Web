@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { styled } from "styled-components";
-import { editPost, getPost} from "../../apis/posts";
+import { editPost, getPost } from "../../apis/posts";
 
 const EditPostSection = () => {
   const navigate = useNavigate();
@@ -17,7 +17,7 @@ const EditPostSection = () => {
       setTitle(result.data.result.title);
       setContent(result.data.result.content);
       setPreviewImg(result.data.result.image);
-      setSelectedKeywords([result.data.result.tag1,result.data.result.tag2])
+      setSelectedKeywords([result.data.result.tag1, result.data.result.tag2]);
     });
   }, [id]);
 
@@ -47,27 +47,48 @@ const EditPostSection = () => {
     }
   };
 
+  // 이미지를 blob으로 변환해주는 함수
+  async function convertExternalImageToBlob(url) {
+    try {
+      const response = await fetch(url); // 이미지 패키
+      const blob = await response.blob(); // 이미지 blob으로 변환
+      return blob;
+    } catch (error) {
+      console.error("Blob 전환 실패", error);
+      return null;
+    }
+  }
+  
   // 폼데이터로 전송 테스트
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    const userConfirmed = window.confirm("게시글을 업로드 하시겠습니까?");
-    if (userConfirmed) {
-      const formData = new FormData();
+
+    const formData = new FormData();
+    formData.append("writer", 3);
+    formData.append("title", title);
+    formData.append("content", content);
+    formData.append(
+      "tag1",
+      selectedKeywords.length > 0 ? selectedKeywords[0] : null
+    );
+    formData.append(
+      "tag2",
+      selectedKeywords.length > 0 ? selectedKeywords[1] : null
+    );
+    if (uploadedImage) {
       formData.append("image", uploadedImage);
-      formData.append("writer", 3);
-      formData.append("title", title);
-      formData.append("content", content);
-      formData.append(
-        "tag1",
-        selectedKeywords.length > 0 ? selectedKeywords[0] : null
-      );
-      formData.append(
-        "tag2",
-        selectedKeywords.length > 0 ? selectedKeywords[1] : null
-      );
+    } else if (previewImg.startsWith("http")) {
+      // 이미지 수정이 없다면 기존 서버 url이미지를 파일객체로 변환
+      const blobImage = await convertExternalImageToBlob(previewImg);
+      if (blobImage) {
+        const file = new File([blobImage], "external_image.png", {
+          type: blobImage.type,
+        });
+        formData.append("image", file);
+      }
 
       editPost(id, formData);
-      alert("수정 완료!");
+      alert("게시글 수정 완료");
       navigate("/mypageMentor/posts");
     }
   };
@@ -77,7 +98,6 @@ const EditPostSection = () => {
     let reader = new FileReader();
     // 업로드 파일 세팅 부분
     const file = e.target.files[0];
-    console.log(file);
     setUploadedImage(file);
 
     // 프리뷰 이미지 세팅 부분
