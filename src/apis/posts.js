@@ -49,3 +49,15 @@ export const deletePost = async (postId) => {
   console.log("게시물 삭제 성공:", response.data);
   return response.data;
 };
+
+// 게시글 수정
+export const editPost = async (postId,formData) => {
+  const token = localStorage.getItem("access");
+  const response = await axios.put(`${baseUrl}/${postId}/`,formData, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  console.log("게시물 수정 성공:", response.data);
+  return response.data;
+};
