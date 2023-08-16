@@ -16,13 +16,14 @@ const MenteeChatHistory = ({ history }) => {
   const year = date.substring(0, 4);
   const month = date.substring(5, 7);
   const day = date.substring(8, 10);
+  console.log(history);
 
   return (
     <>
       <List onClick={onClick}>
         <ProfileSection>
           <ProfileCircle>
-            <ProfileImg src="/img/duck1.png" />
+            <ProfileImg src={`/img/duck${history.answerer.profile}.png`} />
           </ProfileCircle>
           <Name>{history.answerer.name}</Name>
         </ProfileSection>

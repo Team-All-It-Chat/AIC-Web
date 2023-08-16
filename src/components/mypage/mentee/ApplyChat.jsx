@@ -21,12 +21,14 @@ const ApplyChat = ({ database }) => {
 
   const state = database.status;
 
+  console.log(database);
+
   return (
     <>
       <List>
         <ProfileSection>
           <ProfileCircle>
-            <ProfileImg src="/img/duck1.png" />
+            <ProfileImg src={`/img/duck${database.answerer.profile}.png`} />
           </ProfileCircle>
           {database.answerer.name}
         </ProfileSection>
