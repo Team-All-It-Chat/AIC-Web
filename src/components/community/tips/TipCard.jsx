@@ -69,7 +69,6 @@ export default TipCard;
 const Card = styled.div`
   display: flex;
   flex-direction: column;
-  width: 30%;
   min-width: 300px;
   height: 260px;
   flex-shrink: 0;
