@@ -21,12 +21,13 @@ export const getPost = async (postId) => {
 };
 
 // 게시글 생성
-export const postNewTip = async (body) => {
+export const postNewTip = async (formData) => {
   const token = localStorage.getItem("access");
   try {
-    const response = await axios.post(`${baseUrl}/`, body, {
+    const response = await axios.post(`${baseUrl}/`, formData, {
       headers: {
         Authorization: `Bearer ${token}`,
+        'Content-Type': 'multipart/form-data',
       },
     });
     console.log("게시물 업로드 성공:", response.data);
