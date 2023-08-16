@@ -63,8 +63,18 @@ const ViewSection = () => {
           </Date>
         </InfoSection>
         <Row1>
-          {tag1 === null ? null : <Category>{tag1}</Category>}
-          {tag2 === null ? null : <Category>{tag2}</Category>}
+          <Row2>
+            {tag1 === null ? null : <Category>{tag1}</Category>}
+            {tag2 === null ? null : <Category>{tag2}</Category>}
+          </Row2>
+          <Row2>
+            {mentorId === 3 && isMentor ? (
+              <>
+                <PostBtn>수정</PostBtn>
+                <PostBtn>삭제</PostBtn>
+              </>
+            ) : null}
+          </Row2>
         </Row1>
         <Image src={image} />
         <Post>{content}</Post>
@@ -159,6 +169,7 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-bottom: 3%;
   width: 100%;
 `;
 
@@ -176,6 +187,15 @@ const Row1 = styled.div`
   display: flex;
   gap: 10px;
   align-items: center;
+  justify-content: space-between;
+`;
+
+const Row2 = styled.div`
+  margin-top: 1%;
+  width: fit-content;
+  display: flex;
+  gap: 10px;
+  align-items: center;
 `;
 
 const Category = styled.div`
@@ -187,4 +207,15 @@ const Category = styled.div`
   border-radius: 30px;
   background: #f8f8f8;
   color: var(--m-skyblue, #89cdf6);
+`;
+
+const PostBtn = styled.div`
+  font-size: 10px;
+  width: fit-content;
+  padding: 6px 19px;
+  text-align: center;
+  background: #f8f8f8;
+  border: 1px solid;
+  color: black;
+  cursor: pointer;
 `;
