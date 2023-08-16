@@ -36,17 +36,17 @@ const ViewSection = () => {
   };
 
   const deleteBtn = () => {
-    const userConfirmed = window.confirm("게시글을 삭제 하시겠습니까?");
-    if(userConfirmed) {
+    const userConfirmed = window.confirm("게시글을 삭제 하시겠습니까❓");
+    if (userConfirmed) {
       deletePost(id);
-      alert('삭제되었습니다');
+      alert("삭제되었습니다❗");
       router(`/community/${continent}/tips`);
     }
-  }
+  };
 
   const goEditPage = () => {
     router(`/editPost/${id}`);
-  }
+  };
 
   // 데이터가 세팅 되기 전까지 컴포넌트 렌더링 x
   if (tip === null) {

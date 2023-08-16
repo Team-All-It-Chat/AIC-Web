@@ -58,7 +58,7 @@ const EditPostSection = () => {
       return null;
     }
   }
-  
+
   // 폼데이터로 전송 테스트
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -75,7 +75,7 @@ const EditPostSection = () => {
       "tag2",
       selectedKeywords.length > 0 ? selectedKeywords[1] : null
     );
-    if (uploadedImage!=null) {
+    if (uploadedImage != null) {
       formData.append("image", uploadedImage);
     } else if (previewImg.startsWith("http")) {
       // 이미지 수정이 없다면 기존 서버 url이미지를 파일객체로 변환
@@ -156,7 +156,7 @@ const EditPostSection = () => {
         </KeywordWrapper>
         <ContentInput
           type="content"
-          placeholder="교환학생 꿀팁을 자유롭게 적어주세요."
+          placeholder="교환학생 꿀팁을 자유롭게 적어덕!"
           value={content}
           onChange={handleContentChange}
         ></ContentInput>
