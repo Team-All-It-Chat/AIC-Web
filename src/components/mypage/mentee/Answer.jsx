@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import CommunityNavBar from "../../community/CommunityNavBar";
 import { styled } from "styled-components";
 import { useNavigate, useParams } from "react-router-dom";
-import ReadReview from "./ReadReview";
 import AlertBack from "../../background/AlertBack";
 import Goback from "../Goback";
 import { getChat } from "../../../apis/chat";
@@ -68,7 +67,11 @@ const Answer = () => {
           </Wrapper2>
           <AnswerSection>{answer}</AnswerSection>
         </AnswerWrapper>
-        {review === null ?  null: <CheckReview content={reviewContent} rate={reviewRate} /> }
+        {review === null ? (
+          <Btn onClick={onClick}>후기 남기러 가기!</Btn>
+        ) : (
+          <CheckReview content={reviewContent} rate={reviewRate} />
+        )}
         <AlertBack />
       </Wrapper>
     </>
@@ -108,7 +111,7 @@ const Btn = styled.div`
   align-items: center;
   justify-content: center;
   height: 6.5%;
-  min-width: 60%;
+  min-width: 40%;
   min-height: 52px;
   background-color: #ffd5d5;
   color: black;
@@ -119,6 +122,7 @@ const Btn = styled.div`
   box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
   margin-bottom: 2rem;
   cursor: pointer;
+  margin-top: 2%;
 `;
 
 const Wrapper2 = styled.div`
