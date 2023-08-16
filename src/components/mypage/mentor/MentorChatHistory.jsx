@@ -54,7 +54,7 @@ const ProfileSection = styled.div`
   align-items: center;
   justify-content: start;
   width: fit-content;
-  min-width: 90px;
+  min-width: 120px;
   gap: 10px;
   font-size: 2rem;
   font-weight: 600;

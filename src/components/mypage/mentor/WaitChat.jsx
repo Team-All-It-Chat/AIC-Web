@@ -49,7 +49,6 @@ const ProfileSection = styled.div`
   align-items: center;
   justify-content: start;
   width: fit-content;
-  min-width: 150px;
   gap: 10px;
   font-size: 2rem;
   font-weight: 600;
@@ -79,7 +78,7 @@ const ProfileImg = styled.img`
 `;
 
 const ChatTitle = styled.div`
-  width: 55%;
+  width: 58%;
   font-size: 1.8rem;
   font-weight: 300;
   cursor: pointer;
