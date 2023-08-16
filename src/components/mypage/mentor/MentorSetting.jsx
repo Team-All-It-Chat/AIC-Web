@@ -17,7 +17,7 @@ export default MentorSetting;
 
 const Img = styled.img`
   width: 500px;
-  height: 1100px;
+  height: 1250px;
   margin-top: 2%;
   margin-bottom: 3%;
 `;
