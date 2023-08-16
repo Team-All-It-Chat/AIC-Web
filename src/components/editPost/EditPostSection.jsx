@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { styled } from "styled-components";
-import { editPost, getPost, postNewTip } from "../../apis/posts";
-import { useForm } from "../../hooks/useForm";
+import { editPost, getPost} from "../../apis/posts";
 
 const EditPostSection = () => {
   const navigate = useNavigate();
   const { id } = useParams();
-  const [tip, setTip] = useState(null);
   const [selectedKeywords, setSelectedKeywords] = useState([]);
   const [previewImg, setPreviewImg] = useState(null);
   const [title, setTitle] = useState();
@@ -20,7 +18,6 @@ const EditPostSection = () => {
       setContent(result.data.result.content);
       setPreviewImg(result.data.result.image);
       setSelectedKeywords([result.data.result.tag1,result.data.result.tag2])
-      // setImage({ ...image, preview_URL: `/api/image/view/${board_id}` });
     });
   }, [id]);
 
