@@ -27,7 +27,7 @@ export const postNewTip = async (formData) => {
     const response = await axios.post(`${baseUrl}/`, formData, {
       headers: {
         Authorization: `Bearer ${token}`,
-        'Content-Type': 'multipart/form-data',
+        "Content-Type": "multipart/form-data",
       },
     });
     console.log("게시물 업로드 성공:", response.data);
@@ -40,7 +40,12 @@ export const postNewTip = async (formData) => {
 
 // 게시글 삭제
 export const deletePost = async (postId) => {
-  const response = await axios.delete(`${baseUrl}/${postId}/`);
+  const token = localStorage.getItem("access");
+  const response = await axios.delete(`${baseUrl}/${postId}/`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
   console.log("게시물 삭제 성공:", response.data);
-    return response.data;
+  return response.data;
 };

@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { styled } from "styled-components";
-import { getPost } from "../../../apis/posts";
+import { deletePost, getPost } from "../../../apis/posts";
 import { getMentorInfo } from "../../../apis/accounts";
 import { useRecoilValue } from "recoil";
-import { isMentorAtom } from "../../../recoil/atoms";
+import { continentAtom, isMentorAtom } from "../../../recoil/atoms";
 
 const ViewSection = () => {
   const router = useNavigate();
@@ -13,6 +13,7 @@ const ViewSection = () => {
   const [writer, setWriter] = useState(null);
   const { id } = useParams();
   const isMentor = useRecoilValue(isMentorAtom);
+  const continent = useRecoilValue(continentAtom);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -33,6 +34,15 @@ const ViewSection = () => {
   const onClick = () => {
     router(`/apply/${mentorId}`);
   };
+
+  const deleteBtn = () => {
+    const userConfirmed = window.confirm("게시글을 삭제 하시겠습니까?");
+    if(userConfirmed) {
+      deletePost(id);
+      alert('삭제되었습니다');
+      router(`/community/${continent}/tips`);
+    }
+  }
 
   // 데이터가 세팅 되기 전까지 컴포넌트 렌더링 x
   if (tip === null) {
@@ -63,8 +73,18 @@ const ViewSection = () => {
           </Date>
         </InfoSection>
         <Row1>
-          {tag1 === null ? null : <Category>{tag1}</Category>}
-          {tag2 === null ? null : <Category>{tag2}</Category>}
+          <Row2>
+            {tag1 === null ? null : <Category>{tag1}</Category>}
+            {tag2 === null ? null : <Category>{tag2}</Category>}
+          </Row2>
+          <Row2>
+            {mentorId === 3 && isMentor ? (
+              <>
+                <PostBtn>수정</PostBtn>
+                <PostBtn onClick={deleteBtn}>삭제</PostBtn>
+              </>
+            ) : null}
+          </Row2>
         </Row1>
         <Image src={image} />
         <Post>{content}</Post>
@@ -159,6 +179,7 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-bottom: 3%;
   width: 100%;
 `;
 
@@ -176,6 +197,15 @@ const Row1 = styled.div`
   display: flex;
   gap: 10px;
   align-items: center;
+  justify-content: space-between;
+`;
+
+const Row2 = styled.div`
+  margin-top: 1%;
+  width: fit-content;
+  display: flex;
+  gap: 10px;
+  align-items: center;
 `;
 
 const Category = styled.div`
@@ -187,4 +217,15 @@ const Category = styled.div`
   border-radius: 30px;
   background: #f8f8f8;
   color: var(--m-skyblue, #89cdf6);
+`;
+
+const PostBtn = styled.div`
+  font-size: 10px;
+  width: fit-content;
+  padding: 6px 19px;
+  text-align: center;
+  background: #f8f8f8;
+  border: 1px solid;
+  color: black;
+  cursor: pointer;
 `;
