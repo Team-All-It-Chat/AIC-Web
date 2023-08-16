@@ -19,7 +19,6 @@ import PostsModal from "./components/mypage/mentor/PostsModal";
 import MenteeMyPage from "./pages/MenteeMyPage";
 import MenteeChatingModal from "./components/mypage/mentee/MenteeChatingModal";
 import ReviewsModal from "./components/mypage/mentee/ReviewsModal";
-import AnswerPage from "./pages/AnswerPage";
 import ReadAnswerPage from "./pages/ReadAnswerPage";
 import CheckAnswerPage from "./pages/CheckAnswerPage";
 import WritePostPage from "./pages/WritePostPage";
@@ -51,11 +50,10 @@ function App() {
         {/* 오리챗 신청 */}
         <Route path="/apply/:id" element={<ApplyPage />} />
         <Route path="/applyAlert/:id" element={<ApplyAlertPage />} />
-        <Route path="/answerAlert/:id" element={<AnswerPage />} />
         {/* 작성 페이지 */}
         <Route path="/writeReview" element={<ReviewPage />} />
         <Route path="/writePost" element={<WritePostPage />} />
-        <Route path="/editPost/:id" element={<EditPostPage/>}/>
+        <Route path="/editPost/:id" element={<EditPostPage />} />
         {/* 마이페이지 */}
         <Route path="/mypageMentor" element={<MentorMyPage />}>
           <Route path="chats" element={<MentorChatingModal />} />
