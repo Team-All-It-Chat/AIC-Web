@@ -1,9 +1,20 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { useRecoilValue } from "recoil";
 import { styled } from "styled-components";
+import { isMentorAtom } from "../../recoil/atoms";
 
 const ChatModal = ({ name }) => {
   const navigate = useNavigate();
+  const isMentor = useRecoilValue(isMentorAtom);
+
+  const onClick = () => {
+    if (isMentor) {
+      navigate("/mypageMentor");
+    } else {
+      navigate("/mypageMentee");
+    }
+  };
 
   const SelectImage = (isMentor) => {
     return (
@@ -22,9 +33,7 @@ const ChatModal = ({ name }) => {
         <Title>{name} 완료</Title>
         <Text>정성스런 {name} 고맙덕</Text>
         <SelectImage />
-        <Btn onClick={() => navigate("/community/아시아/mentor")}>
-          메인 페이지로 이동
-        </Btn>
+        <Btn onClick={onClick}>마이 페이지로 이동</Btn>
       </ModalSection>
     </Wrapper>
   );
