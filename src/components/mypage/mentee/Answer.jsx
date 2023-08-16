@@ -31,7 +31,7 @@ const Answer = () => {
 
   const review = data.reviews === [] ? null : data.reviews;
 
-  // console.log(review[0].content);
+  console.log(data);
   return (
     <>
       <CommunityNavBar />
@@ -61,7 +61,7 @@ const Answer = () => {
           </Wrapper2>
           <AnswerSection>{data.answer}</AnswerSection>
         </AnswerWrapper>
-        {!review ? (
+        {review.length === 0 || review[0].content === null ? (
           <Btn onClick={onClick}>후기 남기러 가기!</Btn>
         ) : (
           <ReadReview content={review[0].content} rate={review[0].rate} />
