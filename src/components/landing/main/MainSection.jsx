@@ -1,5 +1,5 @@
 import React from "react";
-import { styled } from "styled-components";
+import { styled, keyframes } from "styled-components";
 
 const MainSection = () => {
   return (
@@ -31,12 +31,13 @@ const Wrapper = styled.div`
 
 const MainWrapper = styled.div`
   width: 100%;
+  height: fit-content;
   flex-basis: 75rem;
   display: flex;
   justify-content: space-around;
   align-items: center;
   position: relative;
-  background-color: #89cdf6;
+  background-image: linear-gradient(180deg, #89cdf6 80%, white 20%);
 `;
 
 const ImageWrapper = styled.div`
@@ -49,9 +50,50 @@ const ImageWrapper = styled.div`
   align-items: center;
   margin-top: 50%;
   overflow: hidden;
+  background-color: linear-gradient(180deg, #89cdf6 0%, white 100%);
 `;
 
-const Image1 = styled.img`
+const floatAnimation = keyframes`
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-25px);
+  }
+`;
+
+const floatAnimation2 = keyframes`
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-16px);
+  }
+`;
+
+const rotateAnimation = keyframes`
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(5deg);
+  }
+`;
+
+const bounceAnimation = keyframes`
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+`;
+
+const FloatingImage = styled.img`
+  position: absolute;
+`;
+
+const Image1 = styled(FloatingImage)`
   // 뒷구름
   position: absolute;
   width: 100%;
@@ -59,9 +101,10 @@ const Image1 = styled.img`
   height: 48%;
   margin-bottom: 2%;
   bottom: 0;
+  animation: ${floatAnimation} 3.5s infinite;
 `;
 
-const Image2 = styled.img`
+const Image2 = styled(FloatingImage)`
   // 비행기
   position: absolute;
   width: 50vw;
@@ -70,9 +113,10 @@ const Image2 = styled.img`
   top: 5rem;
   margin-top: 6%;
   margin-left: 48%;
+  animation: ${rotateAnimation} 4s infinite;
 `;
 
-const Image3 = styled.img`
+const Image3 = styled(FloatingImage)`
   // 오리
   position: absolute;
   right: 15rem;
@@ -80,17 +124,19 @@ const Image3 = styled.img`
   min-width: 35rem;
   margin-bottom: 2%;
   bottom: 0;
+  animation: ${bounceAnimation} 2s infinite;
 `;
 
-const Image4 = styled.img`
+const Image4 = styled(FloatingImage)`
   // 앞구름
   position: absolute;
   width: 100%;
   min-width: 40rem;
   bottom: 0;
+  animation: ${floatAnimation2} 2.5s infinite;
 `;
 
-const Image5 = styled.img`
+const Image5 = styled(FloatingImage)`
   // 로고
   position: absolute;
   width: 28%;
@@ -99,4 +145,5 @@ const Image5 = styled.img`
   margin-top: 10%;
   padding-bottom: 10%;
   min-width: 25rem;
+  animation: ${rotateAnimation} 5s infinite;
 `;
