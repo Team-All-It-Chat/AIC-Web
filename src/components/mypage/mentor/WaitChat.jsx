@@ -47,8 +47,9 @@ const List = styled.div`
 const ProfileSection = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: start;
   width: fit-content;
+  min-width: 100px;
   gap: 10px;
   font-size: 2rem;
   font-weight: 600;
