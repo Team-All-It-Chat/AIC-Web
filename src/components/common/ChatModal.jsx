@@ -10,9 +10,9 @@ const ChatModal = ({ name }) => {
 
   const onClick = () => {
     if (isMentor) {
-      navigate("/mypageMentor");
+      navigate("/mypageMentor/chats");
     } else {
-      navigate("/mypageMentee");
+      navigate("/mypageMentee/chats");
     }
   };
 
