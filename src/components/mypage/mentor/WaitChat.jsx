@@ -49,7 +49,7 @@ const ProfileSection = styled.div`
   align-items: center;
   justify-content: start;
   width: fit-content;
-  min-width: 100px;
+  min-width: 150px;
   gap: 10px;
   font-size: 2rem;
   font-weight: 600;

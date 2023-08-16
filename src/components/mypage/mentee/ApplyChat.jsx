@@ -59,7 +59,7 @@ const ProfileSection = styled.div`
   align-items: center;
   justify-content: start;
   width: fit-content;
-  min-width: 100px;
+  min-width: 150px;
   gap: 10px;
   font-size: 2rem;
   font-weight: 600;
@@ -77,6 +77,7 @@ const ProfileCircle = styled.div`
   align-items: center;
   background-color: white;
   @media (max-width: 900px) {
+    width: 35px;
     height: 35px;
   }
 `;
@@ -90,12 +91,14 @@ const ProfileImg = styled.img`
 `;
 
 const ChatTitle = styled.div`
-  width: 55%;
+  width: 60%;
   font-size: 1.8rem;
   font-weight: 300;
+  text-align: start;
   cursor: pointer;
   @media (max-width: 900px) {
     font-size: 1.3rem;
+    width: 400px;
   }
 `;
 
