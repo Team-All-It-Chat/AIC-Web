@@ -50,7 +50,7 @@ const ApplyAlert = () => {
       <Wrapper>
         <TitleWrapper>
           <Goback />
-          <Title>오리챗 기록</Title>
+          <Title>오리챗 답변하기</Title>
         </TitleWrapper>
         <ApplyWrapper>
           <ProfileCircle>
