@@ -85,6 +85,7 @@ const ModalDom = styled.div`
   width: 80%;
   height: fit-content;
   justify-content: center;
+  margin-bottom: 4%;
 `;
 
 const Title = styled.div`

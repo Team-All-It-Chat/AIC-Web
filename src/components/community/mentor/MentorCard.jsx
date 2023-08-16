@@ -109,7 +109,7 @@ const Card = styled.div`
   display: flex;
   flex-direction: column;
   min-width: 300px;
-  height: 300px;
+  height: 290px;
   flex-shrink: 0;
   align-items: center;
   justify-content: space-evenly;
