@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 // import { useNavigate } from "react-router-dom";
 import { styled } from "styled-components";
+import QuestionModal from "./QuestionModal";
 
 const ApplyChat = ({ database }) => {
-  // const navigate = useNavigate();
+  const [modal, setModal] = useState(false);
+
   const title =
     database.question.length > 50
       ? database.question.substring(0, 50) + "..."
@@ -21,7 +23,12 @@ const ApplyChat = ({ database }) => {
 
   const state = database.status;
 
-  console.log(database);
+  const openModal = () => {
+    setModal(true);
+  };
+  const closeModal = () => {
+    setModal(false);
+  };
 
   return (
     <>
@@ -35,9 +42,10 @@ const ApplyChat = ({ database }) => {
         <ChatTitle>{title}</ChatTitle>
         <BtnWrapper>
           <QuestionState status={state}>{statusText(state)}</QuestionState>
-          <Btn>확인</Btn>
+          <Btn onClick={openModal}>확인</Btn>
         </BtnWrapper>
       </List>
+      {modal && <QuestionModal database={database} closeModal={closeModal} />}
     </>
   );
 };
