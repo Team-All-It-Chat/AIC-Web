@@ -1,8 +1,16 @@
 import React from "react";
 import { styled } from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const LoginSection = () => {
+  const navigate = useNavigate();
+
+  const onChange = () => {
+    const confirmed = window.confirm("회원가입을 먼저 해주세요❗");
+    if (confirmed) {
+      navigate("/signup");
+    }
+  };
   return (
     <Wrapper>
       <ImageWrapper>
@@ -14,9 +22,13 @@ const LoginSection = () => {
         <Form>
           <Inputs>
             <Text>아이디</Text>
-            <Input placeholder="아이디를 입력해덕!"></Input>
+            <Input placeholder="아이디를 입력해덕!" onChange={onChange}></Input>
             <Text>패스워드</Text>
-            <Input type="password" placeholder="패스워드를 입력해덕!"></Input>
+            <Input
+              type="password"
+              placeholder="패스워드를 입력해덕!"
+              onChange={onChange}
+            ></Input>
           </Inputs>
           <TextWrap>
             <Text>아이디 찾기</Text>
@@ -26,7 +38,7 @@ const LoginSection = () => {
         </Form>
         <BtnWrapper>
           <CustomLink to="/signup">계정 만들기</CustomLink>
-          <LoginBtn>로그인</LoginBtn>
+          <LoginBtn onClick={onChange}>로그인</LoginBtn>
         </BtnWrapper>
       </LoginWrapper>
     </Wrapper>
