@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { json, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { styled } from "styled-components";
 import { useForm } from "../../hooks/useForm";
 import { postNewTip } from "../../apis/posts";
