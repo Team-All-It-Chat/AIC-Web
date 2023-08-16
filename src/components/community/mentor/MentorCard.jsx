@@ -26,6 +26,7 @@ const MentorCard = ({ mentor }) => {
     recentReview === null ? "오리챗 후기" : recentReview.reviewer;
   const tag1 = mentor.tag1 === null ? null : mentor.tag1;
   const tag2 = mentor.tag2 === null ? null : mentor.tag2;
+  const tag3 = mentor.tag3 === null ? null : mentor.tag3;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -81,6 +82,7 @@ const MentorCard = ({ mentor }) => {
           <Row>
             {tag1 === null ? null : <Category>{tag1}</Category>}
             {tag2 === null ? null : <Category>{tag2}</Category>}
+            {tag3 === null ? null : <Category>{tag3}</Category>}
           </Row>
         </ProfileText>
       </TopWrapper>
@@ -106,9 +108,8 @@ export default MentorCard;
 const Card = styled.div`
   display: flex;
   flex-direction: column;
-  width: 30%;
   min-width: 300px;
-  height: 260px;
+  height: 300px;
   flex-shrink: 0;
   align-items: center;
   justify-content: space-evenly;
@@ -136,7 +137,7 @@ const ProfileImg = styled.img`
 
 const TopWrapper = styled.div`
   width: 85%;
-  height: 35%;
+  height: 39%;
   display: flex;
   align-items: center;
   justify-content: start;
@@ -145,7 +146,7 @@ const TopWrapper = styled.div`
 
 const BottomWrapper = styled.div`
   width: 85%;
-  height: 35%;
+  height: 31%;
   display: flex;
   flex-direction: column;
   align-items: start;
@@ -185,13 +186,14 @@ const Country = styled.div`
 const Text2 = styled.div`
   font-size: 17px;
   font-weight: 500;
+  word-break: break-all;
   /* overflow: auto; */
 `;
 
 const Category = styled.div`
-  font-size: 16x;
+  font-size: 12px;
   width: fit-content;
-  padding: 2px 9px 2px 9px;
+  padding: 2px 5px 2px 5px;
   text-align: center;
   border-radius: 30px;
   background: var(--light-gray, #dadada);
@@ -201,7 +203,8 @@ const Row = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 7px;
+  flex-wrap: wrap;
 `;
 
 const Text3 = styled.div`

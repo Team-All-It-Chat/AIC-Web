@@ -37,7 +37,8 @@ const MentorInfoSection = () => {
   const chatCount = mentor.chat_count === null ? 0 : mentor.chat_count;
   const totalScore = mentor.total_score === null ? 0 : mentor.total_score;
   const tag1 = mentor.tag1 === null ? "키워드" : mentor.tag1;
-  const tag2 = mentor.tag2 === null ? "넣어주세요" : mentor.tag2;
+  const tag2 = mentor.tag2 === null ? "키워드" : mentor.tag2;
+  const tag3 = mentor.tag3 === null ? "키워드" : mentor.tag3;
 
   const getContinentNumber = (continent) => {
     switch (continent) {
@@ -99,6 +100,7 @@ const MentorInfoSection = () => {
             <Row1>
               {tag1 === null ? null : <Category>{tag1}</Category>}
               {tag2 === null ? null : <Category>{tag2}</Category>}
+              {tag3 === null ? null : <Category>{tag3}</Category>}
             </Row1>
           </Column>
           <Column>

@@ -20,11 +20,10 @@ export default MentorDataSection;
 
 const CardWrapper = styled.div`
   width: 100%;
-  display: flex;
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(310px, max-content));
+  grid-gap: 20px;
   justify-content: center;
-  flex-wrap: wrap;
+  padding: initial;
   height: fit-content;
-  margin-bottom: 50px;
-  gap: 2%;
 `;
