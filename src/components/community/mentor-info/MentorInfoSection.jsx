@@ -5,12 +5,15 @@ import MiniCard from "./MiniCard";
 import { getMentorProfiles } from "../../../apis/accounts";
 import { isMentorAtom } from "../../../recoil/atoms";
 import { useRecoilValue } from "recoil";
+import { getAllPost } from "../../../apis/posts";
+import PostDataSeciton from "./PostDataSeciton";
 
 const MentorInfoSection = () => {
   const navigate = useNavigate();
   const { continent } = useParams();
   const { id } = useParams();
   const [mentor, setMentor] = useState(null);
+  const [postList, setPostList] = useState([]);
   const isMentor = useRecoilValue(isMentorAtom);
 
   useEffect(() => {
@@ -20,6 +23,12 @@ const MentorInfoSection = () => {
         (mentor) => mentor.id === Number(id)
       );
       setMentor(filteredMentor);
+      const response2 = await getAllPost();
+      const mentorPost = response2.result.filter(
+        (tip) => tip.writer === Number(id)
+      );
+      setPostList(mentorPost);
+      console.log(mentorPost);
     };
     fetchData();
   }, [continent, id]);
@@ -106,13 +115,12 @@ const MentorInfoSection = () => {
           <Column>
             <Text>멘토가 작성한 게시글</Text>
             <Row2>
-              &lt;
-              <MiniCard />
-              <MiniCard />
-              &gt;
+              <PostDataSeciton postList={postList} />
             </Row2>
           </Column>
-          {isMentor ? null :<Btn onClick={() => navigate(`/apply/${id}`)}>오리챗 신청하기</Btn>}
+          {isMentor ? null : (
+            <Btn onClick={() => navigate(`/apply/${id}`)}>오리챗 신청하기</Btn>
+          )}
         </RightWrapper>
       </Box>
     </Wrapper>
@@ -231,7 +239,7 @@ const RightWrapper = styled.div`
 `;
 
 const Column = styled.div`
-  width: 80%;
+  width: 85%;
   display: flex;
   flex-direction: column;
   gap: 15px;

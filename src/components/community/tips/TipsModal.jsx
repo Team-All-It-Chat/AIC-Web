@@ -14,8 +14,6 @@ const TipsModal = () => {
       const response = await getPostsOfContinent(continent);
       setTipList(response.data.result);
       console.log(response.data.result);
-      const response2 = await getAllPost();
-      console.log(response2.data.result);
     };
     fetchData();
   }, [continent]);
