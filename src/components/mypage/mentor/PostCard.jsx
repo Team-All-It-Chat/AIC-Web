@@ -92,16 +92,3 @@ const Text2 = styled.div`
   font-weight: 300;
   color: var(--dark-gray, #585858);
 `;
-
-const Btn = styled.div`
-  border-radius: 30px;
-  width: 118px;
-  height: 33px;
-  border: 1px solid var(--dark-gray, #585858);
-  font-size: 1.3rem;
-  font-weight: 300;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 1%;
-`;
