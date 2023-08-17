@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { styled } from "styled-components";
-import MiniCard from "./MiniCard";
 import { getMentorProfiles } from "../../../apis/accounts";
 import { isMentorAtom } from "../../../recoil/atoms";
 import { useRecoilValue } from "recoil";
