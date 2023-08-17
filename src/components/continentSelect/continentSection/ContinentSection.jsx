@@ -34,7 +34,9 @@ const ContinentSection = () => {
               <Text3>이집트, 모로코 등</Text3>
             </TextWrapper>
           </CircleWrapper>
-          <CircleWrapper onClick={() => navigate(`/community/북아메리카/mentor`)}>
+          <CircleWrapper
+            onClick={() => navigate(`/community/북아메리카/mentor`)}
+          >
             <Image2 src="img/northAm.png" />
             <TextWrapper>
               <Text2>북아메리카</Text2>
@@ -43,12 +45,16 @@ const ContinentSection = () => {
           </CircleWrapper>
           <CircleWrapper>
             <Image2 src="img/southAm.png" />
-            <TextWrapper onClick={() => navigate(`/community/남아메리카/mentor`)}>
+            <TextWrapper
+              onClick={() => navigate(`/community/남아메리카/mentor`)}
+            >
               <Text2>남아메리카</Text2>
               <Text3>브라질, 아르헨티나 등</Text3>
             </TextWrapper>
           </CircleWrapper>
-          <CircleWrapper onClick={() => navigate(`/community/오세아니아/mentor`)}>
+          <CircleWrapper
+            onClick={() => navigate(`/community/오세아니아/mentor`)}
+          >
             <Image2 src="img/oseania.png" />
             <TextWrapper>
               <Text2>오세아니아</Text2>
@@ -63,9 +69,23 @@ const ContinentSection = () => {
 
 export default ContinentSection;
 
+const SectionWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: fit-content;
+  min-height: 92vh;
+`;
+
 const CircleWrapper = styled.div`
+  width: 140px;
+  height: 140px;
   position: relative; /* 컨테이너를 상대적인 위치로 설정합니다. */
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: white;
   cursor: pointer;
   img:hover {
@@ -136,7 +156,9 @@ const BtnWrap = styled.div`
   align-items: center;
   display: flex;
   flex-wrap: wrap;
+  margin-top: 20px;
   margin-bottom: 4%;
+  gap :30px;
 `;
 
 const Image1 = styled.img`
@@ -149,13 +171,7 @@ const LogoWrap = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
 `;
 
-const SectionWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 91.3vh;
-`;
