@@ -7,12 +7,31 @@ const IntroduceSection = () => {
       <IntroduceWrapper>
         <Title>서비스 소개</Title>
         <Text>
-          오리챗(ALL-IT Chat)은 ~~...(내용은 아직입니당)I’m super shy, super shy
-          But wait a minute while I Make you mine, make you mine 떨리는 지금도
-          You’re on my mind All the time I wanna tell you but I’m Super shy,
-          super shy And I wanna go out with you Where you wanna go? (Huh?) Find
-          a lil spot Just sit and
+          내가 찾던 멘토가 여기에!!
+          <br />
+          누가 원하는 정보를 얻을 수 있는 전세계 교환학생 매칭 플랫폼
+          <br />
+          오리챗(All-it-Chat)
         </Text>
+        <TextForm>
+          <TextFormTitle>
+            오리챗이란?
+            <br />
+            교환학생을 준비하는 모든 대학생이 원하는 멘토에게 궁금한 점을 질문할
+            수 있는 서비스
+          </TextFormTitle>
+          <TextFormContent>
+            <li>
+              한국 학교가 아닌 파견교를 기준으로 한 정보제공으로 더욱 많은
+              멘토에게 질문 가능
+            </li>
+            <li>멘토에게 1:1로 질문할 수 있어 부담없이 솔직하게</li>
+            <li>
+              현지 정보는 실시간으로, 교환 후 챙겨야 하는 부분은 빠짐없이 체크할
+              수 있는 멘토들의 꿀팁 공유
+            </li>
+          </TextFormContent>
+        </TextForm>
       </IntroduceWrapper>
     </Wrapper>
   );
@@ -46,21 +65,51 @@ const IntroduceWrapper = styled.div`
 `;
 
 const Title = styled.div`
-  width: 95%;
+  width: 100%;
   margin-top: 5%;
   color: #454545;
   font-size: 4rem;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
+  text-align: center;
 `;
 
 const Text = styled.div`
-  width: 95%;
+  text-align: center;
+  width: 100%;
   color: #454545;
-  font-size: 3rem;
+  font-size: 24px;
   font-style: normal;
   font-weight: 500;
   line-height: 5rem;
-  margin-top: 3%;
+  margin-top: 2%;
+  margin-bottom: 3%;
+`;
+
+const TextForm = styled.div`
+  border: 3px solid skyblue;
+  border-radius: 20px;
+  padding: 20px;
+  width: 65%;
+  /* width: 700px; */
+  min-width: 700px;
+  height: 180px;
+`;
+
+const TextFormTitle = styled.div`
+  font-size: 20px;
+  margin-left: 1%;
+  margin-top: 1%;
+  margin-bottom: 3%;
+  color: #454545;
+`;
+
+const TextFormContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: 18px;
+  padding: 15px 20px;
+  color: gray;
 `;
