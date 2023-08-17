@@ -74,6 +74,7 @@ const Text = styled.div`
   font-weight: 300;
   color: var(--dark-gray, #585858);
   width: 100%;
+  white-space: pre-line;
 `;
 
 const Title = styled.div`

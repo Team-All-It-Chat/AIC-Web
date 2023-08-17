@@ -103,7 +103,6 @@ const ChatTitle = styled.div`
   font-size: 1.8rem;
   font-weight: 300;
   text-align: start;
-  cursor: pointer;
   @media (max-width: 900px) {
     font-size: 1.3rem;
     width: 400px;

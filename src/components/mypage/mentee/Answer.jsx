@@ -146,6 +146,7 @@ const AnswerSection = styled.div`
   box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
   margin-bottom: 3%;
   margin: 10px 0px;
+  white-space: pre-line;
 `;
 
 const MentorWrapper = styled.div`
@@ -179,6 +180,7 @@ const Question = styled.div`
   width: 100%;
   height: fit-content;
   border-radius: 10px;
+  white-space: pre-line;
 `;
 
 const Name = styled.div`

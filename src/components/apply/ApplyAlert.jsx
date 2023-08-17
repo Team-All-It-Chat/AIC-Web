@@ -193,6 +193,7 @@ const Question = styled.div`
   width: 100%;
   height: fit-content;
   border-radius: 10px;
+  white-space: pre-line;
 `;
 
 const Name = styled.div`

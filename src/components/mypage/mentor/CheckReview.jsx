@@ -37,6 +37,7 @@ const Review2 = styled.div`
   box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
   margin-bottom: 3%;
   margin: 10px 0px;
+  white-space: pre-line;
 `;
 
 const StarWrapper = styled.div`
