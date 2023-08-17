@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import styled from "styled-components";
 import { continentAtom, isMentorAtom } from "../../recoil/atoms";
+import { menteeLogout, mentorLogout } from "../../apis/accounts";
 
 const SideMenu = () => {
   const navigate = useNavigate();
@@ -46,6 +47,13 @@ const SideMenu = () => {
     } else if (type === "멘토") {
       navigate(`/community/${continent}/mentor`);
     } else if (type === "로그아웃") {
+      if (isMentor) {
+        mentorLogout();
+      } else {
+        menteeLogout();
+      }
+      localStorage.removeItem("access");
+      localStorage.removeItem("refresh");
       navigate(`/`);
     }
     setIsMenuOpen(false);
