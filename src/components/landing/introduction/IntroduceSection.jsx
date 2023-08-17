@@ -94,7 +94,7 @@ const TextForm = styled.div`
   width: 65%;
   /* width: 700px; */
   min-width: 700px;
-  height: 170px;
+  height: 190px;
 `;
 
 const TextFormTitle = styled.div`
@@ -102,6 +102,7 @@ const TextFormTitle = styled.div`
   margin-left: 1%;
   margin-top: 1%;
   margin-bottom: 1%;
+  font-weight: bold;
   color: #454545;
 `;
 
@@ -109,6 +110,7 @@ const TextFormContent = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  height: 80px;
   font-size: 18px;
   padding: 15px 20px;
   color: gray;
