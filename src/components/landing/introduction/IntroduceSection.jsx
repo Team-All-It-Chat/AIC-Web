@@ -29,7 +29,6 @@ const Wrapper = styled.div`
   height: 101vh;
   height: fit-content;
   background-color: #ffffff;
-  /* z-index: 1; */
   scroll-snap-align: start;
 `;
 
