@@ -25,7 +25,7 @@ export default TipDataSection;
 const CardWrapper = styled.div`
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(310px, max-content));
+  grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
   grid-gap: 20px;
   justify-content: center;
   padding: initial;

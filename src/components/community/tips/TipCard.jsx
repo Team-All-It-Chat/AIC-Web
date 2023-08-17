@@ -73,7 +73,7 @@ const Card = styled.div`
   height: 260px;
   flex-shrink: 0;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-evenly;
   border-radius: 30px;
   background-color: #fff;
   box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
