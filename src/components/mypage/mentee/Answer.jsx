@@ -14,7 +14,7 @@ const Answer = () => {
   const [data, setData] = useState();
 
   const onClick = () => {
-    navigate("/writeReview");
+    navigate(`/writeReview/${id}`);
   };
 
   useEffect(() => {

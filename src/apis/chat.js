@@ -49,3 +49,13 @@ export const answerQuestion = async (body) => {
   });
   return response.data;
 };
+
+export const submitReview = async (body) => {
+  const token = localStorage.getItem("access");
+  const response = await axios.put(`${baseUrl}/`, body, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  return response.data;
+};

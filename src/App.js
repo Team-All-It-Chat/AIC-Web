@@ -51,7 +51,7 @@ function App() {
         <Route path="/apply/:id" element={<ApplyPage />} />
         <Route path="/applyAlert/:id" element={<ApplyAlertPage />} />
         {/* 작성 페이지 */}
-        <Route path="/writeReview" element={<ReviewPage />} />
+        <Route path="/writeReview/:id" element={<ReviewPage />} />
         <Route path="/writePost" element={<WritePostPage />} />
         <Route path="/editPost/:id" element={<EditPostPage />} />
         {/* 마이페이지 */}
