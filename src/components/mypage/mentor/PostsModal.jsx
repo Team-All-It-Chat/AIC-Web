@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { styled } from "styled-components";
-import PostCard from "./PostCard";
 import { useNavigate } from "react-router-dom";
 import { getAllPost } from "../../../apis/posts";
 import PostDataSectionMypage from "./PostDataSectionMypage";
