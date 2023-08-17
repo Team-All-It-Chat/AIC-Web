@@ -94,14 +94,14 @@ const TextForm = styled.div`
   width: 65%;
   /* width: 700px; */
   min-width: 700px;
-  height: 180px;
+  height: 170px;
 `;
 
 const TextFormTitle = styled.div`
   font-size: 20px;
   margin-left: 1%;
   margin-top: 1%;
-  margin-bottom: 3%;
+  margin-bottom: 1%;
   color: #454545;
 `;
 
