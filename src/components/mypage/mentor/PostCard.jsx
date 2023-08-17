@@ -53,7 +53,7 @@ const ThumbnailImg = styled.img`
 
 const TopWrapper = styled.div`
   width: 100%;
-  height: 55%;
+  height: 45%;
   display: flex;
   align-items: center;
   justify-content: start;
@@ -64,7 +64,7 @@ const TopWrapper = styled.div`
 
 const BottomWrapper = styled.div`
   width: 85%;
-  height: 45%;
+  height: 55%;
   display: flex;
   flex-direction: column;
   align-items: center;
