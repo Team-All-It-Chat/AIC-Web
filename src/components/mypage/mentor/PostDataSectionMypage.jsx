@@ -5,11 +5,15 @@ import PostCard from "./PostCard";
 const PostDataSectionMypage = ({ postList }) => {
   const [currentPage, setCurrentPage] = useState(0);
 
+  const sortedPostList = postList.sort(
+    (a, b) => new Date(b.created_at) - new Date(a.created_at)
+  );
+
   const postsPerPage = 2;
   const startIndex = currentPage * postsPerPage;
-  const visiblePosts = postList.slice(startIndex, startIndex + postsPerPage);
+  const visiblePosts = sortedPostList.slice(startIndex, startIndex + postsPerPage);
 
-  const totalPages = Math.ceil(postList.length / postsPerPage);
+  const totalPages = Math.ceil(sortedPostList.length / postsPerPage);
 
   const goToNextPage = () => {
     setCurrentPage((prevPage) => Math.min(prevPage + 1, totalPages - 1));
