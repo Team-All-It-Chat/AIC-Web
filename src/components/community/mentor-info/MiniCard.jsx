@@ -1,26 +1,33 @@
-import React from 'react'
-import { styled } from 'styled-components';
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import { styled } from "styled-components";
 
-const MiniCard = () => {
+const MiniCard = ({ post }) => {
+  const navigate = useNavigate();
+  const id = post.id;
+  const title =
+    post.title.length > 25 ? post.title.substring(0, 25) + "..." : post.title;
+  const image = post.image === null ? "/img/tip_defalut.png" : post.image;
   return (
-    <Card>
-    <TopWrapper><ThumbnailImg src="/img/postimg.png" /></TopWrapper>
-    <BottomWrapper>
-      <Row>
-        <Text1>(제목) 중국 퀸카카카카~</Text1>
-      </Row>
-    </BottomWrapper>
-  </Card>
-  )
-}
+    <Card onClick={() => navigate(`/viewPost/${id}`)}>
+      <TopWrapper>
+        <ThumbnailImg src={image} />
+      </TopWrapper>
+      <BottomWrapper>
+        <Row>
+          <Text1>{title}</Text1>
+        </Row>
+      </BottomWrapper>
+    </Card>
+  );
+};
 
 export default MiniCard;
-
 
 const Card = styled.div`
   display: flex;
   flex-direction: column;
-  width: 170px;
+  width: 160px;
   height: 180px;
   flex-shrink: 0;
   align-items: center;

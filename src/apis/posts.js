@@ -5,7 +5,7 @@ const baseUrl = `https://all-it-chat.o-r.kr/posts`;
 // 모든 게시글 조회
 export const getAllPost = async () => {
   const result = await axios.get(`${baseUrl}/`);
-  return result;
+  return result.data;
 };
 
 // 대륙별 꿀팁 조회

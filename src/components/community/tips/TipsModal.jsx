@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { styled } from "styled-components";
 import TipDataSection from "./TipDataSection";
 import { useParams } from "react-router-dom";
-import { getAllPost, getPostsOfContinent } from "../../../apis/posts";
+import { getPostsOfContinent } from "../../../apis/posts";
 
 const TipsModal = () => {
   const { continent } = useParams();
@@ -14,8 +14,6 @@ const TipsModal = () => {
       const response = await getPostsOfContinent(continent);
       setTipList(response.data.result);
       console.log(response.data.result);
-      const response2 = await getAllPost();
-      console.log(response2.data.result);
     };
     fetchData();
   }, [continent]);
