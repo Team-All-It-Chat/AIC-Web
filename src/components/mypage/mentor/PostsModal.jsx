@@ -1,10 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { styled } from "styled-components";
 import PostCard from "./PostCard";
 import { useNavigate } from "react-router-dom";
+import { getAllPost } from "../../../apis/posts";
+import PostDataSectionMypage from "./PostDataSectionMypage";
 
 const PostsModal = () => {
-  const navigate =useNavigate();
+  const navigate = useNavigate();
+  const [postList, setPostList] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await getAllPost();
+      const mentorPost = response.result.filter((tip) => tip.writer === 3);
+      setPostList(mentorPost);
+      console.log(mentorPost);
+    };
+    fetchData();
+  }, []);
+
   return (
     <Wrapper>
       <Card onClick={() => navigate(`/writePost`)}>
@@ -14,8 +28,7 @@ const PostsModal = () => {
         </Text>
         <Img src="/img/mainduck.png" />
       </Card>
-      <PostCard />
-      <PostCard />
+      <PostDataSectionMypage postList={postList} />
     </Wrapper>
   );
 };
@@ -23,21 +36,21 @@ const PostsModal = () => {
 export default PostsModal;
 
 const Wrapper = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
   width: 100%;
-  height: 100%;
-  gap: 2%;
+  display: flex;
+  overflow-x: auto;
   flex-wrap: wrap;
+  justify-content: center;
+  padding: 0;
   margin-top: 3%;
+  gap: 10px;
 `;
 
 const Card = styled.div`
   display: flex;
   flex-direction: column;
-  width: 230px;
-  height: 300px;
+  min-width: 200px;
+  height: 270px;
   flex-shrink: 0;
   align-items: center;
   justify-content: space-between;
@@ -65,6 +78,6 @@ const Text = styled.div`
 `;
 
 const Img = styled.img`
-margin-left: 50%;
+  margin-left: 50%;
   width: 200px;
 `;
