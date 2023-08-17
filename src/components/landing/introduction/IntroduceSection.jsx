@@ -26,9 +26,10 @@ const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 100vh;
-  background-color: white;
-  z-index: 1;
+  height: 101vh;
+  height: fit-content;
+  background-color: #ffffff;
+  /* z-index: 1; */
   scroll-snap-align: start;
 `;
 

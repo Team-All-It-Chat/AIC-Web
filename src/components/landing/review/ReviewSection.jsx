@@ -4,14 +4,14 @@ import { styled } from "styled-components";
 const ReviewSection = () => {
   return (
     <Wrapper>
-      <Image1 src="img/cloud3.png" />
+      <Image1 src="/img/cloud3.png" />
       <ReviewWrapper>
         <Title>오리챗 후기</Title>
         <CardWrapper>
-          <Card />
-          <Card />
-          <Card />
-          <Card />
+          <Card src="/img/review1.png" />
+          <Card src="/img/review2.png" />
+          <Card src="/img/review3.png" />
+          <Card src="/img/review4.png" />
         </CardWrapper>
       </ReviewWrapper>
       <FloorWrapper>
@@ -67,13 +67,14 @@ const CardWrapper = styled.div`
   flex-wrap: wrap;
 `;
 
-const Card = styled.div`
+const Card = styled.img`
   height: 500px;
   width: 340px;
   border-radius: 30px;
   border: 2px solid #89cdf6;
   background-color: white;
   margin: 1%;
+  object-fit: content;
   @media (max-width: 1970px) {
     height: 450px;
     width: 320px;
@@ -91,6 +92,7 @@ const Card = styled.div`
 const Image1 = styled.img`
   top: 0;
   width: 100%;
+  margin-bottom: 1px;
 `;
 
 const FloorWrapper = styled.div`

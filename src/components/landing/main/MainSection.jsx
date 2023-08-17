@@ -24,7 +24,7 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: space-evenly;
   width: 100%;
-  height: 100vh;
+  height: fit-content;
   background-color: #89cdf6;
   scroll-snap-align: start;
 `;
