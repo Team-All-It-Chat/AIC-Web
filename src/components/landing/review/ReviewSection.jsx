@@ -8,10 +8,10 @@ const ReviewSection = () => {
       <ReviewWrapper>
         <Title>오리챗 후기</Title>
         <CardWrapper>
-          <Card src="/img/review1.png" />
-          <Card src="/img/review2.png" />
-          <Card src="/img/review3.png" />
-          <Card src="/img/review4.png" />
+          <Card ><CardImg src="/img/review1.png"/></Card>
+          <Card ><CardImg src="/img/review2.png"/></Card>
+          <Card ><CardImg src="/img/review3.png"/></Card>
+          <Card ><CardImg src="/img/review4.png"/></Card>
         </CardWrapper>
       </ReviewWrapper>
       <FloorWrapper>
@@ -67,14 +67,11 @@ const CardWrapper = styled.div`
   flex-wrap: wrap;
 `;
 
-const Card = styled.img`
+const Card = styled.div`
   height: 500px;
   width: 340px;
   border-radius: 30px;
-  border: 2px solid #89cdf6;
-  background-color: white;
   margin: 1%;
-  object-fit: content;
   @media (max-width: 1970px) {
     height: 450px;
     width: 320px;
@@ -87,6 +84,12 @@ const Card = styled.img`
     height: 350px;
     width: 240px;
   }
+`;
+
+const CardImg = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 `;
 
 const Image1 = styled.img`
