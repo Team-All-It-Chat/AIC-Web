@@ -1,19 +1,42 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import CommunityNavBar from "../community/CommunityNavBar";
 import { styled } from "styled-components";
 import ChatModal from "../common/ChatModal";
 import StarRate from "./StarRate";
 import AlertBack2 from "../background/AlertBack2";
+import { useParams } from "react-router-dom";
+import { useForm } from "../../hooks/useForm";
+import { submitReview, getChat } from "../../apis/chat";
 
 const Review = () => {
   const [rate, setRate] = useState(0);
   const [modal, setModal] = useState(false);
+  const { id } = useParams();
+  const [review, onChangeReview] = useForm();
+  const [data, setData] = useState();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await getChat(id);
+      setData(response.data);
+    };
+    fetchData();
+  }, [id]);
+
+  if (!data) {
+    return null;
+  }
 
   const onClick = () => {
     const confirmed = window.confirm("전송하시겠습니까?");
     if (confirmed) {
+      const body = {
+        chat_id: id,
+        content: review,
+        rate: rate,
+      };
+      submitReview(body);
       setModal(true);
-      console.log(rate);
     }
   };
 
@@ -28,7 +51,12 @@ const Review = () => {
             <StarRate onChange={setRate} />
           </StarWrapper>
           <Text2>후기 작성하기</Text2>
-          <Review2 placeholder="후기를 작성해덕!" />
+          <Review2
+            type="review"
+            placeholder="후기를 작성해덕!"
+            value={review}
+            onChange={onChangeReview}
+          />
           <Btn onClick={onClick}>후기 전송하기</Btn>
         </ReviewSection>
         {modal && <ChatModal isMentor={true} name={"후기 작성"} />}
