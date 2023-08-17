@@ -1,18 +1,28 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { styled } from "styled-components";
 
-const PostCard = () => {
+const PostCard = ({post}) => {
+  const navigate = useNavigate();
+  const id = post.id;
+  const title =
+    post.title.length > 25 ? post.title.substring(0, 25) + "..." : post.title;
+  const image = post.image === null ? "/img/tip_defalut.png" : post.image;
+  const date = post.created_at;
+  const year = date.substring(0, 4);
+  const month = date.substring(5, 7);
+  const day = date.substring(8, 10);
+
   return (
-    <Card>
+    <Card onClick={() => navigate(`/viewPost/${id}`)}>
       <TopWrapper>
-        <ThumbnailImg src="/img/postimg.png" />
+        <ThumbnailImg src={image} />
       </TopWrapper>
       <BottomWrapper>
         <Column>
-          <Text1>(제목) 중국 퀸카카카카~</Text1>
-          <Text2>작성날짜 : 22/09/11</Text2>
+          <Text1>{title}</Text1>
+          <Text2>작성날짜 : {year}/{month}/{day}</Text2>
         </Column>
-        <Btn>보러가기</Btn>
       </BottomWrapper>
     </Card>
   );
@@ -23,8 +33,8 @@ export default PostCard;
 const Card = styled.div`
   display: flex;
   flex-direction: column;
-  width: 230px;
-  height: 300px;
+  width: 200px;
+  height: 270px;
   flex-shrink: 0;
   align-items: center;
   justify-content: space-between;
@@ -81,17 +91,4 @@ const Text2 = styled.div`
   font-size: 10px;
   font-weight: 300;
   color: var(--dark-gray, #585858);
-`;
-
-const Btn = styled.div`
-  border-radius: 30px;
-  width: 118px;
-  height: 33px;
-  border: 1px solid var(--dark-gray, #585858);
-  font-size: 1.3rem;
-  font-weight: 300;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 1%;
 `;
