@@ -1,9 +1,35 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import { styled } from "styled-components";
 
 const IntroduceSection = () => {
+  const wrapperRef = useRef(null); // Ref for the Wrapper element
+
+  useEffect(() => {
+    const observerIn = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = 1;
+        } else {
+          entry.target.style.opacity = 0;
+        }
+      });
+    });
+
+    const currentWrapper = wrapperRef.current;
+
+    if (currentWrapper) {
+      observerIn.observe(currentWrapper);
+    }
+
+    return () => {
+      if (currentWrapper) {
+        observerIn.unobserve(currentWrapper);
+      }
+    };
+  }, []);
+
   return (
-    <Wrapper>
+    <Wrapper ref={wrapperRef}>
       <IntroduceWrapper>
         <Title>서비스 소개</Title>
         <Text>
@@ -49,6 +75,8 @@ const Wrapper = styled.div`
   height: fit-content;
   background-color: #ffffff;
   scroll-snap-align: start;
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out;
 `;
 
 const IntroduceWrapper = styled.div`

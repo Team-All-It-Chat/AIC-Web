@@ -1,9 +1,35 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import { styled, keyframes } from "styled-components";
 
 const MainSection = () => {
+  const wrapperRef = useRef(null); // Ref for the Wrapper element
+
+  useEffect(() => {
+    const observerIn = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = 1;
+        } else {
+          entry.target.style.opacity = 0;
+        }
+      });
+    });
+
+    const currentWrapper = wrapperRef.current;
+
+    if (currentWrapper) {
+      observerIn.observe(currentWrapper);
+    }
+
+    return () => {
+      if (currentWrapper) {
+        observerIn.unobserve(currentWrapper);
+      }
+    };
+  }, []);
+
   return (
-    <Wrapper>
+    <Wrapper ref={wrapperRef}>
       <MainWrapper>
         <ImageWrapper>
           <Image1 src="img/cloudback.png" />
@@ -26,7 +52,9 @@ const Wrapper = styled.div`
   width: 100%;
   height: fit-content;
   background-color: #89cdf6;
-  scroll-snap-align: start;
+  scroll-snap-align: center;
+  opacity: 0;
+  transition: opacity 2.5s ease-in-out;
 `;
 
 const MainWrapper = styled.div`

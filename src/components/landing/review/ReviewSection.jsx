@@ -1,17 +1,51 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import { styled } from "styled-components";
 
 const ReviewSection = () => {
+  const wrapperRef = useRef(null); // Ref for the Wrapper element
+
+  useEffect(() => {
+    const observerIn = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = 1;
+        } else {
+          entry.target.style.opacity = 0;
+        }
+      });
+    });
+
+    const currentWrapper = wrapperRef.current;
+
+    if (currentWrapper) {
+      observerIn.observe(currentWrapper);
+    }
+
+    return () => {
+      if (currentWrapper) {
+        observerIn.unobserve(currentWrapper);
+      }
+    };
+  }, []);
+
   return (
-    <Wrapper>
+    <Wrapper ref={wrapperRef}>
       <Image1 src="/img/cloud3.png" />
       <ReviewWrapper>
         <Title>오리챗 후기</Title>
         <CardWrapper>
-          <Card ><CardImg src="/img/review1.png"/></Card>
-          <Card ><CardImg src="/img/review2.png"/></Card>
-          <Card ><CardImg src="/img/review3.png"/></Card>
-          <Card ><CardImg src="/img/review4.png"/></Card>
+          <Card>
+            <CardImg src="/img/review1.png" />
+          </Card>
+          <Card>
+            <CardImg src="/img/review2.png" />
+          </Card>
+          <Card>
+            <CardImg src="/img/review3.png" />
+          </Card>
+          <Card>
+            <CardImg src="/img/review4.png" />
+          </Card>
         </CardWrapper>
       </ReviewWrapper>
       <FloorWrapper>
@@ -33,6 +67,8 @@ const Wrapper = styled.div`
   height: fit-content;
   background-color: #c5e5f6;
   position: relative;
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out;
 `;
 
 const ReviewWrapper = styled.div`
