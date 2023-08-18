@@ -116,10 +116,11 @@ const Text3 = styled.div`
   top: 58%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 60%;
+  width: 65%;
   font-size: 10px;
   font-weight: bold;
   padding: 10px 20px;
+  margin-top: 1px;
 `;
 
 const Text2 = styled.div`
@@ -158,7 +159,7 @@ const BtnWrap = styled.div`
   flex-wrap: wrap;
   margin-top: 20px;
   margin-bottom: 4%;
-  gap :30px;
+  gap: 30px;
 `;
 
 const Image1 = styled.img`
@@ -174,4 +175,3 @@ const LogoWrap = styled.div`
   margin-top: 30px;
   margin-bottom: 30px;
 `;
-
