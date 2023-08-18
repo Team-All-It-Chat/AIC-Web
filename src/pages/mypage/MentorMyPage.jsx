@@ -1,6 +1,6 @@
 import React from "react";
-import CommunityNavBar from "../components/community/CommunityNavBar";
-import MentorMypageSection from "../components/mypage/mentor/MentorMypageSection";
+import CommunityNavBar from "../../components/community/CommunityNavBar";
+import MentorMypageSection from "../../components/mypage/mentor/MentorMypageSection";
 
 const MentorMyPage = () => {
   return (
