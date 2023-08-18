@@ -1,6 +1,6 @@
 import React from "react";
-import Apply from "../components/apply/Apply";
-import CommunityNavBar from "../components/community/CommunityNavBar";
+import Apply from "../../components/apply/Apply";
+import CommunityNavBar from "../../components/community/CommunityNavBar";
 
 const ApplyPage = () => {
   return (
