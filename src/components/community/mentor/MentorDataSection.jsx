@@ -13,7 +13,7 @@ const MentorDataSection = ({ mentorDataList }) => {
     const mentorPost = mentorDataList.filter(
       (mentor) => mentor.contry === queryStringValue
     );
-    if (mentorPost.length != 0) {
+    if (mentorPost.length !== 0) {
       return (
         <CardWrapper>
           {mentorPost &&

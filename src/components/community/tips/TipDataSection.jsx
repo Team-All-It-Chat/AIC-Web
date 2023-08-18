@@ -19,7 +19,7 @@ const TipDataSection = ({ tipDataList }) => {
     const tipList = sortedTipList.filter((tip) =>
       tip.title.includes(queryStringValue)
     );
-    if (tipList.length != 0) {
+    if (tipList.length !== 0) {
       return (
         <CardWrapper>
           {tipList.map((tip) => (
