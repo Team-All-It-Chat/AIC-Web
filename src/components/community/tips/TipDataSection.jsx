@@ -1,12 +1,13 @@
 import React from "react";
 import TipCard from "./TipCard";
 import { styled } from "styled-components";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const TipDataSection = ({ tipDataList }) => {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const queryStringValue = searchParams.get("search");
+  const navigate = useNavigate();
 
   // tipDataList 배열의 요소를 모두 일렬로 나열한 새로운 배열 생성
   const flattenedTipList = tipDataList.flat();
@@ -28,12 +29,21 @@ const TipDataSection = ({ tipDataList }) => {
         </CardWrapper>
       );
     } else {
-      alert("검색결과가 없습니다!");
+      const searchParams = new URLSearchParams(location.search);
+      searchParams.delete("search");
+      const newSearch = searchParams.toString();
+      const newPath = newSearch
+        ? `${location.pathname}?${newSearch}`
+        : location.pathname;
+
       <CardWrapper>
         {sortedTipList.map((tip) => (
           <TipCard key={tip.id} tip={tip} />
         ))}
       </CardWrapper>;
+      
+      alert("검색결과가 없습니다!");
+      navigate(newPath);
     }
   } else {
     return (

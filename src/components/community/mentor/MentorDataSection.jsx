@@ -1,12 +1,13 @@
 import React from "react";
 import MentorCard from "./MentorCard";
 import { styled } from "styled-components";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const MentorDataSection = ({ mentorDataList }) => {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const queryStringValue = searchParams.get("search");
+  const navigate = useNavigate();
 
   if (queryStringValue !== null) {
     console.log("검색어:", queryStringValue);
@@ -23,7 +24,17 @@ const MentorDataSection = ({ mentorDataList }) => {
         </CardWrapper>
       );
     } else {
+      const searchParams = new URLSearchParams(location.search);
+
+      // 현재 쿼리스트링 삭제
+      searchParams.delete("search");
+      const newSearch = searchParams.toString();
+      const newPath = newSearch
+        ? `${location.pathname}?${newSearch}`
+        : location.pathname;
+
       alert("검색결과가 없습니다!");
+      navigate(newPath);
       return (
         <CardWrapper>
           {mentorDataList &&

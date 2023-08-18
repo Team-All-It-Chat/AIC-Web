@@ -26,7 +26,6 @@ const ContinentCommunityPage = () => {
   }, [pathname, continent, setContinentAtom]);
 
   const searchKeyword = () => {
-    console.log(keyword);
     const searchParams = new URLSearchParams(location.search);
 
     // 현재 쿼리스트링 삭제
