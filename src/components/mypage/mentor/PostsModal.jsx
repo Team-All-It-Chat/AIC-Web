@@ -13,7 +13,6 @@ const PostsModal = () => {
       const response = await getAllPost();
       const mentorPost = response.result.filter((tip) => tip.writer === 3);
       setPostList(mentorPost);
-      console.log(mentorPost);
     };
     fetchData();
   }, []);

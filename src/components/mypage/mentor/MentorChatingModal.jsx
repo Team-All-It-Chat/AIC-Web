@@ -14,7 +14,7 @@ const MentorChatingModal = () => {
     };
     fetchData();
   }, []);
-  console.log(data);
+
   return (
     <Wrapper>
       <SubWrapper>

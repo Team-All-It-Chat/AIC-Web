@@ -64,7 +64,6 @@ const WritePostSection = () => {
     let reader = new FileReader();
     // 업로드 파일 세팅 부분
     const file = e.target.files[0];
-    console.log(file);
     setUploadedImage(file);
 
     // 프리뷰 이미지 세팅 부분
