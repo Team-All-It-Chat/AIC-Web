@@ -13,7 +13,7 @@ const SignupSection = () => {
   const clickMentor = async () => {
     try {
       const result = await mentorLogin();
-      console.log(result);
+      // console.log(result);
       const { access_token: accessToken, refresh_token: refreshToken } = result; // 구조분해할당
       localStorage.setItem("access", accessToken);
       localStorage.setItem("refresh", refreshToken);
@@ -27,7 +27,7 @@ const SignupSection = () => {
   const clickMentee = async () => {
     try {
       const result = await menteeLogin();
-      console.log(result);
+      // console.log(result);
       const { access_token: accessToken, refresh_token: refreshToken } = result; // 구조분해할당
       localStorage.setItem("access", accessToken);
       localStorage.setItem("refresh", refreshToken);

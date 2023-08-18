@@ -27,7 +27,7 @@ const MentorInfoSection = () => {
         (tip) => tip.writer === Number(id)
       );
       setPostList(mentorPost);
-      console.log(mentorPost);
+      // console.log(mentorPost);
     };
     fetchData();
   }, [continent, id]);

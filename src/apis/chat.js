@@ -9,7 +9,6 @@ export const getRecentReview = async (id) => {
 
 export const getAllChat = async () => {
   const token = localStorage.getItem("access");
-  console.log(token);
   const result = await axios.get(`${baseUrl}/`, {
     headers: {
       Authorization: `Bearer ${token}`,
