@@ -9,17 +9,6 @@ const MenteeModal = () => {
     navigate("/continentSelect");
   };
 
-  // const SelectImage = (isMentor) => {
-  //   return (
-  //     <>
-  //       {isMentor ? (
-  //         <Image src="/img/cloud_ori.png" />
-  //       ) : (
-  //         <Image src="/img/cloud_ori.png" />
-  //       )}
-  //     </>
-  //   );
-  // };
   return (
     <Wrapper>
       <ModalSection>
@@ -27,7 +16,7 @@ const MenteeModal = () => {
         <ImageCircle>
           <Image src="/img/mentee_ori.png" />
         </ImageCircle>
-        <Text>앞으로의 교환학생 과정을 응원한덕!</Text>
+        <Text>멘티로 로그인 되었덕!</Text>
         <Btn onClick={onClick}>오리챗 시작하기</Btn>
       </ModalSection>
     </Wrapper>
@@ -73,7 +62,7 @@ const Btn = styled.div`
 
 const Text = styled.div`
   font-size: 25px;
-  font-weight: 300;
+  font-weight: 600;
   color: var(--dark-gray, #585858);
 `;
 

@@ -43,7 +43,7 @@ const MentorModal = () => {
           <Image src={images[currentImageIndex]} />
           <NavButton onClick={nextImage}>&#8594;</NavButton>
         </ImageNav>
-        <Text>앞으로의 교환학생 과정을 응원한덕!</Text>
+        <Text>멘토로 로그인 되었덕!</Text>
         <Btn onClick={onClick}>오리챗 시작하기</Btn>
       </ModalSection>
     </Wrapper>
@@ -89,7 +89,7 @@ const Image = styled.img`
 
 const Text = styled.div`
   font-size: 25px;
-  font-weight: 300;
+  font-weight: 600;
   color: var(--dark-gray, #585858);
 `;
 
