@@ -28,7 +28,12 @@ const TipDataSection = ({ tipDataList }) => {
         </CardWrapper>
       );
     } else {
-      console.log("검색결과 없음");
+      alert("검색결과가 없습니다!");
+      <CardWrapper>
+        {sortedTipList.map((tip) => (
+          <TipCard key={tip.id} tip={tip} />
+        ))}
+      </CardWrapper>;
     }
   } else {
     return (
