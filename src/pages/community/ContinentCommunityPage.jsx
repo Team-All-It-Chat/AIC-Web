@@ -4,6 +4,7 @@ import CommunityNavBar from "../../components/community/CommunityNavBar";
 import { Outlet, useLocation, useNavigate, useParams } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
 import { continentAtom } from "../../recoil/atoms";
+import { useForm } from "../../hooks/useForm";
 // 커뮤니티 페이지
 const ContinentCommunityPage = () => {
   const { pathname } = useLocation();
@@ -11,6 +12,8 @@ const ContinentCommunityPage = () => {
   const [modal, setModal] = useState();
   const { continent } = useParams();
   const setContinentAtom = useSetRecoilState(continentAtom);
+  const [keyword, onChangeKeyword] = useForm();
+  const location = useLocation();
 
   useEffect(() => {
     if (pathname.includes("mentor")) {
@@ -21,6 +24,32 @@ const ContinentCommunityPage = () => {
     setContinentAtom(continent);
     // console.log(continent);
   }, [pathname, continent, setContinentAtom]);
+
+  const searchKeyword = () => {
+    console.log(keyword);
+    const searchParams = new URLSearchParams(location.search);
+
+    // 현재 쿼리스트링 삭제
+    searchParams.delete("search");
+
+    if (keyword) {
+      // 검색어가 입력되었다면 새로운 검색어 추가
+      searchParams.set("search", keyword);
+    }
+
+    const newSearch = searchParams.toString();
+    const newPath = newSearch
+      ? `${location.pathname}?${newSearch}`
+      : location.pathname;
+
+    navigate(newPath);
+  };
+
+  const handleOnKeyPress = (e) => {
+    if (e.key === "Enter") {
+      searchKeyword();
+    }
+  };
 
   return (
     <>
@@ -45,10 +74,13 @@ const ContinentCommunityPage = () => {
               </MenuButton>
             </MenuBtnWrapper>
             <Search>
-              <SearchImg src="/img/zoom-out.svg" />
+              <SearchImg onClick={searchKeyword} src="/img/zoom-out.svg" />
               <SearchInput
                 type="text"
-                placeholder="나라, 학교 등을 검색해덕!"
+                placeholder="나라를 검색해덕!"
+                value={keyword}
+                onChange={onChangeKeyword}
+                onKeyUp={handleOnKeyPress}
               />
             </Search>
           </SearchWrapper>
@@ -143,6 +175,7 @@ const Search = styled.div`
 
 const SearchImg = styled.img`
   width: 20px;
+  cursor: pointer;
 `;
 
 const SearchInput = styled.input`
