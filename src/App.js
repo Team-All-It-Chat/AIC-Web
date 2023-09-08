@@ -42,11 +42,12 @@ import MenteeMyPage from "./pages/mypage/MenteeMyPage";
 import ReadAnswerPage from "./pages/chat/ReadAnswerPage";
 import CheckAnswerPage from "./pages/chat/CheckAnswerPage";
 // import EditPostPage from "./pages/EditPostPage";
-import MentorMyPage from './pages/mypage/MentorMyPage';
+import MentorMyPage from "./pages/mypage/MentorMyPage";
 
 function App() {
   return (
     <>
+      {/*오잉팀 너무 고생했어*/}
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<LoginPage />} />
